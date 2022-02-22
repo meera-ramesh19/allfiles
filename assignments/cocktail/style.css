@@ -1,0 +1,65 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  background:url('recipecard.jpg') no-repeat fixed center;
+  background-size:cover;
+  color:white;
+}
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+.cocktail {
+  margin: 0 40%;
+}
+
+h2,
+h1,
+h3 {
+  text-align: center;
+  color:black;
+  font-size:1.2rem;
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+#image{
+  object-fit: cover;
+  padding-top:1.5rem;
+  width:400px;
+  height:350px;
+}
+
+.container{
+
+  width:100vw;
+  margin:0 auto;
+  text-align: center;
+}
+
+h3{
+  width:50%;
+  margin:0 auto;
+  text-align: center;
+  padding-top:2rem;
+  font-size:1.3rem;
+  color:black;
+  /* color:rgb(14, 145, 127); */
+  
+}
+
+.hidden { visibility: hidden; } 

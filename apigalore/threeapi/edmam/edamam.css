@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+:root {
+   
+    --right-bg-color: rgba(43, 43, 43, 0.3);
+    
+    --left-btn-hover-color:rgb(32, 112, 85) ;
+    --right-btn-hover-color: rgb(17, 90, 84);
+    --hover-width: 75%;
+    --other-width: 25%;
+    --speed: 1500ms
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+nav {
+    background: #222;
+    padding: 0 15px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .menu,
+  .submenu {
+    list-style-type: none;
+  }
+  .logo {
+    font-size: 20px;
+    padding: 7.5px 10px 7.5px 0;
+  }
+  
+  .item {
+    padding: 10px;
+  }
+  /* Mobile menu */
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu li a {
+    display: block;
+    padding: 15px 5px;
+  }
+  .menu li.subitem a {
+    padding: 15px;
+  }
+  .toggle {
+    order: 1;
+    font-size: 20px;
+  }
+  .item.button {
+    order: 2;
+  }
+  .item {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  .active .item {
+    display: block;
+  }
+  
+
+h1 {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    text-shadow: 3px 3px 2px #474747;
+}
+
+.btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    color: white;
+    border: white solid 0.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 15rem;
+    padding: 1rem;
+    
+    
+}
+
+.split.left .btn:hover{
+    background-color: var(--left-btn-hover-color);
+    border-color: var(--left-btn-hover-color);
+    border: rgb(1, 170, 119) solid 0.2rem;
+}
+
+
+.split.right .btn:hover{
+    background-color: var(--right-btn-hover-color);
+    border-color: var(--right-btn-hover-color);
+    border: rgb(22, 110, 91) solid 0.2rem;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 95%;
+    background: #333;
+}
+
+.split {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+   
+}
+
+.split.left {
+    left: 0;
+    background: url("saladdrink.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+
+}
+
+.split.left::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    background-color: var(--left-bg-color);
+}
+
+
+.split.right {
+    right: 0;
+    background: url("package2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.split.right::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    background-color: var(--right-bg-color);
+}
+
+.split.right, .split.left, .split.right::before, .split.left::before{
+    transition: all var(--speed) ease-in-out;
+}
+
+.hover-left .left{
+    width: var(--hover-width)
+}
+
+.hover-left .right{
+    width: var(--other-width)
+}
+
+.hover-right .right{
+    width: var(--hover-width)
+}
+
+.hover-right .left{
+    width: var(--other-width);
+   
+}
+.wrapper{
+    position:relative;
+    width:100%;
+    height:100%;
+    margin:0 auto;
+    text-align: center;
+    background:rgb(0, 139, 139);
+}
+.btn{
+    color:black;
+    background:rgb(90, 189, 128);
+}
+footer {
+
+    text-align: center;
+    /* margin:1rem 0; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+  }
+  
+ div#edaman-badge {
+      margin-top: 1rem;
+}
+  .container1{
+      
+      height:100vh;
+      background:url('table.jpg') no-repeat fixed center;
+      background-size: cover;
+  }
+  
+  /* Tablet menu */
+  @media all and (min-width: 700px) {
+    .menu {
+      justify-content: center;
+    }
+    .logo {
+      flex: 1;
+    }
+    .item.button {
+      width: auto;
+      order: 1;
+      display: block;
+    }
+    .toggle {
+      flex: 1;
+      text-align: right;
+      order: 2;
+    }
+    /* Button up from tablet screen */
+    .menu li.button a {
+      padding: 10px 15px;
+      margin: 5px 0;
+    }
+  /*   .button a {
+      background: #0080ff;
+      border: 1px royalblue solid;
+    }
+    .button.secondary {
+      border: 0;
+    }
+    .button.secondary a {
+      background: transparent;
+      border: 1px #0080ff solid;
+    }
+    .button a:hover {
+      text-decoration: none;
+    }
+    .button:not(.secondary) a:hover {
+      background: royalblue;
+      border-color: darkblue;
+    } */
+  }
+  /* Desktop menu */
+  @media all and (min-width: 960px) {
+    .menu {
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      background: none;
+    }
+    .logo {
+      order: 0;
+    }
+    .item {
+      order: 1;
+      position: relative;
+      display: block;
+      width: auto;
+    }
+  /*   .button {
+      order: 2;
+    }
+    .submenu-active .submenu {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 68px;
+      background: #111;
+    } */
+    .toggle {
+      display: none;
+    }
+  /*   .submenu-active {
+      border-radius: 0;
+    } */
+  }
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 2rem;
+        top: 30%;
+    }
+
+    .btn {
+        padding: 1.2rem;
+        width: 12rem;
+    }
+    
+}

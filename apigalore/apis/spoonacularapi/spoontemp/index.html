@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+
+<!-- This is instruction for Moderniz. If JavaScript in your browser is enabled
+ Modernizr changes no-js to js class, so you can define CSS styles for
+  JavaScript-enabled browsers and for JavaScript-disabled browsers -->
+<html class="no-js">
+
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>What do I Cook?</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="assets/style.css" /> -->
+  </head>
+
+  <body>
+    <nav
+      class="bg-gray-800 fixed flex md:justify-between p-4 shadow-2xl sm:p-9 w-full z-10"
+    >
+      <div class="items-center flex flex-1 sm:flex-none">
+
+        <h1
+          class="inline text-white sm:text-3xl text-2xl font-bold self-center m-auto sm:m-0"
+        >
+          <a href="/">What Do I Cook?</a>
+        </h1>
+      </div>
+      <div class="items-center flex">
+        <div class="lg:flex md:text-white hidden nav-links">
+          <div class="flex -mb-px mr-8">
+            <a
+              class="no-underline text-grey-dark border-b-2 uppercase tracking-wide font-bold text-xs py-3 mr-8 border-transparent text-sm tracking-widest"
+              href="#hero"
+              >Home</a
+            >
+          </div>
+          <!-- <div class="flex -mb-px mr-8">
+            <a
+              class="no-underline text-grey-dark border-b-2 uppercase tracking-wide font-bold text-xs py-3 mr-8 border-transparent text-sm tracking-widest"
+              href="#mealPlan"
+              >Meal Plan</a
+            >
+          </div> -->
+          <!-- <div class="flex -mb-px mr-8">
+            <a
+              class="no-underline text-grey-dark border-b-2 uppercase tracking-wide font-bold text-xs py-3 mr-8 border-transparent text-sm tracking-widest"
+              href="#newRecipe"
+              >New Recipe</a
+            >
+          </div> -->
+        </div>
+
+      </div>
+    </nav>
+
+    <div>
+      <a
+        href="random.html"
+        class="border border-white hover:bg-white hover:border-transparent hover:text-teal-500 inline-block leading-none lg:mt-0 px-4 py-2 rounded text-sm text-white getRandomHeader"
+        >Get Random</a
+      >
+    </div>
+
+
+          <!-- <form action="#" class="w-9/12" onsubmit="submitHandler(event)">
+            <div class="mb-4">
+              <label
+                class="block text-2xl text-sm font-bold mb-2 text-left"
+                for="username"
+              >
+                Search for recipe
+              </label>
+              <div class="flex">
+                <input
+                  class="appearance-none border focus:bg-white focus:outline-none focus:shadow-outline leading-tight px-3 px-4 py-2 py-4 rounded shadow text-gray-700 w-full"
+                  id="search"
+                  type="text"
+                  placeholder="search here..."
+                />
+                <button
+                  class="bg-blue-500 hover:bg-blue-400 p-3 ml-2 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                  type="submit"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="nonzero"
+                      stroke="none"
+                      stroke-width="1"
+                      stroke-linecap="butt"
+                      stroke-linejoin="miter"
+                      stroke-miterlimit="10"
+                      stroke-dasharray=""
+                      stroke-dashoffset="0"
+                      font-family="none"
+                      font-weight="none"
+                      font-size="none"
+                      text-anchor="none"
+                      style="mix-blend-mode: normal"
+                    >
+                      <path d="M0,172v-172h172v172z" fill="none"></path>
+                      <g fill="#ffffff">
+                        <path
+                          d="M64.5,14.33333c-27.6214,0 -50.16667,22.54527 -50.16667,50.16667c0,27.6214 22.54527,50.16667 50.16667,50.16667c12.52732,0 23.97256,-4.67249 32.7819,-12.31771l3.05143,3.05143v9.26628l43,43l14.33333,-14.33333l-43,-43h-9.26628l-3.05143,-3.05143c7.64521,-8.80934 12.31771,-20.25458 12.31771,-32.7819c0,-27.6214 -22.54527,-50.16667 -50.16667,-50.16667zM64.5,28.66667c19.87509,0 35.83333,15.95824 35.83333,35.83333c0,19.87509 -15.95825,35.83333 -35.83333,35.83333c-19.87509,0 -35.83333,-15.95825 -35.83333,-35.83333c0,-19.87509 15.95824,-35.83333 35.83333,-35.83333z"
+                        ></path>
+                      </g>
+                    </g>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form> -->
+
+          <a
+            href="#" onclick="random()"
+            class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-4 px-6 border-b-4 border-blue-700 hover:border-blue-500 rounded mt-20"
+          >
+            Get Random Recipe
+          </a>
+        </div>
+      </section>
+        <!-- <div class="m-auto px-4 py-4 sm:w-1/2 randomData"></div> -->
+      <!-- <section id="mealPlan" class="bg-gray-800 h-screen flex">
+        <div class="container m-auto">
+          <div class="flex justify-center flex-col items-center">
+            <h1 class="text-5xl font-bold uppercase text-center text-gray-300">
+              Meal Plan
+            </h1>
+            <p class="w-1/2 text-center text-gray-300 my-10">
+              We give you a meal plan with three meals per day (breakfast,
+              lunch, and dinner). 🤤
+            </p>
+          </div>
+          <div class="flex flex-wrap data-content"></div>
+        </div>
+      </section>
+      <section id="newRecipe" class="py-32">
+        <div class="container m-auto">
+          <div class="flex justify-center flex-col items-center">
+            <h1
+              class="text-5xl font-bold uppercase text-center text-gray-300 my-6 sm:my-12"
+            >
+              New Recipes
+            </h1>
+          </div>
+          <div class="flex flex-wrap new-recipes-data"></div>
+        </div>
+      </section> -->
+    </div>
+
+
+
+    <script src="random.js" async defer></script>
+  </body>
+</html>

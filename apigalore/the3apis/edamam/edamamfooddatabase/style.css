@@ -1,0 +1,135 @@
+body{
+  background:url('./images/package1.jpg') no-repeat fixed center;
+  background-size: cover;
+
+}
+.title-heading{
+  margin:6rem 0;
+  color:#7cfc00;
+}
+.title, .subtitle{
+  text-align:center;
+}
+.search{
+  margin:4rem auto;
+  text-align:center;
+
+}
+
+footer {
+
+  text-align: center;
+  margin:2rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+  div#edaman-badge {
+    margin-top: 1rem;
+  }
+
+
+
+  nav {
+    background: #222;
+    padding: 0 15px;
+    z-index:99;
+    position:relative;
+   
+  }
+  .menu li a :hover{
+    color: white;
+    
+  }
+  .menu,
+  .submenu {
+    list-style-type: none;
+  }
+  .logo {
+    font-size: 20px;
+    padding: 7.5px 10px 7.5px 0;
+  }
+  
+  .item {
+    padding: 10px;
+  }
+  /* Mobile menu */
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu li a {
+    display: block;
+    padding: 15px 5px;
+    color:white;
+    text-decoration: none;
+  }
+  .menu li.subitem a {
+    padding: 15px;
+  }
+  .toggle {
+    order: 1;
+    font-size: 20px;
+  }
+  .item.button {
+    order: 2;
+  }
+  .item {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  .active .item {
+    display: block;
+  }
+  
+  
+  /* Tablet menu */
+  @media all and (min-width: 700px) {
+    .menu {
+      justify-content: center;
+    }
+    .logo {
+      flex: 1;
+    }
+    .item.button {
+      width: auto;
+      order: 1;
+      display: block;
+    }
+    .toggle {
+      flex: 1;
+      text-align: right;
+      order: 2;
+    }
+    /* Button up from tablet screen */
+    .menu li.button a {
+      padding: 10px 15px;
+      margin: 5px 0;
+    }
+  }
+  /* Desktop menu */
+  @media all and (min-width: 960px) {
+    .menu {
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      background: none;
+    }
+    .logo {
+      order: 0;
+    }
+    .item {
+      order: 1;
+      position: relative;
+      display: block;
+      width: auto;
+    }
+    .toggle {
+      display: none;
+    }
+  }  

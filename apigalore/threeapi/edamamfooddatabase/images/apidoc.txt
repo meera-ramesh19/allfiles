@@ -1,0 +1,29 @@
+
+  let URL = `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=`;
+
+  const fetchRecipes = async () => {
+    await fetch(URL)
+    .then((res) => res.json())
+    .then((data) => setRecipes(data.hits));
+  }
+  const searchRecipe = (e, input) => {
+    e.preventDefault();
+    URL = `https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${input.search}`;
+    fetchRecipes();
+  }
+
+
+
+  https://github.com/kashiish/presto/blob/master/src/Components/App/App.js
+  https://github.com/kashiish/presto/blob/master/src/Components/IngredientsModal/IngredientsModal.js
+https://github.com/kashiish/presto/blob/master/src/Components/RecipeInfo/RecipeInfo.js
+https://github.com/kashiish/presto/tree/master/src/Components
+
+
+
+https://github.com/SandeepVattapparambil
+
+
+https://github.com/dianacpg/FoodyMealPlanner_TechLabs
+
+https://kashiish.github.io/presto/

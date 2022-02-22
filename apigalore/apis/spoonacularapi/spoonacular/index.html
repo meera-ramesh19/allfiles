@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+    href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+<body
+    class="
+      antialiased
+      bg-gradient-to-r
+      from-green-300
+      via-teal-300
+      to-indigo-400
+    "
+  >
+  <header>
+     <nav
+        class="
+          flex flex-wrap
+          items-center
+          justify-between
+          w-full
+          py-4
+          md:py-0
+          px-4
+          text-lg text-gray-700
+          bg-white
+        "
+    >
+        <div>
+          <a href="#">
+
+          </a>
+        </div>
+
+         <svg
+            xmlns="http://www.w3.org/2000/svg"
+            id="menu-button"
+            class="h-6 w-6 cursor-pointer md:hidden block"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+
+       <div class="hidden w-full md:flex md:items-center md:w-auto" id="menu">
+          <ul
+            class="
+              pt-4
+              text-base text-gray-700
+              md:flex
+              md:justify-between
+              md:pt-0"
+          >
+          <li>
+            <a class="md:p-4 py-2 block hover:text-purple-400" href="#"
+              >Home</a
+            >
+            <li>
+              <a class="md:p-4 py-2 block hover:text-purple-400" href="recipes.html"
+                >Recipes</a
+              >
+            </li>
+            <li>
+              <a class="md:p-4 py-2 block hover:text-purple-400" href="#"
+                >Grocery Products</a
+              >
+            </li>
+            <li>
+              <a class="md:p-4 py-2 block hover:text-purple-400" href="#"
+                >Resturant Menu Items</a
+              >
+            </li>
+            <li>
+              <a class="md:p-4 py-2 block hover:text-purple-400" href="#"
+                >Generate Meal Plan</a
+              >
+            </li>
+            <li>
+              <a
+                class="md:p-4 py-2 block hover:text-purple-400 text-purple-500"
+                href="#"
+                >Pairing</a
+              >
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </header>
+
+      <section id="hero" class="container flex mx-auto w-full">
+        <div
+          class="flex flex-col align-items justify-center text-center text-black w-full md:text-left"
+        >
+        <h1 class="text-2xl font-medium mt-40 px-4 text-center m-auto">Search a Random Recipe</h1>
+        <button onclick="randomRecipe()"
+            class="bg-teal-500 hover:bg-darkteal-400 text-black text-center m-auto font-bold py-4 px-10 border-b-4 border-teal-700 w-72 hover:border-teal-500 rounded"
+        >  Get Random Recipe
+        </button>
+      </div>
+     </section>
+     <div
+       class="text-white mt-20 bg-gradient-to-r
+       from-green-300
+       via-teal-300
+       to-indigo-400 py-0 w-full h-full bg-teal-500"
+
+     >
+     <div class="showRecipe"id="randomsRecep" >
+
+
+           <div class="flex h-screen">
+             <button
+               class="self-center bg-teal-500 hover:bg-teal-400 text-white font-bold py-4 px-6 border-b-4 border-teal-700 hover:border-teal-500 rounded back"
+             >
+               BACK
+             </button>
+           <div class="m-auto px-4 py-4 sm:w-1/2 randomData"></div>
+            <button
+               class="self-center bg-teal-500 hover:bg-teal-400 text-white font-bold py-4 px-6 border-b-4 border-teal-700 hover:border-teal-500 rounded next"
+               >
+              NEXT
+              </button>
+          </div>
+       </div>
+     </div>
+
+        <!-- <form action="#" class="flex flex-row mt-8 text-center m-auto">
+          <input class="w-full leading-tight rounded px-10 border-b-4 border-teal-500 focus:outline-none" type="text" name="name"value="" placeholder="burger"/>
+           <select id="mealtype" class="w-full leading-tight rounded ml-1 px-10 border-b-4 border-teal-500 focus:outline-none">
+              <option value="select" selected="selected" disabled>Select an option</option>
+              <option value="appetizers">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="snack">Snack</option>
+              <option value="dessert">Dessert</option>
+           </select> --
+
+          <button
+                  class="bg-teal-500 hover:bg-darkteal-400 p-2 ml-2 border-b-2 border-teal-700 hover:border-teal-500 rounded"
+                  type="submit" id="submit"
+                >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+    </button>
+        </form> -->
+
+
+
+    <script>
+    const button = document.querySelector('#menu-button');
+    const menu = document.querySelector('#menu');
+    button.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+   });
+</script>
+<script type='text/javascript' src="random.js"></script>
+</body>

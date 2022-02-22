@@ -1,0 +1,252 @@
+
+
+
+//MODAL POPUPS
+// Get DOM Elements
+const modal = document.querySelector("#my-modal");
+const modalBtn = document.querySelector("#modal-btn");
+const closeBtn = document.querySelector(".close");
+
+// Events
+modalBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", outsideClick);
+// Open
+function openModal() {
+  modal.style.display = "block";
+  displayNutrients();
+}
+
+// Close
+function closeModal() {
+  modal.style.display = "none";
+}
+
+// Close If Outside Click
+function outsideClick(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+const displayNutrients = () => {
+  <div id="nutritionfacts">
+  <table width="242" cellspacing="0" cellpadding="0">
+    <tbody>
+      <tr>
+        <td align="center" class="header">Nutrition Facts</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="serving">Per <span class="highlighted">${totalWeight/yield}gm</span> Serving Size</div>
+        </td>
+      </tr>
+      <tr style="height: 7px">
+        <td bgcolor="#000000"></td>
+      </tr>
+      <tr>
+        <td style="font-size: 7pt">
+          <div class="line">Amount Per Serving</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="line">
+            <div class="label">Calories <div class="weight">${calories/yield}</div>
+            </div>
+            <div style="padding-top: 1px; float: right;" class="labellight">Calories from Fat <div class="weight">${totalNutrients.FAT*9}</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="line">
+            <div class="dvlabel">% Daily Value<sup>*</sup></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="line">
+            <div class="label">Total Fat <div class="weight">${totalNutrients.FAT)</div>
+            </div>
+            <div class="dv">${totalDaily.FAT)</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="indent">
+          <div class="line">
+            <div class="labellight">Saturated Fat <div class="weight">${totalNutrients.FASAT}g</div>
+            </div>
+            <div class="dv">${totalDaily.FASAT}</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="indent">
+          <div class="line">
+            <div class="labellight"><i>Trans</i> Fat <div class="weight">${totalNutrient.FASAT}g</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="line">
+            <div class="label">Cholesterol <div class="weight">${totalNutrient.CHOLE}mg</div>
+            </div>
+            <div class="dv">${totalDaily.CHOLE}</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="line">
+            <div class="label">Sodium <div class="weight">${totalNutrient.NA}</div>
+            </div>
+            <div class="dv">${totalDaily.NA}</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="line">
+            <div class="label">Total Carbohydrates <div class="weight">${totalNutrient.CHOCDF}${totalNutrient.unit}</div>
+            </div>
+            <div class="dv">${totalDaily.CHOCDF}</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="indent">
+          <div class="line">
+            <div class="labellight">Dietary Fiber <div class="weight">${totalNutrient.FIBTG}${totalNutrient.unit}</div>
+            </div>
+            <div class="dv">${totalDaily.FIBTG}${totalDaily.unit}</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="indent">
+          <div class="line">
+            <div class="labellight">Sugars <div class="weight">${totalNutrient.SUGAR}${totalNutrient.unit}</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="line">
+            <div class="label">Protein <div class="weight">${totalNutrient.PROCNT}${totalNutrient.unit}</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr style="height: 7px">
+        <td bgcolor="#000000"></td>
+      </tr>
+      <tr>
+        <td>
+          <table cellspacing="0" cellpadding="0" border="0" class="vitamins">
+            <tbody>
+              <tr>
+                <td>Vitamin A &nbsp;&nbsp; ${totalDaily.VITA_RAE}</td>
+                <td align="center">•</td>
+                <td align="right">Calcium &nbsp;&nbsp;${totalDaily.CA} </td>
+              </tr>
+              <tr>
+                <td>Vitamin B &nbsp;&nbsp; ${totalDaily.VITB6A}</td>
+                <td align="center">•</td>
+                <td align="right">Iron &nbsp;&nbsp; ${totalDaily.FE}</td>
+              </tr>
+              <tr>
+                <td>Vitamin C &nbsp;&nbsp; ${totalDaily.VITC}</td>
+                <td align="center">•</td>
+                <td align="right">Potassium &nbsp;&nbsp; ${totalDaily.K}</td>
+              </tr>
+              <tr>
+                <td>Vitamin D &nbsp;&nbsp; ${totalDaily.VITD}</td>
+                <td align="center">•</td>
+                <td align="right">Folate &nbsp;&nbsp; ${totalDaily.FOLFD}</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="line">
+            <div class="labellight">* Based on a regular <a href="#">2000 calorie diet</a>
+              <br><br><i>Nutritional details are an estimate and should only be used as a guide for approximation.</i>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  // const showUrl = ` https://pokeapi.co/api/v2/pokemon/${pokeNum}`;
+  // fetch(showUrl)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  // console.log()
+  //     let name = data.name;
+  //     let id = data.id.toString().padStart(3, "0");
+  //     let height = data.height;
+  //     let weight = data.weight;
+  //     let imgFront = data.sprites.front_shiny;
+  //     let imgBack = data.sprites.back_shiny;
+  //     console.log(imgFront);
+  //     let pType = data.types.map((type) => type.type.name).join(", ");
+  //     let pStats = data.stats.map((stat) => stat.stat.name).join(", ");
+  //     let pBaseStats = data.stats.map((stat) => stat.base_stat).join(", ");
+  //     let pAbility = data.abilities.map((able) => able.ability.name).join(", ");
+  //
+  //     name;
+  //     document.querySelector(".modal-id").innerText = `ID: #${id}`;
+  //     document.querySelector(".modal-name").innerText = `Name: ${upper(name)}`;
+  //     document.querySelector(".modal-front-img").src = `${imgFront}`;
+  //     document.querySelector(".modal-back-img").src = `${imgBack}`;
+  //     document.querySelector(".modal-type").innerText = `Types:${pType}`;
+  //     document.querySelector(".modal-stat").innerText = `Stats: ${pStats}`;
+  //     document.querySelector(
+  //       ".modal-basestat"
+  //     ).innerText = `BaseStats:  ${pBaseStats}`;
+  //     document.querySelector(
+  //       ".modal-ability"
+  //     ).innerText = `Abilities: ${pAbility}`;
+  //   });
+};
+
+
+
+<div id="my-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>POKEMAN STATS</h2>
+      </div>
+      <div class="modal-body">
+
+        <h2 class="modalTitle">
+          <p class="modal-id"></p>
+          <p class="modal-name"></p>
+        </h2>
+        <p class="modal-height"></p>
+        <p class="modal-weight"></p>
+        <img class="modal-front-img" src="">
+        <img class="modal-back-img" src="">
+        <p class="modal-type"></p>
+        <p class="modal-basestat"></p>
+        <p class="modal-stat"></p>
+        <p class="modal-ability"></p>
+      </div>
+      <div class="modal-footer">
+        <h3>Modal Footer</h3>
+      </div>
+    </div>
+  </div>
