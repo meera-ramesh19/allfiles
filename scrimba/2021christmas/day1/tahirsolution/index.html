@@ -1,0 +1,301 @@
+css
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    color: #ffffff;
+    background: #e52d27;
+    background: -webkit-linear-gradient(to right, #b31217, #e52d27);
+    background: linear-gradient(to right, #b31217, #e52d27);
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .startingup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 7rem;
+    text-align: center;
+    margin-bottom: 4.8rem;
+}
+
+.timer-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.timer-container div {
+    padding: 3.5rem;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.timer span {
+    font-weight: 500;
+}
+
+.timer h3,
+.timer span {
+    text-align: center;
+}
+
+
+html
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptmas: Day 1</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container" id="particles-js">
+        <div class="startingup">
+            <h2>Tick Tock ⏰</h2>
+
+            <div class="timer-container">
+                <div class="timer">
+                    <h3 id="timer-days"></h3>
+                    <span>Day(s)</span>
+                </div>
+                
+                <div class="timer">
+                    <h3 id="timer-hours"></h3>
+                    <span>Hour(s)</span>
+                </div>
+                
+                <div class="timer">
+                    <h3 id="timer-minutes"></h3>
+                    <span>Minute(s)</span>
+                </div>
+                
+                <div class="timer">
+                    <h3 id="timer-seconds"></h3>
+                    <span>Second(s)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Background Particle Effects -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+js
+
+
+
+/* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+particlesJS.load('particles-js', 'particlesjs-config.json', function() {
+    console.log('callback - particles.js config loaded');
+});
+
+const displayDays = document.getElementById("timer-days");
+const displayHours = document.getElementById("timer-hours");
+const displayMinutes = document.getElementById("timer-minutes");
+const displaySeconds = document.getElementById("timer-seconds");
+
+function renderCountdown() {
+    // Desired Event Date
+    const eventDate = new Date("December 25, 2021 00:00:00").getTime();
+    // Current Date
+    const currentDate = new Date().getTime();
+    
+    // Difference between the two dates
+    if (currentDate < eventDate) {
+        const timeLeft = eventDate - currentDate;
+        // Time calculations
+        const remSeconds = Math.floor((timeLeft / 1000) % 60);
+        const remMinutes = Math.floor((timeLeft / 1000 / 60) % 60);
+        const remHours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+        const remDays = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+
+        // Display the result
+        displayDays.innerText = remDays;
+        displayHours.innerText = remHours;
+        displayMinutes.innerText = remMinutes;
+        displaySeconds.innerText = remSeconds;
+    } else {
+        displayDays.innerText = "00";
+        displayHours.innerText = "00";
+        displayMinutes.innerText = "00";
+        displaySeconds.innerText = "00";
+    }
+    // Task:
+    // - Get today's date (you only need the day).
+    // - Calculate remaining days.
+    // - Display remaining days in countdownDisplay.
+}
+
+// Update the countdown every second
+setInterval(renderCountdown, 1000);
+
+
+//praticlejs-config.json
+
+
+
+{
+    "particles": {
+      "number": {
+        "value": 250,
+        "density": {
+          "enable": true,
+          "value_area": 3500
+        }
+      },
+      "color": {
+        "value": "#fff"
+      },
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        },
+        "polygon": {
+          "nb_sides": 5
+        },
+        "image": {
+          "src": "img/github.svg",
+          "width": 100,
+          "height": 100
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": true,
+        "anim": {
+          "enable": false,
+          "speed": 1,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 10,
+        "random": true,
+        "anim": {
+          "enable": false,
+          "speed": 40,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": false,
+        "distance": 500,
+        "color": "#fa8b7d",
+        "opacity": 0.4,
+        "width": 2
+      },
+      "move": {
+        "enable": true,
+        "speed": 5,
+        "direction": "bottom",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "grab"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "repulse"
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 400,
+          "line_linked": {
+            "opacity": 0.5
+          }
+        },
+        "bubble": {
+          "distance": 400,
+          "size": 4,
+          "duration": 0.3,
+          "opacity": 1,
+          "speed": 3
+        },
+        "repulse": {
+          "distance": 200,
+          "duration": 0.4
+        },
+        "push": {
+          "particles_nb": 4
+        },
+        "remove": {
+          "particles_nb": 2
+        }
+      }
+    },
+    "retina_detect": true
+  }
+

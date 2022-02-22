@@ -1,0 +1,346 @@
+<!-- 
+
+Learn-a-bit mintbean series from Hamza Foy . I like the way he did the hamburger menu animation -->
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta 
+        name="author" 
+        content="Ross 'Hamza' Foy" 
+    />
+    <meta 
+        name="description" 
+        content="This is a website for a madeup photography studio following the Mintbean Learn-a-Bit challenge." 
+    />
+
+    <!-- Links for CSS & Fonts -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <!-- Site Title -->
+    <title>Hamza Foy the Photog</title>
+
+  </head>
+
+  <body>
+
+    <header class="header">
+
+        <h1 class="header__logo">
+            Hamza Foy the Photog
+        </h1>
+
+        <nav class="header__nav-menu">
+
+            <a>
+                Photos
+            </a>
+
+            <a>
+                Pricing
+            </a>
+            
+            <a>
+                Reviews
+            </a>
+
+            <a>
+                Contacts
+            </a>
+
+            <a class="nav-menu__close">
+                Close Menu
+            </a>
+
+        </nav>
+
+        <img 
+            class="header__nav-icon" 
+            height="40px" 
+            width="40px" 
+            src="public/img/hamburger.svg" 
+            alt="hamburger menu icon"
+        />
+
+    </header>
+
+    <div class="main-container">
+
+        <h1 class="main-container__heading">
+            HEADING
+        </h1>
+
+        <p class="main-container__description">
+            Lorem ipsum dolor sit amet, 
+            consectetur adipiscing elit, sed 
+            do eiusmod tempor incididunt 
+            ut labore et dolore magna ali
+        </p>
+
+        <button class="main-container__button">
+            Learn More
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+  </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*-----------------------------
+---- Mobile-Friendly CSS ------
+-----------------------------*/
+
+
+/* General Styles */
+
+body {
+    background-image: url('./public/img/bg-img.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    margin: 0 0;
+    padding: 0 0;
+}
+
+
+
+/* NavBar Styles */
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 13vh;
+    width: 100%;
+    background-color: rgba(215,234,228, 0.05);
+    margin: 0 0;
+}
+
+
+.header__logo {
+    font-size: 1.5em;
+    padding-left: 5vw;
+    font-family: 'Roboto Slab', serif;
+}
+
+
+.header__nav-menu {
+    display: none;
+    flex-direction: column;
+    align-self: flex-end;
+    font-family: 'Roboto Slab', serif;
+    font-size: 0.85em;
+    padding-right: 5vw;
+}
+
+
+
+.header__nav-icon {
+    display: block;
+    padding-right: 5vw;
+}
+
+
+
+/* Landing Page Styles */
+
+.main-container {
+    padding-left: 5vw;
+}
+
+
+.main-container__heading {
+    font-size: 2.25em;
+    margin: 6vh 0 1.15vh;
+    font-family: 'Roboto Slab', serif;
+    color: #CE796B;
+}
+
+
+.main-container__description {
+    font-size: 1.35em;
+    padding-right: 40%;
+    color: #D2D4C8;
+    font-family: 'Comfortaa', cursive;
+}
+
+
+.main-container__button {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 900;
+    font-size: 1.25em;
+    padding: 1.25vh 4.25vw;
+    background-color: #FFD449;
+    border-radius: 10px;
+}
+
+
+
+/* Keyframes */
+
+@keyframes animatedMenuForward {
+    0% {
+        transform: translateY(-100%) scale(0);
+    }
+    50% {
+        transform: translateY(-50%) scale (.5);
+    }
+    100% {
+        transform: translateY(0%) scale(1);
+    }
+}
+
+
+@keyframes revertMenuBack {
+    0% {
+        transform: translateY(0%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale (.5);
+    }
+    100% {
+        transform: translateY(-100%) scale(0);
+    }
+}
+
+
+
+/*-----------------------------
+---- Mobile-Friendly CSS ------
+-----------------------------*/
+
+@media (min-width: 990px) {
+
+/* General Styles */
+
+.nav-menu__close {
+    display: none;
+}
+
+
+body {
+    background-size: cover;
+}
+
+
+
+/* NavBar Styles */
+
+.header {
+    height: 20vh;
+}
+
+
+.header__logo {
+    font-size: 2.25em;
+}
+
+
+.header__nav-menu {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    font-size: 2em;
+}
+
+
+.header__nav-menu:first-of-type {
+    animation: none;
+}
+
+
+.header__nav-menu a {
+    margin: 0 .85vw;
+}
+
+
+.header__nav-icon {
+    display: none;
+}
+
+
+
+/* Landing Page Styles */
+
+.main-container {
+    margin: 18vh 0 0;
+}
+
+
+.main-container__heading {
+    font-size: 6em;
+}
+
+
+.main-container__description {
+    font-size: 2.25em;
+}
+
+
+.main-container__button {
+    padding: 2.75vh 4vw;
+    font-size: 2.15em;
+}
+
+
+}
+
+main.js
+
+let icon = document.querySelector('.header__nav-icon');
+let nav = document.querySelector('.header__nav-menu');
+let closeButton = document.querySelector('.nav-menu__close');
+
+icon.addEventListener('click', () => {
+    if(icon.style.display = "block") {
+        icon.style.animation = "revertMenuBack 1.5s ease forwards"
+        nav.style.animation = "animatedMenuForward 1.5s ease forwards";
+        setTimeout(() => {
+            icon.style.display = "none";
+            nav.style.display = "flex";
+        }, 1000)
+    }
+})
+
+closeButton.addEventListener('click', () => {
+    if(nav.style.display = "flex") {
+        nav.style.animation = "revertMenuBack 1.5s forwards";
+        icon.style.animation = "animatedMenuForward 1.5s ease forwards";
+        setTimeout(() => {
+            icon.style.display = "block";
+            nav.style.display = "none";
+        }, 1000);
+    }
+})
+
+/* hamburger.style.display = "block";
+        navBar.style.display = "none"; */

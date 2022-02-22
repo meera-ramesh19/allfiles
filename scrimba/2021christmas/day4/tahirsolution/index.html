@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 04: 🎁 Shopping Checklist</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://kit.fontawesome.com/48d6174c9c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Christmas Shopping List</h1>
+
+
+    <div class="checklist" id="checklist">
+        <form>
+            <input type="text" id="shopping-input" />
+            <button class="shopping-button" type="submit" id="submit-item">
+              <i class="fas fa-plus-square"></i>
+            </button>
+          </form>
+
+          <div class="shopping-container">
+            <ul class="shop-items"></ul>
+          </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+//css
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --wine-red: #C7375F;
+    --bright-red: #D42D2F;
+    --dark-green: #344D2F;
+    --light-green: #77A047;
+    --gold: #FAC57D;
+    --snow: #F0F4F7;
+  }
+ 
+  html {
+    font-size: 62.5%;
+  }
+   
+  html, body {
+      margin: 0;
+      padding: 0;
+  }
+  
+  body {
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      padding: 3.6rem;
+      height: 100vh;
+      text-align: center;
+      color: var(--snow);
+
+      background: #56CCF2;
+      background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);
+      background: linear-gradient(to right, #2F80ED, #56CCF2);
+  }
+  
+  h1 {
+      font-size: 4.2rem;
+      font-weight: 600;
+      margin-bottom: 3.6rem;
+  }
+
+  .checklist {
+      color: var(--dark-green);
+  }
+  
+  .checklist-item {
+      margin: 1rem;
+      width: 100%;
+      text-align: left;
+      font-weight: bold;
+  }
+  
+  form {
+    min-height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.6rem;
+  }
+  form input,
+  form button {
+    padding: 0.8rem;
+    font-size: 3.2rem;
+    border: none;
+    background: white;
+  }
+
+  form input:focus {
+    outline: none !important;
+  }
+  
+  form button {
+    color: #f7fffe;
+    background: #f85032;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  form button:hover {
+    background: #f85032;
+    color: white;
+  }
+
+  
+.shop-items {
+    min-width: 30%;
+    list-style: none;
+  }
+
+.shop-item {
+    padding: 0 1.2rem;
+}  
+  
+.items {
+    margin: 0.7rem 0;
+    background: white;
+    font-size: 1.5rem;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 1s ease;
+  }
+  
+  .items li {
+    flex: 1;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    text-align: left;
+  }
+  
+  .trash-btn,
+  .complete-btn {
+    background: #f85032;
+    color: white;
+    border: none;
+    padding: 1.6rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+  }
+  .complete-btn {
+    background: rgb(11, 212, 162);
+  }
+  .todo-item {
+    padding: 0rem 0.8rem;
+  }
+  
+  .fa-trash,
+  .fa-check {
+    pointer-events: none;
+  }
+  
+  .fall {
+    transform: translateY(10rem) rotateZ(360deg);
+    opacity: 0;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  
+
+
+
+//js
+
+
+
+
+const checklist = document.getElementById("checklist");
+const shopInput = document.getElementById("shopping-input");
+const shopBtn = document.getElementById("submit-item");
+const shoppingList = document.querySelector(".shop-items");
+
+// Task:
+// - For each item in the items array, create a div with a class of "checklist-item", which contains a checkbox input and corresponding label.
+// - Make sure that the shopping list can render a checkbox for all the items, even if new items are added to the items array.
+
+// Stretch goals:
+// - Add an input which allows the user to add more items.
+// - Add a delete button for the items.
+
+//Event Listeners
+shopBtn.addEventListener("click", addShopItem);
+shoppingList.addEventListener("click", deleteShopItem);
+
+// Functions
+function addShopItem(e) {
+  e.preventDefault();
+
+  //Check for empty input
+  if (shopInput.value !== "") {
+    const shopItemDiv = document.createElement("div");
+    shopItemDiv.classList.add("items");
+    
+    const newShopItem = document.createElement("li");
+    newShopItem.innerText = shopInput.value;
+    
+    newShopItem.classList.add("shop-item");
+    shopItemDiv.appendChild(newShopItem);
+    shopInput.value = "";
+
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+    completedButton.classList.add("complete-btn");
+    shopItemDiv.appendChild(completedButton);
+    const trashButton = document.createElement("button");
+    trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+    trashButton.classList.add("trash-btn");
+    shopItemDiv.appendChild(trashButton);
+    shoppingList.appendChild(shopItemDiv);
+  }
+  
+}
+
+function deleteShopItem(e) {
+  const item = e.target;
+
+  if (item.classList[0] === "trash-btn") {
+    const shoppingItem = item.parentElement;
+    shoppingItem.classList.add("fall");
+    shoppingItem.addEventListener("transitionend", e => {
+      shoppingItem.remove();
+    });
+  }
+  if (item.classList[0] === "complete-btn") {
+    const shoppingItem = item.parentElement;
+    shoppingItem.classList.toggle("completed");
+  }
+}
+
+function getShoppingList() {
+  let shoppingList;
+  
+  shoppingList.forEach(function(item) {
+    const shopItemDiv = document.createElement("div");
+    shopItemDiv.classList.add("items");
+    
+    const newShopItem = document.createElement("li");
+    newShopItem.innerText = item;
+    newShopItem.classList.add("shop-item");
+    shopItemDiv.appendChild(newShopItem);
+    shopInput.value = "";
+
+    //Checked/Completed Button
+    const completedButton = document.createElement("button");
+    completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+    completedButton.classList.add("complete-btn");
+    shopItemDiv.appendChild(completedButton);
+    
+    //Delete Item Button
+    const trashButton = document.createElement("button");
+    trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
+    trashButton.classList.add("trash-btn");
+    shopItemDiv.appendChild(trashButton);
+    
+    shoppingList.appendChild(shopItemDiv);
+  });
+}

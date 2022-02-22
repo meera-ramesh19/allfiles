@@ -1,0 +1,748 @@
+//js
+
+
+
+// Task:
+// - Animate the bell so that it looks like it is ringing when the music is playing, and stops when the music is paused or stopped. 
+
+//NB: You'll need to make changes in the CSS too 😉
+
+// Stretch goal:
+// - Make sure the animation doesn't reset when paused.
+
+const playBtn = document.getElementById("play-btn");
+const pauseBtn = document.getElementById("pause-btn");
+const stopBtn = document.getElementById("stop-btn");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+
+const greeting = document.getElementById("greeting");
+const trackDetailsDisplay = document.getElementById("song-details");
+
+const volumeSlider = document.getElementById("volume-slider");
+
+const volumeDisplay = document.getElementById("volume-display");
+const volumeDisplayIcon = document.getElementById("volume-display-icon");
+const muteBtn = document.getElementById("mute-icon");
+
+const audio = document.getElementById('audio');
+
+const progressContainer = document.getElementById('progress-container');
+const progress = document.getElementById('progress');
+
+const currentPlayingTime = document.getElementById('current-time');
+const totalTime = document.getElementById('total-time');
+
+const animateBell = document.getElementById('animate-bell');
+
+
+// Check Mute State
+let muteState = 'unmute';
+// Check if Playing
+let isPlaying = false;
+// Set Current Song to First Song in the Array
+let currentTrackIndex = 0;
+
+// Display Volume Value at the Start
+volumeDisplay.textContent = volumeSlider.value;
+
+// Setup for the Playlist
+// Add any audioTracks, name should be equal to Audio file name
+const audioTracks = [
+  {
+    name: 'christmas-01',
+    displayName: 'Christmas 2',
+    artist: 'Amusicmedia',
+  },
+  {
+    name: 'christmas-02',
+    displayName: 'Amazing Grace of Christmas',
+    artist: 'Oleksii Kaplunskyi',
+  },
+  {
+    name: 'christmas-03',
+    displayName: 'Jingle Bells',
+    artist: 'Oleksii Kaplunskyi',
+  },
+  {
+    name: 'christmas-04',
+    displayName: 'Christmas Cinematic Dream Piano',
+    artist: 'Oleksii Kaplunskyi',
+  },
+  {
+    name: 'christmas-05',
+    displayName: 'Jingle Bells 3',
+    artist: 'Kevin MacLeod',
+  }
+]
+
+// Play Current Track
+function playTrack() {
+  hideElement();
+  isPlaying = true;
+  audio.play();
+  trackDetailsDisplay.textContent = `${audioTracks[currentTrackIndex].displayName} by ${audioTracks[currentTrackIndex].artist}`;
+  
+  
+  if (isPlaying) {
+    animateBell.classList.remove('remove-animation');
+    animateBell.classList.add('animate-bell');
+
+    if(animateBell.classList.contains('animation-pause')) {
+      animateBell.classList.remove('animation-pause');
+    }
+  }
+}
+
+// Pause Current Track
+function pauseTrack() {
+  hideElement();
+  isPlaying = false;
+  audio.pause();
+
+  if(!isPlaying) {  
+    animateBell.classList.toggle('animation-pause');    
+  }
+}
+
+// Stop Current Track
+function stopTrack() {
+  // Check if playing to avoid Play/Pause Button Switching
+  if (isPlaying) {
+    hideElement();
+  }
+
+  animateBell.classList.toggle('animation-pause');
+  animateBell.classList.remove('animate-bell');
+  animateBell.classList.add('remove-animation');
+
+  isPlaying = false;
+  progress.style.width = 0;
+  audio.pause();
+  audio.currentTime = 0;
+  currentPlayingTime.textContent = '00:00';
+}
+
+// Play Previous Audio Track
+function prevSong() {
+  currentTrackIndex--;
+  if (currentTrackIndex < 0) {
+    currentTrackIndex = audioTracks.length - 1;
+  }
+  loadAudio(audioTracks[currentTrackIndex]);
+  if (isPlaying) {
+    hideElement();
+    playTrack();
+  }
+  progress.style.width = '0%';
+  currentPlayingTime.textContent = '00:00';
+  totalTime.textContent = '00:00';
+  
+  if (!isPlaying && !animateBell.classList.contains('animation-pause')) {
+    animateBell.classList.add('animation-pause');
+  }
+}
+
+// Play Next Audio Track
+function nextSong() {
+  currentTrackIndex++;
+  if (currentTrackIndex > audioTracks.length - 1) {
+    currentTrackIndex = 0;
+  }
+  loadAudio(audioTracks[currentTrackIndex]);
+  if (isPlaying) {
+    hideElement();
+    playTrack();
+  }
+  progress.style.width = '0%';
+  currentPlayingTime.textContent = '00:00';
+  totalTime.textContent = '00:00';
+  
+  if (!isPlaying && !animateBell.classList.contains('animation-pause')) {
+    animateBell.classList.add('animation-pause');
+  }
+}
+
+// Hide Play/Pause Button
+function hideElement() {
+  playBtn.classList.toggle("hide-element");
+  pauseBtn.classList.toggle("hide-element");
+}
+
+// Mute Audio
+function muteTrack () {
+  if (muteState === 'unmute') {
+    volumeDisplayIcon.textContent = 'volume_off';
+    audio.muted = true;
+    muteState = 'mute';
+  } else {
+    volumeDisplayIcon.textContent = 'volume_up';
+    audio.muted = false;
+    muteState = 'unmute';
+  }
+}
+
+// Volume Slider
+function volSlider(e) {
+  const value = e.target.value;
+  volumeDisplay.textContent = value;
+  audio.volume = value / 100;
+  changeVolumeIcon(e);
+}
+
+// Different Stat icons depending on volume
+function changeVolumeIcon(e) {
+  if (e.target.value <= 0) {
+    volumeDisplayIcon.textContent = 'volume_mute';
+  } else if (e.target.value > 0 && e.target.value < 50) {
+    volumeDisplayIcon.textContent = 'volume_down';
+  } else {
+    volumeDisplayIcon.textContent = 'volume_up';
+  }
+}
+
+// Audio Track Progress bar
+function updateProgressBar(e) {
+  if (isPlaying) {
+    // Destructre 
+    const { duration, currentTime } = e.srcElement;
+
+    // Update Progressbar
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+
+    // Update Current Duration for the Track Being Played
+    let currentMinutes = Math.floor(currentTime / 60);
+    let currentSeconds = Math.floor(currentTime % 60);
+
+    // Add a preceeding 0 if the minutes or seconds are less than 10
+    if (currentMinutes < 10) {
+      currentMinutes = `0${currentMinutes}`;
+    }
+
+    if (currentSeconds < 10) {
+      currentSeconds = `0${currentSeconds}`;
+    }
+
+    currentPlayingTime.textContent = `${currentMinutes}:${currentSeconds}`;
+
+    // Update Total Duration for the Track Being Played
+    let durationMinutes = Math.floor(duration / 60);
+    let durationSeconds = Math.floor(duration % 60);
+
+    if (durationMinutes < 10) {
+      durationMinutes = `0${durationMinutes}`;
+    }
+
+    if (durationSeconds < 10) {
+      durationSeconds = `0${durationSeconds}`;
+    }
+    
+    if (durationSeconds) {
+      totalTime.textContent = `${durationMinutes}:${durationSeconds}`;
+    }
+  }
+}
+
+function loadAudio(audioTracks) {
+  trackDetailsDisplay.textContent = `${audioTracks.displayName} by ${audioTracks.artist}`;
+  audio.src = `music/${audioTracks.name}.mp3`;
+}
+
+
+
+function setProgressBar(e) {
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const { duration } = audio;
+
+  audio.currentTime = (clickX / width) * duration;
+}
+
+
+function changeColor() {
+  greeting.style.color = generateColors();
+  trackDetailsDisplay.style.color = generateColors();
+}
+
+// Change Greeting Message color (generated randomly) every two seconds
+setInterval(changeColor, 2000);
+
+// Generate Random Color for the message
+function generateColors() {
+  const colors = [
+    '#E91E63',
+    '#8E24AA',
+    '#880E4F',
+    '#2196F3',
+    '#00796B',
+    '#6200EA',
+    '#0277BD',
+    '#FB8C00',
+    '#512DA8',
+    '#0D47A1',
+    '#E65100',
+    '#757575',
+    '#DD2C00',
+    '#455A64',
+    '#1B5E20',
+  ];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  return randomColor;
+}
+
+// Render a Random Background Image
+function renderBGImage() {
+  const clientID = "709538-8c543d4983ce23314eb672abd";
+  const url = `https://pixabay.com/api/?key=${clientID}&q=christmas&image_type=photo&orientation=horizontal`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((jsonData) => {
+      let randomImage = 0;
+      if (jsonData.totalHits <= 20) {
+        randomImage = Math.floor(Math.random() * jsonData.totalHits);
+      } else {
+        randomImage = Math.floor(Math.random() * 20);
+      }
+      document.body.style.backgroundImage = `url(${jsonData.hits[randomImage].largeImageURL})`;
+    })
+    .catch((error) => {
+      console.log(error);
+      document.body.style.backgroundImage = "url('images/christmas_bg2.jpg')";
+    })
+}
+
+// Event listners
+playBtn.addEventListener("click", playTrack);
+pauseBtn.addEventListener("click", pauseTrack);
+stopBtn.addEventListener("click", stopTrack);
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+volumeSlider.addEventListener('input', volSlider);
+muteBtn.addEventListener("click", muteTrack);
+audio.addEventListener('timeupdate', updateProgressBar);
+// Detect end of an audio being played and trigger the next audio track
+audio.addEventListener('ended', nextSong);
+progressContainer.addEventListener('click', setProgressBar);
+
+
+// Change Background Image after 20 secs.
+setInterval(renderBGImage, 20000);
+
+
+
+
+
+
+//html
+
+
+<output id="volume-display" class="volume-display"></output>      <input type="range" id="volume-slider" max="100" value="50">      <button id="mute-icon" class="btn-volume-icon">        <span class="material-icons-outlined" id="volume-display-icon">volume_up</span>      </button>    </div>  </div>   <script src="index.js"></script></body> </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 08: 🔔 Bell Animator</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+CONSOLE
+›EME listeners successfully added to:,<audio src="music/christmas-01.mp3" id="audio">
+/index.html
+
+
+//css
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: #C7375F;
+  --bright-red: #D42D2F;
+  --dark-green: #344D2F;
+  --light-green: #77A047;
+  --gold: #FAC57D;
+  --snow: #F0F4F7;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #D3CCE3;
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  height: 100vh;
+
+  background-image: url('images/christmas_bg.jpg');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+    background: var(--snow);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius:1rem;
+    padding: 5rem;
+    min-width: 45rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+p {
+  font-size: 4.5rem;
+  transition: color 0.7s ease;
+  margin-bottom: 2rem;
+}
+
+.animate-bell {
+  display: inline-block;
+  animation: ring .5s .3s steps(32) infinite;
+  transform-origin: 50% 4px;
+}
+
+.animation-play {
+  animation-play-state: running;
+}
+
+.animation-pause {
+  animation-play-state: paused;
+  transform: none;
+}
+
+.remove-animation {
+  animation: none !important;
+}
+
+@keyframes ring {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  75% {
+    transform: rotate(-45deg);
+  }
+}
+
+
+.song-details {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+  
+  animation: fadeInOut linear 4s alternate infinite;
+}
+
+@keyframes fadeInOut {
+  0% {opacity:0.35;}
+  100% {opacity:1;}
+} 
+
+.audio-conainer {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+
+/* Progress */
+.progress-container {
+  display: block;
+  margin: 3.6rem auto 2rem;
+  background: rgb(219, 224, 219);
+  border-radius:.6rem;
+  cursor: pointer;
+  height: .65rem;
+  width: 80%;
+}
+
+.progress {
+  background-image: linear-gradient(#f1a165, #f36d0a);
+  border-radius: 5px;
+  height: 100%;
+  width:0;
+  transition: width 0.1s linear;
+}
+
+.duration-wrapper {
+  position: relative;
+  top: -30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.duration-wrapper span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+/* Buttons */
+.material-icons-outlined {
+  padding-top: 5px;
+  margin: 0;
+  font-size: 3rem;
+}
+
+.btn-container button {
+  padding: 0.25em 0.5em;
+  border: none;
+  font-size: 1.2rem;
+  background-color: var(--dark-green);
+  color: var(--snow);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.btn-container button:not(:last-child) {
+  margin-right: .7rem;
+}
+
+.btn-container button:hover {
+  cursor: pointer;
+  transform: scale(1.03)
+}
+
+.btn-container button:active {
+  cursor: pointer;
+  transform: scale(1.08)
+}
+
+button.btn-volume-icon{
+  /* padding: .1rem 0.2rem; */
+  border: none;
+  font-size: 1rem;
+  background-color: none;
+  color: var(--dark-green);
+  border-radius: 50%;
+  outline: none;
+}
+
+
+.btn-container .pause-btn {
+  background-color: var(--gold);
+  color: var(--wine-red)
+}
+
+.btn-container .stop-btn {
+  background-color: var(--wine-red);
+}
+
+.btn-container .next-btn,
+.btn-container .prev-btn {
+  background-color: #6200EA;
+}
+
+/* Volume */
+.volume-container {
+  border-radius:.6rem;
+  margin: 2.4rem auto 0;
+  width: 40%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.volume-container input[type="range"] {
+  margin-left:1.6rem; 
+  margin-right: 1.6rem;
+}
+
+.volume-display {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#volume-slider {
+  margin: 10px 2.5%;
+  width: 58%;
+  background: var(--snow);
+}
+
+#volume-slider::-webkit-slider-runnable-track {
+  background: rgba(0, 125, 181, 0.6);
+}
+
+#volume-slider::-moz-range-track {
+  background: rgba(0, 125, 181, 0.6);
+}
+
+#volume-slider::-ms-fill-upper {
+  background: rgba(0, 125, 181, 0.6);
+}
+
+#volume-slider::before {
+  width: var(--volume-before-width);
+}
+
+.volume-container output {
+  width: 3rem;
+  text-align: center;
+}
+
+input[type="range"] {
+  position: relative;
+  -webkit-appearance: none;
+  width: 48%;
+  margin: 0;
+  padding: 0;
+  height: 19px;
+  margin: 30px 2.5% 20px 2.5%;
+  float: left;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width));
+}
+
+input[type="range"]::before {
+  position: absolute;
+  content: "";
+  top: 8px;
+  left: 0;
+  width: var(--seek-before-width);
+  height: 3px;
+  background-color: #007db5;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  position: relative;
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  border: 1px solid #007db5;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  margin: -7px 0 0 0;
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+  background: #007db5;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width));
+}
+
+input[type="range"]::-moz-range-progress {
+  background-color: #007db5;
+}
+
+input[type="range"]::-moz-focus-outer {
+  border: 0;
+}
+
+input[type="range"]::-moz-range-thumb {
+  box-sizing: content-box;
+  border: 1px solid #007db5;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  transform: scale(1.2);
+  background: #007db5;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: transparent;
+  border: solid transparent;
+  color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+  background-color: #007db5;
+}
+
+input[type="range"]::-ms-fill-upper {
+  background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width));
+}
+
+input[type="range"]::-ms-thumb {
+  box-sizing: content-box;
+  border: 1px solid #007db5;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+input[type="range"]:active::-ms-thumb {
+  transform: scale(1.2);
+  background: #007db5;
+}
+
+.hide-element {
+  display: none;
+}
+
+
+

@@ -1,0 +1,17 @@
+
+Client color scheme
+#66A487
+#004E2A
+#0095CE
+#E097B7
+#95667B
+
+Client Typescale
+
+
+32px Heading One -Page Title
+32px HEADING 1 -PAGE TITLE
+24px  HEADING 2-SECTion TITLE
+18px HEADING 3-NAVIGATION
+
+14px Pargagraph text-paragraph text all about my business client

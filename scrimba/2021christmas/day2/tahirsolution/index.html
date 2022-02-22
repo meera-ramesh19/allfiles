@@ -1,0 +1,575 @@
+<html>
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 02: Toggle Christmas Theme</title>
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Nosifer&family=Roboto:wght@500&family=Sniglet&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body class="christmas" id="particles-js">
+        <div class="container">
+            <p id="greeting">🎅 Merry Christmas!</p>
+            
+            
+            <div class="switch-field">
+                <div class="radio-container">
+                    <input type="radio" id="christmas" name="theme" value="christmas" checked  onchange="handleChange(this)">
+                    <label for="christmas">Christmas 🎅</label>
+                    
+                    <input type="radio" id="snow" name="theme" value="snow" onchange="handleChange(this)">
+                    <label for="snow">Snow ☃️</label>
+                    
+                    <input type="radio" id="halloween" name="theme" value="halloween" onchange="handleChange(this)">
+                    <label for="halloween">Halloween 🎃</label>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+        <script src="index.js"></script>
+    </body>
+    </html>
+
+
+
+    css2
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* font-family: 'Mountains of Christmas', cursive;
+    font-family: 'Nosifer', cursive;
+    font-family: 'Sniglet', cursive; */
+    
+    :root {
+        --wine-red: #C7375F;
+        --bright-red: #D42D2F;
+        --dark-green: #344D2F;
+        --light-green: #77A047;
+        --gold: #FAC57D;
+        --snow: #F0F4F7;
+        --halloween: #272424;
+      }
+    
+      html {
+        font-size: 62.5%;
+      }
+      
+      html, body {
+          margin: 0;
+          padding: 0;
+      }
+      
+      body,
+      .container {
+          display: flex;
+          justify-content: center;
+          align-items: center
+      }
+      
+      body {
+          background-color: var(--wine-red);
+          height: 100vh;
+      }
+      
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--snow);
+        flex-direction: column;
+        border-radius: 1rem;
+        padding: 3.5rem;
+        min-width: 35rem;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+      }
+      
+      p {
+          font-size: 4.5rem;
+          line-height: 7rem;
+          text-align: center;
+      }
+      
+      .christmas {
+          font-family: 'Mountains of Christmas', cursive;
+          color: var(--dark-green);
+          background: #b31217;
+            
+          background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/christmas_bg.jpg') no-repeat center / cover;
+          background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/christmas_bg.jpg') no-repeat center / cover;
+          background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/christmas_bg.jpg') no-repeat center / cover;
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/christmas_bg.jpg') no-repeat top center / cover;
+      }
+      
+      .snow {
+          font-family: 'Sniglet', cursive;
+          color: var(--snow);
+          background-color: var(--snow);
+            
+          background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/winter_bg.jpg') no-repeat center / cover;
+          background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/winter_bg.jpg') no-repeat center / cover;
+          background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/winter_bg.jpg') no-repeat center / cover;
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/winter_bg.jpg') no-repeat top center / cover;
+      
+      }
+      
+      .snow .container {
+          color: #F0F4F7;
+          background-color: var(--dark-green);
+      }
+      
+      .halloween {
+          font-family: 'Nosifer', cursive;
+          color: var(--wine-red);
+          background-color: var(--halloween);
+            
+          background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/halloween.jpg') no-repeat center / cover;
+          background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/halloween.jpg') no-repeat center / cover;
+          background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/halloween.jpg') no-repeat center / cover;
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, .65) 100%), url('images/halloween.jpg') no-repeat top center / cover;
+      
+      }
+      
+      .halloween .container {
+          color: #F0F4F7;
+          background-color: var(--halloween);
+      }
+      
+    .switch-field {
+        display: flex;
+        margin-top: 5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .switch-field input {
+        clip: rect(0, 0, 0, 0);
+        height: 1px;
+        width: 1px;
+        border: 0;
+        overflow: hidden;
+    }
+    
+    .switch-field label {
+        font-family: 'Roboto', sans-serif;
+        background-color: #e4e4e4;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 1.6rem;
+        line-height: 1;
+        text-align: center;
+        padding: .8rem 1.6rem;
+        margin-right: -1px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+        transition: all 0.1s ease-in-out;
+    }
+    
+    .switch-field label:hover {
+        cursor: pointer;
+    }
+    
+    .switch-field input:checked + label {
+        background-color: #a5dc86;
+        box-shadow: none;
+    }
+    
+    .switch-field label:first-of-type {
+        border-radius: .4rem 0 0 .4rem;
+    }
+    
+    .switch-field label:last-of-type {
+        border-radius: 0 .4rem .4rem 0;
+    }
+    
+    
+    /*
+        font-family: 'Mountains of Christmas', cursive;
+        font-family: 'Nosifer', cursive;
+        font-family: 'Roboto', sans-serif;
+        font-family: 'Sniglet', cursive;
+    */
+
+
+
+
+
+
+    js
+
+
+    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+particlesJS.load('particles-js', 'particlesjs-config.json', function() {
+    console.log('callback - particles.js config loaded');
+});
+
+const body = document.getElementsByTagName("body")
+const greeting = document.getElementById("greeting")
+const christmasBtn = document.getElementById("christmas")
+const snowBtn = document.getElementById("snow")
+
+
+function handleChange(e) {
+    if (e.checked)
+      document.querySelector('body').className = e.value;
+    
+    if (e.value === "christmas") {
+        greeting.innerHTML = "🎅 Merry Christmas!"
+
+        particlesJS("particles-js", {
+            "particles": {
+              "number": {
+                "value": 100,
+                "density": {
+                  "enable": true,
+                  "value_area": 4000
+                }
+              },
+              "color": {
+                "value": "#fff"
+              },
+              "shape": {
+                "type": "image",
+                "stroke": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "polygon": {
+                  "nb_sides": 5
+                },
+                "image": {
+                  "src": "images/2.png",
+                  "width": 100,
+                  "height": 100
+                }
+              },
+              "opacity": {
+                "value": 0.5,
+                "random": true,
+                "anim": {
+                  "enable": false,
+                  "speed": 1,
+                  "opacity_min": 0.1,
+                  "sync": false
+                }
+              },
+              "size": {
+                "value": 25,
+                "random": true,
+                "anim": {
+                  "enable": false,
+                  "speed": 40,
+                  "size_min": 0.09,
+                  "sync": false
+                }
+              },
+              "line_linked": {
+                "enable": false,
+                "distance": 500,
+                "color": "#fa8b7d",
+                "opacity": 0.4,
+                "width": 2
+              },
+              "move": {
+                "enable": true,
+                "speed": 5,
+                "direction": "bottom",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                  "enable": false,
+                  "rotateX": 600,
+                  "rotateY": 1200
+                }
+              }
+            },
+            "interactivity": {
+              "detect_on": "canvas",
+              "events": {
+                "onhover": {
+                  "enable": true,
+                  "mode": "grab"
+                },
+                "onclick": {
+                  "enable": true,
+                  "mode": "repulse"
+                },
+                "resize": true
+              },
+              "modes": {
+                "grab": {
+                  "distance": 400,
+                  "line_linked": {
+                    "opacity": 0.5
+                  }
+                },
+                "bubble": {
+                  "distance": 400,
+                  "size": 4,
+                  "duration": 0.3,
+                  "opacity": 1,
+                  "speed": 3
+                },
+                "repulse": {
+                  "distance": 200,
+                  "duration": 0.4
+                },
+                "push": {
+                  "particles_nb": 4
+                },
+                "remove": {
+                  "particles_nb": 2
+                }
+              }
+            },
+            "retina_detect": true
+        });
+        
+    } else if (e.value === "snow") {
+        greeting.innerHTML = `Hello Winter!<br>❄⛄`
+
+        particlesJS("particles-js", {
+            "particles": {
+              "number": {
+                "value": 100,
+                "density": {
+                  "enable": true,
+                  "value_area": 4000
+                }
+              },
+              "color": {
+                "value": "#fff"
+              },
+              "shape": {
+                "type": "circle",
+                "stroke": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "polygon": {
+                  "nb_sides": 5
+                },
+                "image": {
+                  "src": "images/2.png",
+                  "width": 100,
+                  "height": 100
+                }
+              },
+              "opacity": {
+                "value": 0.5,
+                "random": true,
+                "anim": {
+                  "enable": false,
+                  "speed": 1,
+                  "opacity_min": 0.1,
+                  "sync": false
+                }
+              },
+              "size": {
+                "value": 18,
+                "random": true,
+                "anim": {
+                  "enable": false,
+                  "speed": 40,
+                  "size_min": 0.09,
+                  "sync": false
+                }
+              },
+              "line_linked": {
+                "enable": false,
+                "distance": 500,
+                "color": "#fa8b7d",
+                "opacity": 0.4,
+                "width": 2
+              },
+              "move": {
+                "enable": true,
+                "speed": 5,
+                "direction": "bottom",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                  "enable": false,
+                  "rotateX": 600,
+                  "rotateY": 1200
+                }
+              }
+            },
+            "interactivity": {
+              "detect_on": "canvas",
+              "events": {
+                "onhover": {
+                  "enable": true,
+                  "mode": "repulse"
+                },
+                "onclick": {
+                  "enable": true,
+                  "mode": "bubble"
+                },
+                "resize": true
+              },
+              "modes": {
+                "grab": {
+                  "distance": 400,
+                  "line_linked": {
+                    "opacity": 0.5
+                  }
+                },
+                "bubble": {
+                  "distance": 400,
+                  "size": 4,
+                  "duration": 0.3,
+                  "opacity": 1,
+                  "speed": 3
+                },
+                "repulse": {
+                  "distance": 200,
+                  "duration": 0.4
+                },
+                "push": {
+                  "particles_nb": 4
+                },
+                "remove": {
+                  "particles_nb": 2
+                }
+              }
+            },
+            "retina_detect": true
+        });
+    } else if (e.value === "halloween") {
+        greeting.innerHTML = `Have a Scary Day!<br>👻🎃`
+        particlesJS("particles-js", {
+            "particles": {
+              "number": {
+                "value": 15,
+                "density": {
+                  "enable": true,
+                  "value_area": 4000
+                }
+              },
+              "color": {
+                "value": "#ffffff"
+              },
+              "shape": {
+                "type": "image",
+                "stroke": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "polygon": {
+                  "nb_sides": 5
+                },
+                "image": {
+                  "src": "images/bat02.png",
+                  "width": 100,
+                  "height": 100
+                }
+              },
+              "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                  "enable": false,
+                  "speed": 1,
+                  "opacity_min": 0.1,
+                  "sync": false
+                }
+              },
+              "size": {
+                "value": 25,
+                "random": false,
+                "anim": {
+                  "enable": true,
+                  "speed": 40,
+                  "size_min": 90,
+                  "sync": false
+                }
+              },
+              "line_linked": {
+                "enable": false,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+              },
+              "move": {
+                "enable": true,
+                "speed": 4.5,
+                "direction": "top",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                  "enable": true,
+                  "rotateX": 600,
+                  "rotateY": 1200
+                }
+              }
+            },
+            "interactivity": {
+              "detect_on": "canvas",
+              "events": {
+                "onhover": {
+                  "enable": true,
+                  "mode": "repulse"
+                },
+                "onclick": {
+                  "enable": true,
+                  "mode": "bubble"
+                },
+                "resize": true
+              },
+              "modes": {
+                "grab": {
+                  "distance": 400,
+                  "line_linked": {
+                    "opacity": 1
+                  }
+                },
+                "bubble": {
+                  "distance": 400,
+                  "size": 40,
+                  "duration": 2,
+                  "opacity": 8,
+                  "speed": 3
+                },
+                "repulse": {
+                  "distance": 200,
+                  "duration": 0.4
+                },
+                "push": {
+                  "particles_nb": 4
+                },
+                "remove": {
+                  "particles_nb": 2
+                }
+              }
+            },
+            "retina_detect": true
+          });
+    }
+}
+
+// Task:
+//- Add the functionality to switch the theme between 'Christmas' and 'snow'.
+
+// Stretch goals:
+// - Add more themes!
+// - Allow the user to customise the themes.
+// - Turn the radio buttons into a toggle switch.

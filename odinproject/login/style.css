@@ -1,0 +1,231 @@
+
+/*
+  ========================================
+  Style Reset START
+  ========================================
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*
+  ========================================
+  Style Reset END
+  ========================================
+
+  ========================================
+  START CSS CODING . . . BEGIN!
+  ========================================
+
+  ========================================
+  GRID
+  ========================================
+*/
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*
+  ========================================
+  COLORS FONTS & BG'S
+  ========================================
+
+*/
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+
+}
+html{
+  font-szie:62.5%;
+}
+
+body{
+  background:#ECEEF1;
+  line-height:1.5;
+  outline:none;
+  /* text-align:center; */
+}
+.heading{
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-end;
+
+}
+
+.wrapper{
+
+}
+  .signbtn{
+margin-top:20px;
+margin-right:10px;
+}
+.message span{
+  display:block;
+  flex-direction:column;
+   padding:0.1rem 1rem;
+}
+#sign-btn  {
+  color:white;
+  background: #006bb3;
+  text-decoration:none;
+  border:1px solid black;
+  border-radius:5px;
+  padding:1rem;
+}
+
+.box{
+width:80%;
+height:100%;
+margin:30px auto;
+padding:2rem 3rem;
+border:0px solid #ECEEF1;
+align-self:center;
+background:white;
+}
+
+.heading{
+  display:none;
+}
+
+.title,.brands{
+  text-align:center;
+  font-size:2.3rem;
+}
+
+.brands{
+  font-size:1rem;
+}
+
+
+h2{
+  font-size:1.7rem;
+  text-align:center;
+  top:5px;
+}
+
+.text{
+  padding:0 0.5rem;
+  font-size:0.8rem;
+  text-align:center;
+}
+.sign-btn:before{
+  content:'\1F512'
+}
+.text p{
+  padding:1rem 0;
+}
+
+form{
+  padding:1rem;
+}
+
+input{
+  padding:0.6rem;
+  width: 100%;
+  max-width: 100%;
+}
+label{
+  display: block;
+  padding:1rem 0 0 0;
+}
+
+.butans{
+  padding:1rem 0;
+  width: 100%;
+}
+.butan{
+  color:white;
+  background:#006bb3;
+  padding:1rem;
+  border-radius:5px;
+  font-size:1rem;
+}
+
+.acc-text {
+  font-size:.7rem;
+  text-align:center;
+  font-family: sans-serif;
+  padding-bottom:1.5rem;
+}
+
+.acctext a{
+    text-decoration:none;
+}
+
+.captcha {
+  background:#ECEEF1;
+  font-size:.7rem;
+  width:80%;
+  height:100%;
+  margin:30px auto;
+  text-align:center;
+  border:0px solid gray;
+  padding-top:1rem;
+}
+
+.footer{
+  text-align:center;
+  font-size:0.7rem;
+}
+
+.footer > span{
+  padding:0  1rem 0 1rem;
+}
+
+@media(min-width:786px){
+   .grid{
+    display:grid;
+  }
+
+   .wrapper{
+     width:40%;
+   }
+  header{
+         display:flex;
+   }
+
+
+}

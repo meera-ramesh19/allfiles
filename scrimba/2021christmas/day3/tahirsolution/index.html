@@ -1,0 +1,681 @@
+js
+const greeting = document.getElementById('greeting');
+const btn = document.getElementById('btn');
+const container = document.getElementById('container');
+const switchFields = document.getElementById('radio-btns');
+
+function fix() {
+  // Task:
+  // - Write a function to fix the UI problems with this Christmas message (make it Christmassy!)
+  // - Run the function when the Fix button is clicked. 
+  greeting.style.fontFamily = 'Mountains of Christmas';
+  greeting.innerHTML = 'Merry Christmas!<br>🎅';
+  console.log('Clicked!!');
+  btn.innerHTML = 'Fixed';
+  btn.disabled = true;
+
+  setTimeout(function () {
+    btn.remove();
+    btn.style.cursor = 'disabled';
+    console.log('Ready');
+    switchFields.style.display = 'block';
+    document.querySelector('body').className = 'christmas';
+    eventTracker();
+  }, 500);
+}
+
+btn.addEventListener('click', fix);
+
+function handleChange(e) {
+  if (e.checked) document.querySelector('body').className = e.value;
+
+  if (e.value === 'christmas') {
+    greeting.innerHTML = 'Merry Christmas!<br>🎅';
+    container.style.color = 'var(--bright-red)';
+    container.style.backgroundColor = "rgb(240 244 247 / 100%)";
+  } else if (e.value === 'christmas2') {
+    greeting.innerHTML = `Wishing you peace and joy!<br>🎄`;
+    container.style.color = '#3c3c3c';
+    container.style.backgroundColor = "rgb(222 216 198 / 95%)";
+  } else if (e.value === 'christmas3') {
+    greeting.innerHTML = `Warmest wishes!<br>❄`;
+    container.style.color = '#046845';
+    container.style.backgroundColor = "rgb(230 223 208 / 65%)";
+  }
+}
+
+function eventTracker() {
+  const today = new Date();
+  const date = today.getDate();
+  const month = today.getMonth() + 1;
+
+  if (month === 12 && date === 31) {
+    switchFields.style.display = 'none';
+    document.querySelector('body').className = 'newyeareve';
+    greeting.innerHTML = `Live it up on New Year's Eve<br>🎉🎇🎊`;
+    container.style.color = '#3c3c3c';
+
+
+    //Fireworks: https://codepen.io/melnicolesdev/pen/wvMJpGz?
+    const FIREWORK_ACCELERATION = 1.05;
+    const FIREWORK_BRIGHTNESS_MIN = 50;
+    const FIREWORK_BRIGHTNESS_MAX = 70;
+    const FIREWORK_SPEED = 5;
+    const FIREWORK_TRAIL_LENGTH = 3;
+    const FIREWORK_TARGET_INDICATOR_ENABLED = true;
+
+    const PARTICLE_BRIGHTNESS_MIN = 50;
+    const PARTICLE_BRIGHTNESS_MAX = 80;
+    const PARTICLE_COUNT = 80;
+    const PARTICLE_DECAY_MIN = 0.015;
+    const PARTICLE_DECAY_MAX = 0.03;
+
+    //slows
+    const PARTICLE_FRICTION = 0.95;
+
+    //downward movement speed
+    const PARTICLE_GRAVITY = 0.7;
+    const PARTICLE_HUE_VARIANCE = 20;
+    const PARTICLE_TRANSPARENCY = 1;
+    const PARTICLE_SPEED_MIN = 1;
+    const PARTICLE_SPEED_MAX = 10;
+    const PARTICLE_TRAIL_LENGTH = 5;
+
+    //firework trail cleanup/clear
+    const CANVAS_CLEANUP_ALPHA = 0.3;
+    const HUE_STEP_INCREASE = 0.5;
+
+    //firework ticks
+    const TICKS_PER_FIREWORK_MIN = 5;
+    const TICKS_PER_FIREWORK_AUTOMATED_MIN = 20;
+    const TICKS_PER_FIREWORK_AUTOMATED_MAX = 80;
+
+    //VARIABLES  that can be changed throughout
+
+    let canvas = document.getElementById('canvas');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let context = canvas.getContext('2d');
+    let fireworks = [],
+      particles = [];
+    let mouseX, mouseY;
+
+    let isMouseDown = false;
+    let hue = 275;
+    let ticksSinceFireworkAutomated = 0;
+    let ticksSinceFirework = 0;
+
+    //FUNCTIONS
+
+    window.requestAnimFrame = (() => {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        function (callback) {
+          window.setTimeout(callback, 1000 / 60);
+        }
+      );
+    })();
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function calculateDistance(aX, aY, bX, bY) {
+      let xDistance = aX - bX;
+      let yDistance = aY - bY;
+      return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+    }
+
+    //mouse tracking
+    canvas.addEventListener('mousemove', (e) => {
+      mouseX = e.pageX - canvas.offsetLeft;
+      mouseY = e.pageY - canvas.offsetTop;
+    });
+
+    canvas.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      isMouseDown = true;
+    });
+
+    canvas.addEventListener('mouseup', (e) => {
+      e.preventDefault();
+      isMouseDown = false;
+    });
+
+    //LOGIC prototyping
+
+    function Firework(startX, startY, endX, endY) {
+      this.x = startX;
+      this.y = startY;
+      this.startX = startX;
+      this.startY = startY;
+      this.endX = endX;
+      this.endY = endY;
+
+      this.distanceToEnd = calculateDistance(startX, startY, endX, endY);
+      this.distanceTraveled = 0;
+      this.trail = [];
+
+      this.trailLength = FIREWORK_TRAIL_LENGTH;
+
+      while (this.trailLength--) {
+        this.trail.push([this.x, this.y]);
+      }
+
+      this.angle = Math.atan2(endY - startY, endX - startX);
+      this.speed = FIREWORK_SPEED;
+      this.acceleration = FIREWORK_ACCELERATION;
+      this.brightness = random(
+        FIREWORK_BRIGHTNESS_MIN,
+        FIREWORK_BRIGHTNESS_MAX
+      );
+
+      this.targetRadius = 2.5;
+    }
+
+    Firework.prototype.update = function (index) {
+      this.trail.pop();
+      this.trail.unshift([this.x, this.y]);
+
+      if (FIREWORK_TARGET_INDICATOR_ENABLED) {
+        if (this.targetRadius < 8) {
+          this.targetRadius += 0.3;
+        } else {
+          this.targetRadius = 1;
+        }
+      }
+
+      this.speed *= this.acceleration;
+
+      let xVelocity = Math.cos(this.angle) * this.speed;
+      let yVelocity = Math.sin(this.angle) * this.speed;
+
+      this.distanceTraveled = calculateDistance(
+        this.startX,
+        this.startY,
+        this.x + xVelocity,
+        this.y + yVelocity
+      );
+
+      if (this.distanceTraveled >= this.distanceToEnd) {
+        fireworks.splice(index, 1);
+        createParticles(this.endX, this.endY);
+      } else {
+        this.x += xVelocity;
+        this.y += yVelocity;
+      }
+    };
+
+    Firework.prototype.draw = function () {
+      context.beginPath();
+
+      let trailEndX = this.trail[this.trail.length - 1][0];
+      let trailEndY = this.trail[this.trail.length - 1][1];
+
+      context.moveTo(trailEndX, trailEndY);
+      context.lineTo(this.x, this.y);
+
+      context.strokeStyle = `hsl(${hue}, 100%, ${this.brightness}%)`;
+
+      context.stroke();
+
+      if (FIREWORK_TARGET_INDICATOR_ENABLED) {
+        context.beginPath();
+        context.arc(this.endX, this.endY, this.targetRadius, 0, Math.PI * 2);
+        context.stroke();
+      }
+    };
+
+    function Particle(x, y) {
+      this.x = x;
+      this.y = y;
+      this.angle = random(0, Math.PI * 2);
+      this.friction = PARTICLE_FRICTION;
+      this.gravity = PARTICLE_GRAVITY;
+      this.hue = random(
+        hue - PARTICLE_HUE_VARIANCE,
+        hue + PARTICLE_HUE_VARIANCE
+      );
+
+      this.brightness = random(
+        PARTICLE_BRIGHTNESS_MIN,
+        PARTICLE_BRIGHTNESS_MAX
+      );
+
+      this.decay = random(PARTICLE_DECAY_MIN, PARTICLE_DECAY_MAX);
+      this.speed = random(PARTICLE_SPEED_MIN, PARTICLE_SPEED_MAX);
+      this.trail = [];
+      this.trailLength = PARTICLE_TRAIL_LENGTH;
+
+      while (this.trailLength--) {
+        this.trail.push([this.x, this.y]);
+      }
+      this.transparency = PARTICLE_TRANSPARENCY;
+    }
+
+    Particle.prototype.update = function (index) {
+      this.trail.pop();
+      this.trail.unshift([this.x, this.y]);
+
+      this.speed *= this.friction;
+      this.x += Math.cos(this.angle) * this.speed;
+      this.y += Math.sin(this.angle) * this.speed + this.gravity;
+
+      this.transparency -= this.decay;
+      if (this.transparency <= this.decay) {
+        particles.splice(index, 1);
+      }
+    };
+
+    Particle.prototype.draw = function () {
+      context.beginPath();
+      let trailEndX = this.trail[this.trail.length - 1][0];
+      let trailEndY = this.trail[this.trail.length - 1][1];
+
+      context.moveTo(trailEndX, trailEndY);
+      context.lineTo(this.x, this.y);
+      context.strokeStyle = `hsla(${this.hue}, 100%, ${this.brightness}%, ${this.transparency})`;
+      context.stroke();
+    };
+
+    function cleanCanvas() {
+      context.globalCompositeOperation = 'destination-out';
+      context.fillStyle = `rgba(0, 0, 0, ${CANVAS_CLEANUP_ALPHA})`;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.globalCompositeOperation = 'lighter';
+    }
+
+    function createParticles(x, y) {
+      let particleCount = PARTICLE_COUNT;
+      while (particleCount--) {
+        particles.push(new Particle(x, y));
+      }
+    }
+
+    function launchAutomatedFirework() {
+      if (
+        ticksSinceFireworkAutomated >=
+        random(
+          TICKS_PER_FIREWORK_AUTOMATED_MIN,
+          TICKS_PER_FIREWORK_AUTOMATED_MAX
+        )
+      ) {
+        if (!isMouseDown) {
+          let startX = canvas.width / 2;
+          let startY = canvas.height;
+
+          let endX = random(0, canvas.width);
+          let endY = random(0, canvas.height / 2);
+
+          fireworks.push(new Firework(startX, startY, endX, endY));
+
+          ticksSinceFireworkAutomated = 0;
+        }
+      } else {
+        ticksSinceFireworkAutomated++;
+      }
+    }
+
+    function launchManualFirework() {
+      if (ticksSinceFirework >= TICKS_PER_FIREWORK_MIN) {
+        if (isMouseDown) {
+          let startX = canvas.width / 2;
+          let startY = canvas.height;
+
+          let endX = mouseX;
+          let endY = mouseY;
+
+          fireworks.push(new Firework(startX, startY, endX, endY));
+
+          ticksSinceFirework = 0;
+        }
+      } else {
+        ticksSinceFirework++;
+      }
+    }
+
+    function updateFireworks() {
+      for (let i = fireworks.length - 1; i >= 0; --i) {
+        fireworks[i].draw();
+        fireworks[i].update(i);
+      }
+    }
+
+    function updateParticles() {
+      for (let i = particles.length - 1; i >= 0; --i) {
+        particles[i].draw();
+        particles[i].update(i);
+      }
+    }
+
+    //PRIMARY LOOP
+    function loop() {
+      requestAnimFrame(loop);
+
+      hue += HUE_STEP_INCREASE;
+      cleanCanvas();
+      updateFireworks();
+      updateParticles();
+      launchAutomatedFirework();
+      launchManualFirework();
+    }
+
+    loop();
+  }
+}
+
+//Stretch goals:
+// - Add an extra theme, and the option to switch between them.
+// - Change the message and theme to a New Year’s one automatically on December 31st.
+
+
+
+//html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 03: Don't Scare your Relatives</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Open+Sans&family=Rubik+Beastly&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <canvas id="canvas">fireworks</canvas>
+    <div class="container" id="container">
+        <p id="greeting">🎃 Merry Christmas! 👻</span></p>
+        <button id="btn">fix</button>
+
+        <div class="switch-field" id="radio-btns">
+            <p>Select a theme</p>
+            <div class="radio-container">
+                <input type="radio" id="christmas" name="theme" value="christmas" checked  onchange="handleChange(this)">
+                <label for="christmas">Theme 1 🎅</label>
+                
+                <input type="radio" id="christmas2" name="theme" value="christmas2" onchange="handleChange(this)">
+                <label for="christmas2">Theme 2 🎄</label>
+                
+                <input type="radio" id="christmas3" name="theme" value="christmas3" onchange="handleChange(this)">
+                <label for="christmas3">Theme 3 ❄</label>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+//css
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --wine-red: #c7375f;
+    --bright-red: #d42d2f;
+    --dark-green: #344d2f;
+    --light-green: #77a047;
+    --gold: #fac57d;
+    --snow: #f0f4f7;
+  }
+  
+  html {
+    font-size: 62.5%;
+  }
+  
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body,
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  body {
+    background-color: var(--light-green);
+    height: 100vh;
+  }
+  
+  .christmas {
+    background: #b31217;
+    background: -webkit-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg.jpg') no-repeat center / cover;
+    background: -o-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg.jpg') no-repeat center / cover;
+    background: -ms-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg.jpg') no-repeat center / cover;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg.jpg') no-repeat center / cover;
+  }
+  
+  .christmas2 {
+    background: #b31217;
+    background: -webkit-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg2.jpg') no-repeat center / cover;
+    background: -o-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg2.jpg') no-repeat center / cover;
+    background: -ms-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg2.jpg') no-repeat center / cover;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg2.jpg') no-repeat center / cover;
+  }
+  
+  .christmas3 {
+    background: #b31217;
+    background: -webkit-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg3.jpg') no-repeat center / cover;
+    background: -o-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg3.jpg') no-repeat center / cover;
+    background: -ms-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg3.jpg') no-repeat center / cover;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/christmas_bg3.jpg') no-repeat center / cover;
+  }
+  
+  .newyeareve {
+    background: #b31217;
+    background: -webkit-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/newyeareve.jpg') no-repeat center / cover;
+    background: -o-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/newyeareve.jpg') no-repeat center / cover;
+    background: -ms-linear-gradient(
+        top,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/newyeareve.jpg') no-repeat center / cover;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 59%,
+        rgba(0, 0, 0, 0.65) 100%
+      ),
+      url('images/newyeareve.jpg') no-repeat center / cover;
+  }
+  
+  .container {
+    background: var(--snow);
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+    padding: 2.4rem;
+    min-width: 55rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    font-size: 4.5rem;
+    font-family: 'Rubik Beastly', cursive;
+    color: var(--bright-red);
+  }
+  
+  p#greeting {
+    margin-bottom: 4rem;
+    text-align: center;
+    line-height: 8rem;
+  }
+  
+  button {
+    padding: 2rem 3rem;
+    border: none;
+    font-size: 2rem;
+    background-color: var(--bright-red);
+    color: var(--snow);
+    border-radius: 99.9rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+  
+  button:hover {
+    cursor: pointer;
+    background-color: var(--wine-red);
+  }
+  
+  .switch-field {
+    display: none;
+    margin-bottom: 1rem;
+    font-family: 'open sans', sans-serif;
+  }
+  
+  .switch-field p {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .switch-field input {
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+  }
+  
+  .switch-field label {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e4e4e4;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.6rem;
+    line-height: 1;
+    text-align: center;
+    padding: 0.8rem 1.6rem;
+    margin-right: -1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-in-out;
+  }
+  
+  .switch-field label:hover {
+    cursor: pointer;
+  }
+  
+  .switch-field input:checked + label {
+    background-color: #a5dc86;
+    box-shadow: none;
+  }
+  
+  .switch-field label:first-of-type {
+    border-radius: 0.4rem 0 0 0.4rem;
+  }
+  
+  .switch-field label:last-of-type {
+    border-radius: 0 0.4rem 0.4rem 0;
+  }
+  
+  canvas {
+    display: block;
+    color: white;
+  }
+  

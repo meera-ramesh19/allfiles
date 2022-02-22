@@ -1,0 +1,669 @@
+https://stackoverflow.com/questions/49006488/how-to-draw-circle-on-canvas-on-mouse-move
+
+
+var canvas = document.querySelector('damages-area');
+var ctx = canvas.getContext('2d');
+var circles = [];
+var markerColor = "#f00";
+var offsetX =canvas.offsetLeft;
+var offsetY = canvas.offsetTop;
+var startX;
+var startY;
+var isMouseDown = false;
+var circle, radius;
+
+canvas.addEventListener('mousedown', drawCircleMouseDown, false);
+canvas.addEventListener('mouseup', drawCircleMouseUp, false);
+canvas.addEventListener('mousemove', drawCircleMouseMove, false);
+
+function Circle(startX, startY) {
+  this.startX = startX;
+  this.startY = startY;
+  this.radius;
+  this.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.startX, this.startY, this.radius, 0, 2 * Math.PI);
+    ctx.strokeStyle = markerColor;
+    ctx.stroke();
+  }
+}
+
+function drawCircleMouseDown(e) {
+  startX = parseInt(e.clientX - offsetX);
+  startY = parseInt(e.clientY - offsetY);
+  isMouseDown = true;
+  circle = new Circle(startX, startY);
+  circles.push(circle);
+}
+
+function drawCircleMouseUp() {
+  isMouseDown = false;
+  circle = null;
+}
+
+function drawCircleMouseMove(e) {
+  if (!isMouseDown) {
+    return;
+  }
+  mouseX = parseInt(e.clientX - offsetX);
+  mouseY = parseInt(e.clientY - offsetY);
+  circle.radius = getDistance(startX, startY, mouseX, mouseY);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  circles.forEach(function(circ) {
+    circ.draw();
+  });
+}
+
+function getDistance(p1X, p1Y, p2X, p2Y) {
+  return Math.sqrt(Math.pow(p1X - p2X, 2) + Math.pow(p1Y - p2Y, 2))
+}
+
+
+
+//https://pretagteam.com/question/html-canvas-draw-a-circle-on-mouse-click-and-drag-it-untill-the-required-radius-is-obtained
+
+
+<html>
+
+<head>
+
+</head>
+
+<body style="margin:0">
+<canvas id="canvas" width="500" height="500" style="border:1px solid"></canvas>
+
+<script>
+
+var canvas=document.getElementById('canvas');
+var context=canvas.getContext('2d');
+var radius=50;
+var nStartX = 0;
+var nStartY = 0;
+var bIsDrawing = false;
+var putPoint = function(e){
+  nStartX = e.clientX;nStartY = e.clientY;
+  bIsDrawing = true;
+  radius = 0;
+}
+var drawPoint = function(e){
+  if(!bIsDrawing)
+    return;
+  var nDeltaX = nStartX - e.clientX;
+  var nDeltaY = nStartY - e.clientY;
+  radius = Math.sqrt(nDeltaX * nDeltaX + nDeltaY * nDeltaY)
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  context.beginPath();
+  context.arc(nStartX, nStartY, radius, 0, Math.PI*2);
+  context.fill();
+}
+var stopPoint = function(e){
+  bIsDrawing = false;
+}
+canvas.addEventListener('mousedown',putPoint);
+canvas.addEventListener('mousemove',drawPoint);
+canvas.addEventListener('mouseup',stopPoint);
+
+</script>
+</body>
+
+</html>
+
+https://www.demo2s.com/javascript/javascript-canvas-drawing-multiples-rectangles-with-canvas-on-mouse-ev.html
+
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var canvasx = canvas.offsetLeft;
+var canvasy = canvas.offsetTop;
+var last_mousex = last_mousey = 0;
+var mousex = mousey = 0;
+var mousedown = false;
+var width;
+var height;
+var drawItems = [];
+//Mousedown
+canvas.addEventListener('mousedown', setRect,false);
+canvas.addEventListener('mouseup', endRect,false);
+canvas.addEventListener('mouseout', endRect,false);
+canvas.addEventListener('mousemove', drawRect,false);
+
+
+ function setRect(event) {
+    last_mousex = parseInt(event.clientX-canvasx);
+    last_mousey = parseInt(event.clientY-canvasy);
+    mousedown = true;
+}
+//Mouseup
+ function endRect(event) {
+    mousedown = false;
+    drawItems.push({
+       x0: last_mousex,
+      x1: width,
+      y0: last_mousey,
+      y1: height
+    });
+}
+//Mousemove
+
+ function drawRect(event) {
+    mousex = parseInt(e.clientX-canvasx);
+   mousey = parseInt(e.clientY-canvasy);
+    if(mousedown) {
+          ctx.clearRect(0,0,canvas.width,canvas.height); //clear canvas
+            ctx.strokeStyle = 'black';
+        ctx.lineWidth = 10;
+          for(var i=0; i<drawItems.length; i++) {
+           ctx.beginPath();
+           ctx.rect(drawItems[i].x0, drawItems[i].y0, drawItems[i].x1, drawItems[i].y1);
+           ctx.stroke();
+        }
+        width = mousex-last_mousex;
+        height = mousey-last_mousey;
+        ctx.beginPath();
+        ctx.rect(last_mousex,last_mousey,width,height);
+        ctx.stroke();
+    }
+    //Output
+    $('#output').html('current: '+mousex+', '+mousey+'<br/>last: '+last_mousex+', '+last_mousey+'<br/>mousedown: '+mousedown);
+};
+
+
+
+//Multiple recangles from jsfiddle  
+ http://jsfiddle.net/d9BPz/546/
+
+initDraw(document.getElementById('canvas'));
+
+
+
+function initDraw(canvas) {
+    function setMousePosition(e) {
+        var ev = e || window.event; //Moz || IE
+        if (ev.pageX) { //Moz
+            mouse.x = ev.pageX + window.pageXOffset;
+            mouse.y = ev.pageY + window.pageYOffset;
+        } else if (ev.clientX) { //IE
+            mouse.x = ev.clientX + document.body.scrollLeft;
+            mouse.y = ev.clientY + document.body.scrollTop;
+        }
+    };
+
+    var mouse = {
+        x: 0,
+        y: 0,
+        startX: 0,
+        startY: 0
+    };
+    var element = null;
+
+    canvas.onmousemove = function (e) {
+        setMousePosition(e);
+        if (element !== null) {
+            element.style.width = Math.abs(mouse.x - mouse.startX) + 'px';
+            element.style.height = Math.abs(mouse.y - mouse.startY) + 'px';
+            element.style.left = (mouse.x - mouse.startX < 0) ? mouse.x + 'px' : mouse.startX + 'px';
+            element.style.top = (mouse.y - mouse.startY < 0) ? mouse.y + 'px' : mouse.startY + 'px';
+        }
+    }
+
+    canvas.onclick = function (e) {
+        if (element !== null) {
+            element = null;
+            canvas.style.cursor = "default";
+            console.log("finsihed.");
+        } else {
+            console.log("begun.");
+            mouse.startX = mouse.x;
+            mouse.startY = mouse.y;
+            element = document.createElement('div');
+            element.className = 'rectangle'
+            element.style.left = mouse.x + 'px';
+            element.style.top = mouse.y + 'px';
+            canvas.appendChild(element)
+            canvas.style.cursor = "crosshair";
+        }
+    }
+}
+
+
+
+
+//Multiplerectangle drawings
+//http://jsfiddle.net/xkmqz9ho/
+
+
+// get references to the canvas and context
+var canvas = document.getElementById("canvas");
+var overlay = document.getElementById("overlay");
+var ctx = canvas.getContext("2d");
+var ctxo = overlay.getContext("2d");
+
+// style the context
+ctx.strokeStyle = "blue";
+ctx.lineWidth = 3;
+ctxo.strokeStyle = "blue";
+ctxo.lineWidth = 3;
+
+// calculate where the canvas is on the window
+// (used to help calculate mouseX/mouseY)
+var $canvas = $("#canvas");
+var canvasOffset = $canvas.offset();
+var offsetX = event.offsetX;
+var offsetY = canvas.offsetY;
+var scrollX = $canvas.scrollLeft();
+var scrollY = $canvas.scrollTop();
+
+// this flage is true when the user is dragging the mouse
+var isDown = false;
+
+// these vars will hold the starting mouse position
+var startX;
+var startY;
+
+var prevStartX = 0;
+var prevStartY = 0;
+
+var prevWidth  = 0;
+var prevHeight = 0;
+
+function handleMouseDown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // save the starting x/y of the rectangle
+    startX = parseInt(e.clientX - offsetX);
+    startY = parseInt(e.clientY - offsetY);
+
+    // set a flag indicating the drag has begun
+    isDown = true;
+}
+
+function handleMouseUp(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // the drag is over, clear the dragging flag
+    isDown = false;
+    ctxo.strokeRect(prevStartX, prevStartY, prevWidth, prevHeight);
+}
+
+function handleMouseOut(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // the drag is over, clear the dragging flag
+    isDown = false;
+}
+
+function handleMouseMove(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // if we're not dragging, just return
+    if (!isDown) {
+        return;
+    }
+
+    // get the current mouse position
+    mouseX = parseInt(e.clientX - offsetX);
+    mouseY = parseInt(e.clientY - offsetY);
+
+    // Put your mousemove stuff here
+
+    
+
+    // calculate the rectangle width/height based
+    // on starting vs current mouse position
+    var width = mouseX - startX;
+    var height = mouseY - startY;
+
+		// clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // draw a new rect from the start position 
+    // to the current mouse position
+    ctx.strokeRect(startX, startY, width, height);
+    
+		prevStartX = startX;
+		prevStartY = startY;
+
+		prevWidth  = width;
+		prevHeight = height;
+}
+
+// listen for mouse events
+canvas.addEventListener("mousedown",handleMouseDown) {
+    handleMouseDown(e);
+});
+$("#canvas").mousemove(function (e) {
+    handleMouseMove(e);
+});
+$("#canvas").mouseup(function (e) {
+    handleMouseUp(e);
+});
+
+$("#canvas").mouseout(function (e) {
+    handleMouseOut(e);
+});
+
+
+
+//crayon drawing
+<canvas id="canvas" width="400" height="400" style="border: 1px solid black;"></canvas>
+
+
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var canvasPos = canvas.getBoundingClientRect();
+
+var dragging = false;
+
+drawImage();
+
+$(canvas).mousedown(mouseDown);
+$(canvas).mouseup(mouseUp);
+$(canvas).mousemove(mouseMove);
+
+function drawImage() {
+    var img = new Image();
+    img.src = 'http://img2.timeinc.net/health/img/web/2013/03/slides/cat-allergies-400x400.jpg';
+    
+    img.onload = function () {
+        ctx.drawImage(img, 0, 0);
+    };
+}
+
+var lastPos = null;
+
+function mouseDown(e) {
+    var pos = getCursorPosition(e);
+                
+    dragging = true;
+    
+    lastPos = pos;
+}
+            
+function mouseUp(e) {
+    dragging = false;
+    
+}
+
+function mouseMove(e) {
+    var pos, i;
+
+    if (!dragging) {
+        return;
+    }
+    
+    pos = getCursorPosition(e);
+
+    if (lastPos) {
+        ctx.strokeStyle = 'rgba(0, 100, 0, 0.25)';
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = 15;
+        ctx.beginPath();
+        ctx.moveTo(lastPos.x, lastPos.y);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+    }
+    
+    lastPos = pos;
+}
+
+function getCursorPosition(e) {
+    return {
+        x: e.clientX - canvasPos.left,
+        y: e.clientY - canvasPos.top
+    };
+}
+
+///drawing points
+
+//https://jsfiddle.net/ourcodeworld/akLtL5xm/5/
+
+<p>
+Draw points in the hen ! Remember this example uses a method that will work in almost all devices.
+Even if you make zoom in the page, the points will be rendered correctly according to the image and canvas size.<br> Have fun !. This example uses jQuery
+</p>
+<br>
+<canvas id="canvas" width="690" height="651" style="cursor:crosshair;background:url(http://www.mundoanimalia.com/images/articles/66/58/06/7f6ffaa6bb0b408017b62254211691b5/gallina.jpg)"></canvas>
+$("#canvas").click(function(e){
+     getPosition(e); 
+});
+
+var pointSize = 3;
+
+function getPosition(event){
+     var rect = canvas.getBoundingClientRect();
+     var x = event.clientX - rect.left;
+     var y = event.clientY - rect.top;
+        https://jsfiddle.net/ourcodeworld/akLtL5xm/5/#
+     drawCoordinates(x,y);
+}
+
+function drawCoordinates(x,y){	
+  	var ctx = document.getElementById("canvas").getContext("2d");
+
+
+  	ctx.fillStyle = "#ff2626"; // Red color
+
+    ctx.beginPath();
+    ctx.arc(x, y, pointSize, 0, Math.PI * 2, true);
+    ctx.fill();
+}
+
+
+
+
+//reload and save an image
+//http://jsfiddle.net/m1erickson/btmLE/
+
+
+
+<canvas id="canvas" width=300 height=300></canvas>
+<br>
+<button id="save">Save</button>
+<button id="reload">Reload</button>
+
+
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        ctx.fillRect(25, 25, 100, 100);
+
+        var dataURL;
+
+        $("#save").click(function () {
+            dataURL = canvas.toDataURL();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        $("#reload").click(function () {
+            var image = new Image();
+            image.onload = function () {
+                ctx.drawImage(image, 0, 0);
+            }
+            image.src = dataURL;
+        });
+
+
+//https://pretagteam.com/question/canvas-draw-line-by-following-mouse-cursor
+
+$(function() {
+   var letsdraw = false;
+   var theCanvas = document.getElementById('paint');
+   var ctx = theCanvas.getContext('2d');
+   theCanvas.width = 420;
+   theCanvas.height = 300;
+   var canvasOffset = $('#paint').offset();
+   var lastpoints = {
+      "x": 0,
+      "y": 0
+   };
+
+   $('#paint').mousemove(function(e) {
+      if (letsdraw === true) {
+         lastpoints.x = e.pageX;
+         lastpoints.y = e.pageY;
+      }
+   });
+
+   $('#paint').mousedown(function(e) {
+      letsdraw = true;
+      ctx.strokeStyle = 'blue';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(e.pageX - canvasOffset.left, e.pageY - canvasOffset.top);
+   });
+
+   $('#paint').mouseup(function(e) {
+      ctx.lineTo(lastpoints.x - canvasOffset.left, lastpoints.y - canvasOffset.top);
+      ctx.stroke();
+      letsdraw = false;
+   });
+});
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<canvas id="paint"></canvas>
+
+//http://jsfiddle.net/NpDdt/10/ to draw lines 
+
+var clicks = 0;
+var lastClick = [0, 0];
+
+document.getElementById('canvas').addEventListener('click', drawLine, false);
+
+function getCursorPosition(e) {
+    var x;
+    var y;
+
+    if (e.pageX != undefined && e.pageY != undefined) {
+        x = e.pageX;
+        y = e.pageY;
+    } else {
+        x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+        y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+    
+    return [x, y];
+}
+
+function drawLine(e) {
+    context = this.getContext('2d');
+
+    x = getCursorPosition(e)[0] - this.offsetLeft;
+    y = getCursorPosition(e)[1] - this.offsetTop;
+    
+    if (clicks != 1) {
+        clicks++;
+    } else {
+        context.beginPath();
+        context.moveTo(lastClick[0], lastClick[1]);
+        context.lineTo(x, y, 6);
+        
+        context.strokeStyle = '#000000';
+        context.stroke();
+        
+        clicks = 0;
+    }
+    
+    lastClick = [x, y];
+};
+
+
+
+
+///drawLine
+//https://stackoverflow.com/questions/65430818/how-do-you-draw-a-line-from-the-last-position-of-the-mouse-to-the-present-positi
+
+const c = document.getElementById('c')
+const ctx = c.getContext('2d')
+
+c.height = window.innerHeight
+c.width = window.innerWidth
+
+let startX;
+let startY;
+
+
+
+
+
+function pen(event, colorHEX) {
+    let endX = event.clientX
+    let endY = event.clientY
+    
+    ctx.fillStyle = colorHEX
+    ctx.beginPath()
+    ctx.moveTo(startX, startY)
+    ctx.lineTo(endX, endY)
+    ctx.fill()
+    ctx.closePath()
+    ctx.stroke()
+}
+
+$('body').mousedown(function(e){
+    startX = event.clientX;
+    startY = event.clientY;
+})
+
+$('body').mouseup(function(e) {
+    pen(event, "#000000");
+})
+
+
+
+
+jsfiddles to watch
+
+http://jsfiddle.net/3bvL2qmr/1/--save and load image
+https://jsfiddle.net/ourcodeworld/akLtL5xm/5/--points
+http://jsfiddle.net/jF9a6/-   crayon
+http://jsfiddle.net/d9BPz/546/-rectangles multiple
+http://jsfiddle.net/NpDdt/10/-draw lines
+https://jsfiddle.net/richardcwc/wdf9cocz/-draw ellipse
+http://jsfiddle.net/xkmqz9ho/-draw multiple rectangles
+http://jsfiddle.net/9UyxF/
+
+
+https://bearnithi.com/2019/12/12/understanding-canvas-draw-a-line-in-canvas-using-mouse-and-touch-events-in-javascript/
+https://www.codicode.com/art/undo_and_redo_to_the_html5_canvas.aspx
+https://www.codicode.com/art/how_to_draw_on_a_html5_canvas_with_a_mouse.aspx
+
+https://enlight.nyc/projects/web-paint
+https://www.youtube.com/watch?v=wCwKkT1P7vY(bananacoding)
+https://www.demo2s.com/javascript/html-canvas-drawing-text.html
+http://jsfiddle.net/MartinThoma/vSDTW/2/-example for mobile phones
+https://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html-example for mobile phones
+https://stackoverflow.com/questions/53960651/how-to-make-an-undo-function-in-canvas?noredirect=1&lq=1
+https://stackoverflow.com/questions/65430818/how-do-you-draw-a-line-from-the-last-position-of-the-mouse-to-the-present-positi
+https://codesource.io/build-a-drawing-app-with-and-vuejs-html5-canvas/
+https://stackoverflow.com/questions/1077041/refresh-image-with-a-new-one-at-the-same-url
+https://wanago.io/2019/06/24/creating-a-simple-drawing-app-using-canvas-saving-and-loading-images/
+https://ourcodeworld.com/articles/read/117/top-5-best-sketchpads-and-manually-drawing-on-canvas-javascript-and-jquery-plugins
+https://codepen.io/JAGATHISH1123/pen/EzLooM
+https://www.demo2s.com/javascript/html-canvas-drawing-text.html
+https://stackoverflow.com/questions/49006488/how-to-draw-circle-on-canvas-on-mouse-move
+
+
+canvas youtube videos to check out
+https://www.youtube.com/results?search_query=HTML5+Canvas+-+Drawing+application+%234
+https://www.youtube.com/watch?v=1Pl0A3ZhGwA
+https://www.youtube.com/results?search_query=HTML5+Canvas+-+Drawing+application+%234
+https://www.youtube.com/watch?v=wCwKkT1P7vY
+https://www.youtube.com/watch?v=3GqUM4mEYKA&t=212s
+https://www.youtube.com/watch?v=FLESHMJ-bI0-react by maksim
+
+https://www.youtube.com/watch?v=Baz5tVRc6EA
+https://www.youtube.com/watch?v=XbS2bLMzcrk&list=PLfdtiltiRHWHfOVfqI89Nc3xUMY-q-7f0&index=3
+
+mintbean app projects
+https://github.com/trieule50?tab=repositories
+https://github.com/BernardN38/eightball-react
+https://github.com/kornatskyi/easel
+https://github.com/macktsawyer/betweenthelines/blob/master/src/Canvas.js
+https://github.com/codewithbingle/colormylife
+https://gist.github.com/prof3ssorSt3v3/e5ab6eafa42decbf2d2d7c7f2e383f39
+https://drawbrite.netlify.app/
+https://martvelous.netlify.app/
+https://heuristic-bassi-502429.netlify.app/#team

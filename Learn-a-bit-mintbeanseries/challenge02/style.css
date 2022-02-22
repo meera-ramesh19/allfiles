@@ -1,0 +1,165 @@
+*,
+*::after,
+*::before {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+  font-size: 62.5%;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    color: #333;
+    font-weight: 300;
+    line-height: 1.6; 
+  }
+
+.main__header{
+    margin: 4rem 0;
+    /* border: 2px solid black; */
+    padding:4rem;
+   
+}
+
+.gallery__header{
+    text-align:center;
+    font-size: 4rem;
+    text-transform: uppercase;
+}
+
+
+
+.img__grid{
+    display:grid;
+ 
+     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr) );
+    grid-template-rows: repeat(auto-fill, minmax(400px, 1fr) ); 
+    grid-gap: 1rem; 
+    grid-auto-flow:row;
+    flex-wrap: wrap; 
+     justify-items:stretch;  
+     align-items:stretch;
+    justify-content: center;
+    align-content: center; 
+} 
+
+ .img__grid > img{
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  display:flex;
+  align-items:center;
+
+}  
+.thumbnail{
+  border-radius:1rem;
+}
+.thumbnail:nth-child(odd):hover {
+    transform: scale(1.3);
+ }
+
+  
+.thumbnail:nth-child(odd):hover{
+    position:relative;
+    top:0px; 
+    left:0px; 
+    /* margin:auto; */
+    width:100%;
+    height:auto;
+    display:block;
+    z-index:999;
+}
+
+/* hover styles  for even images*/
+.image-listing {
+    position: relative;
+  }
+   .pic-image {
+    line-height: 0;
+    overflow: hidden;
+   
+  }
+  
+  .img-grid .pic-image >img{
+    
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.3);
+    width:auto;
+    height:auto;
+    object-fit:cover;
+    /* border-radius:1rem; */
+    filter: blur(2ppx);
+    transition: filter 0.3s ease-in;
+    transform: scale(1.1);
+  }
+  
+ .image-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .5s;
+    background: rgba(90,0,10,0.4);
+    color: white;
+    
+    /* position the text in t’ middle*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image-listing:hover .image-title {
+    opacity: 1;
+  }
+  
+  .image-listing:hover .img-grid.pic-image img {
+    filter: blur(2px);
+  }
+   
+/* figure {
+    width: 300px;
+    height: 200px;
+     margin: 0;
+    padding: 0; 
+    background: #fff;
+    overflow: hidden;
+  }
+
+
+  figure img {
+    -webkit-transform: scale(1);
+    transform: scale(4);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+  figure:hover img {
+    -webkit-transform: scale(4.3);
+    transform: scale(4.3);
+    width:300px;
+  } */
+
+
+
+/*Tablet Menu*/
+@media all and (min-width: 700px) {
+  
+}
+
+
+
+/* Desktop menu */
+@media all and (min-width: 960px) {
+
+}

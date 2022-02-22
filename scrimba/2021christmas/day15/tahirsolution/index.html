@@ -1,0 +1,355 @@
+//js
+
+
+// Task: 
+// - Write a function to display the correct greeting when a language is selected.
+
+// Stretch goals:
+// - Animate the message switch.
+// - Add the option to switch the greeting, for example also have "And a Happy New Year!".
+
+const languageSelector = document.getElementById("language-selector");
+const festiveSelector = document.getElementById("festive-selector");
+const greetingDisplay = document.getElementById("greeting-text");
+const body = document.querySelector("body");
+
+languageSelector.addEventListener("change", translate);
+festiveSelector.addEventListener("change", festiveType);
+
+const greetingsArr = [
+    {
+        language: "English",
+        christmas: "May your holidays sparkle with joy and laughter!",
+        newYear: "Have a sparkling new year!",
+        womensDay: "Happy Women’s Day!",
+        mothersDay: "Happy Mothers Day!",
+        fathersDay: "Happy Father's Day"
+    },
+    {
+        language: "Spanish",
+        christmas: "Que sus vacaciones brillen de alegría y risas!",
+        newYear: "¡Feliz año nuevo!",
+        womensDay: "Feliz día de la mujer!",
+        mothersDay: "¡Feliz día de la madre!",
+        fathersDay: "¡Feliz Día del Padre!"
+    },
+    {
+        language: "Ukrainian",
+        christmas: "Нехай ваші свята виблискують радістю та сміхом!",
+        newYear: "Хай буде блискучий новий рік!",
+        womensDay: "З жіночим днем!",
+        mothersDay: "З Днем матері!",
+        fathersDay: "Щасливого дня батька!"
+    },
+    {
+        language: "Welsh",
+        christmas: "Boed i'ch gwyliau ddisgleirio â llawenydd a chwerthin!",
+        newYear: "Cael blwyddyn newydd ddisglair!",
+        womensDay: "Diwrnod Merched Hapus!",
+        mothersDay: "Sul y Mamau Hapus!",
+        fathersDay: "Sul y Tadau Hapus!"
+    }
+];
+
+const bgFestive = [
+    {
+        bg: "url('./images/bg_img.jpg')"
+    },
+    {
+        bg: "url('./images/background-3018089_1920.jpg')"
+    },
+    {
+        bg: "url('./images/international-womens-day-4887650_1920.jpg')"
+    },
+    {
+        bg: "url('./images/mothers-day-1301851_1920.png')"
+    },
+    {
+        bg: "url('./images/fathers-day-bunting-4869445_1920.png')"
+    }
+];
+
+function translate() {
+    chkType();
+    body.style.backgroundImage = bgFestive[festiveSelector.selectedIndex].bg;
+}
+
+function festiveType() {
+    changeBG();
+    chkType();
+}
+
+function chkType() {
+    if (festiveSelector.selectedIndex === 0) {
+        greetingDisplay.textContent = greetingsArr[languageSelector.selectedIndex].christmas;
+    } else if (festiveSelector.selectedIndex === 1) {
+        greetingDisplay.textContent = greetingsArr[languageSelector.selectedIndex].newYear;
+    } else if (festiveSelector.selectedIndex === 2) {
+        greetingDisplay.textContent = greetingsArr[languageSelector.selectedIndex].womensDay;
+    } else if (festiveSelector.selectedIndex === 3) {
+        greetingDisplay.textContent = greetingsArr[languageSelector.selectedIndex].mothersDay;
+    } else if (festiveSelector.selectedIndex === 4) {
+        greetingDisplay.textContent = greetingsArr[languageSelector.selectedIndex].fathersDay;
+    }
+}
+
+function changeBG(){
+    body.style.backgroundImage = bgFestive[festiveSelector.selectedIndex].bg;
+}
+
+
+//css
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: rgb(199, 55, 95);
+  --bright-red: #d42d2f;
+  --dark-green: #344d2f;
+  --light-green: #77a047;
+  --gold: #fac57d;
+  --snow: #f0f4f7;
+  --light-grey: #cecece;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      right bottom,
+      from(var(--snow)),
+      to(var(--light-grey))
+    ),
+    url(images/bg_img.jpg);
+  background-image: linear-gradient(
+      to right bottom,
+      var(--snow),
+      var(--light-grey)
+    ),
+    url(images/bg_img.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--snow);
+  text-shadow: 4px 4px 4px rgba(192, 4, 4, 0.89);
+}
+
+h3 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-top: 2.1rem;
+  color: #210a85;
+  text-shadow: 2px 2px 2px rgba(78, 98, 211, 0.76);
+}
+
+
+
+.container {
+  margin-top: 2.4rem;
+  /* Limit the number of elves to 6 per row. */
+  /* Make sure that the elves stay in the elf hangout zone, no matter how many there are. */
+  
+  /* background: rgba(110, 110, 110, 0.5); */
+
+  background: rgba(202, 16, 69, 0.88);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  border-radius: 1rem;
+  padding: 2.5rem 3rem;
+  min-width: 40rem;
+  max-width: 40rem;
+  min-height: 35rem;
+  max-height: 35rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 2rem;
+  overflow: scroll;
+}
+
+.container p {
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 4.8rem;
+  color:var(--snow);
+  text-shadow: 2px 2px 1px rgba(24, 1, 124, 0.774);
+}
+
+.animate-bell {
+  display: inline-block;
+  animation: ring 1s .5s steps(32) infinite;
+  transform-origin: 50% 4px;
+  animation-play-state: running;
+}
+
+@keyframes ring {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  75% {
+    transform: rotate(-45deg);
+  }
+}
+
+.animate-giftbox {
+  display: inline-block;
+  animation: shake 0.75s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.selection-box {
+  width: 36rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.selection-box div {
+  width: 50%;
+  margin: .5rem .75rem;
+}
+
+label {
+  font-size: 1.4rem;
+  color: #260bbd;
+  font-weight: 600;
+  text-shadow: 1px 1px 1px rgba(167, 166, 166, 0.61);
+  background-color: rgba(250, 198, 125, 0.9);
+  width: 100%;
+  display: block;
+  padding: .75rem 1rem;
+}
+
+select {
+  font-size: 1.4rem;
+  font-weight: 600;
+  width: 100%;
+  padding: .75rem 1.2rem;
+}
+
+
+.animate-msg {
+  display: inline-block;
+  animation: fadeinout 5s linear infinite alternate;
+}
+
+@keyframes fadeinout {
+  0% { opacity: 0; }
+  25% { opacity: 0.75; }
+  50% { opacity: 1; }
+  75% { opacity: .75; }
+  100% { opacity: 0; }
+}
+
+
+//html
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 15: 🐪 Festive Translator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="index.css" />
+
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body class="noselect">
+  <h1>
+    <span class="animate-giftbox" id="animate-giftbox">🎁</span> Festive
+    Translator <span class="animate-bell" id="animate-bell">🔔</span>
+  </h1>
+
+  <div class="container">
+    <p id="greeting-text" class="greeting-text animate-msg">May your holidays sparkle with joy and laughter!</p>
+  </div>
+
+  <div class="selection-box">
+    <div>
+      <label for="language-selector">Choose Language:</label>
+      <select id="language-selector">
+        <option value="English">English</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Ukrainian">Ukrainian</option>
+        <option value="Welsh">Welsh</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="festive-selector">Choose Festive:</label>
+      <select id="festive-selector">
+        <option value="Christmas">Christmas</option>
+        <option value="NewYear">New Year</option>
+        <option value="WomensDay">Women's Day</option>
+        <option value="MothersDay">Mother's Day</option>
+        <option value="FathersDay">Father's Day</option>
+      </select>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

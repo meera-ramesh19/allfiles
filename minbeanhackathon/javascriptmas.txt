@@ -1,0 +1,31 @@
+<script>
+function change_audio_file()
+{
+  var file_list = document.getElementById('audio_list') ;
+  var file_to_play = file_list.options[ file_list.selectedIndex ].value ;
+  var player = document.getElementById('audio_player');
+  player.src = file_to_play ;
+  player.play() ;
+}
+</script>
+<form>
+<label for="audio_list">
+Select an audio clip to load into the player. Then click the Play button on the player to start it.
+</label>
+<select onchange="change_audio_file();" id="audio_list">
+<option selected value="audio/demo.mp3">thesitewizard.com</option>
+<option value="audio/thefreecountry.mp3">thefreecountry.com</option>
+<option value="audio/howtohaven.mp3">howtohaven.com</option>
+</select>
+</form>
+<div id="audio_container">
+<audio controls id="audio_player" src="audio/demo.mp3">
+<div style="border: 1px solid black ; padding: 8px ;">
+Sorry, your browser does not support this audio player.
+</div>
+</audio>
+</div>
+
+
+
+day4(delete) and day6(settimeout)

@@ -1,0 +1,47 @@
+MEGA SUMMER Daily Standup 03
+
+
+CHALLENGE
+Sum Mixed Array
+https://www.codewars.com/kata/57eaeb9578748ff92a000009
+PREP
+Parameters
+An array of integers as strings and numbers (e.g.) [9, “9”]
+Positive, whole numbers only
+Returns
+The sum (as an integer) of the array values, as if all were integers.
+Examples / Tests
+console.log(sumMix([9, 3, '7', '3']), 22);
+console.log(sumMix(['5', '0', 9, 3, 2, 1, '9', 6, 7]), 42); 
+console.log(sumMix(['3', 6, 6, 0, '5', 8, 5, '6', 2,'0']), 41); 
+
+Pseudocode
+
+.map() to loop through each element in the array
+.reduce() takes in accumulator, current value
+Number(n) creates a new Number value, we want to change the current value to a Number
+
+
+
+Solution
+
+function sumMix(arr) {
+  return arr.reduce((a, c) => a + Number(c), 0)
+}
+
+
+NOTES
+.Why is the 0 important? because it catches a possible empty array and makes sure the answer is zero rather than undefined.
+
+
+ADDITIONAL RESOURCES
+Map MDN
+Reduce MDN
+Number MDN When used as a function, Number(value) converts a string or other value to the Number type. If the value can't be converted, it returns NaN.
+WHAT DO I NEED TO REVIEW?  WHERE DID I GET STUCK?
+CELEBRATION - I GOT THIS ONE!
+
+REMEMBER:
+Explain every little thing.
+Keep talking. Don’t stop.
+

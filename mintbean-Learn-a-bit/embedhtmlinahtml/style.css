@@ -1,0 +1,34 @@
+#navbar {
+    width: 100%;
+    background-color: orange;
+    padding: 20px;
+    margin: 0px;
+    display: flex;
+  /*   justify-content: space-between; */
+  }
+  
+  #navLogo {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+  }
+  
+  #navLinks {
+    margin-left: auto;
+    margin-right: 30px;
+    display: flex;
+    gap: 60px;
+    font-size: 2rem;
+    list-style: none;
+  }
+  
+  #header{
+      width:100%;
+      height:400px;
+      background-color:whitesmoke;
+  }
+  
+  object{
+      margin:0px;
+  padding:0px;
+  }

@@ -1,0 +1,48 @@
+
+MEGA SUMMER Daily Standup 01
+
+
+CHALLENGE
+Square(n) Sum
+https://www.codewars.com/kata/515e271a311df0350d00000f/javascript
+PREP
+Parameters
+Array of numbers (positive only, no gotchas) 
+Returns
+The sum of the squares of each number provided in the array.
+Examples
+[1, 2, 2] = 9 1^1 = 1, 2^2 = 4, 2^2 = 4, so total sums of squares is 9
+([1,2,2,1]), 10)
+([1,2,3]), 14)
+Pseudocode
+First, create the function line: function sumSquares(arr) 
+Next, setup console.log tests
+We want to return the sum of the squares, and will need to keep track of the sum as we loop through the array. 
+We’ll use the reduce() method, with two key values.  A for accumulator, and C for current value.
+We’ll use an arrow function within a function….. ?
+(Accumulator) + (Current Value * Current Value)
+0 is placed to catch any errors from a possible empty array, assuring that the output will be 0 and not “undefined”.
+Solution
+
+function sumSquares(arr){
+    Return arr.reduce((a, c) => a + c*c, 0)
+}
+
+
+console.log(sumSquares([1,2,2]), 9)
+console.log(sumSquares([1,2,2,1]), 10)
+console.log(sumSquares([1,2,3]), 14)
+
+
+
+NOTES
+Reduce takes in a function and that function is going to have two key values.  An accumulator and the current value.  The accumulator in this case is our sum.  So we would have had this variable “sum” that we’re adding to.  Current value is going to be each of the numbers that we’re adding in our array.
+Reduce is going to loop through the array, I can do whatever I want with that number, and in this case I’m adding it to accumulation, and that’s the sum I’m keeping track of.  Whenever you see an array, and the problem is taking in an array, and you’re having to keep track of the end result… should be alarm bells about reduce().
+Why is the 0 important? because it catches a possible empty array and makes sure the answer is zero rather than undefined.
+
+
+ADDITIONAL RESOURCES:
+MDN, Reduce Print
+Reduce explained with Lego Bricks Print
+James Quick, Javascript Reduce Video
+Wes Bos JS30, at 8:58 Video

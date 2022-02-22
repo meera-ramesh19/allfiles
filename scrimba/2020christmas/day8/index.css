@@ -1,0 +1,87 @@
+body {
+    background-color: #AEB8FE;
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+.dice {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    background-color: #EFE5DC;
+    margin: 100px;
+    padding: 5px;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: black;
+}
+
+/* 1st */
+.first {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2nd */
+.second {
+    display: flex;
+    justify-content: space-between;
+}
+
+.second .dot:nth-of-type(2) {
+    align-self: flex-end;
+}
+
+/* 3rd */
+.third {
+    display: flex;
+    justify-content: space-between; 
+}
+.third .dot:nth-of-type(2){
+    align-self: center;
+}
+
+.third .dot:nth-of-type(3){
+    align-self: flex-end;    
+}
+
+/* 4th, 5th, 6th */
+.forth {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fifth {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sixth {
+    display: flex;
+    justify-content: space-between;
+}
+
+.forth .column, .fifth .column, .sixth .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;        
+}
+
+.fifth .column:nth-of-type(2) {
+    align-self: center;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: flex;
+}

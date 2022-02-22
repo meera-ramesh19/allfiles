@@ -1,0 +1,466 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+html{
+/*    background: url(/images/cuisine-hero.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-size:62.5%; */
+}
+body {
+
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+html{
+  font-size: 62.5%;
+}
+
+
+ header{
+   background: url(https://images.squarespace-cdn.com/content/v1/5b5a542bf407b4de009eac2b/1539927738572-ABUYOS8ZRY85PKM3ZCCJ/ke17ZwdGBToddI8pDm48kLvgIuazWRxDGeALQ0yXNL97gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0plef_PmwB6-3GP4qDbCUv-NJH_7PgqOJZyXVG2BzskSDTgNNv9DnYL8WSMeU4Ae7A/image-asset.jpeg) no-repeat;
+    background-size: cover;
+     margin:0;
+  padding: 0;
+
+}
+
+footer {
+
+}
+
+/******************************************
+ /* ADDITIONAL STYLES
+/*******************************************/
+
+nav{
+
+   margin:0;
+   padding:0;
+}
+ .nav-bar {
+  list-style-type:none;
+   width:60%;
+   float:right;
+   display:block;
+   font-size: 2rem;
+
+}
+
+.nav-bar li{
+ padding:2rem;
+  display:inline;
+
+}
+.nav-bar a{
+  text-decoration:none;
+  color:black;
+}
+
+ .welcome-search{
+  width:50%;
+  padding: 8% 10%;
+  height:auto;
+}
+
+h1{
+  padding: 12% 10% 0 10%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 5rem;
+  color:black;
+
+}
+ input[type="text"]{
+  padding:2% 2% 2% 0%;
+  text-align:center;
+  width:30%;
+}
+
+.fontSearch{
+  width:100%;
+  position:relative;
+  padding:10%;
+}
+.fontSearch i{
+
+  position:absolute;
+  margin-top:2% 1%;
+  padding:2% 1%;
+  color:grey;
+
+}
+
+.location{
+  position:absolute;
+  Background-color:orange;
+  border:none;
+  padding:1.9%;
+  margin:0;
+
+}
+.social-media{
+  padding:5% 10%;
+  color:#e68a00;
+  font-weight:bold;
+  height:50px;
+  font-size:2.5rem;
+}
+a{text-decoration:none;}
+
+.fab fa-facebook-f, .fab fa-twitter, .fab fa-instagram, span{
+  padding:0 10% 0 0;
+  color:black;
+  font-size:3rem;
+}
+
+ .discover-image{
+  background: url(https://images-ext-2.discordapp.net/external/An7aM7-SoXc0sV_4lwB6CAFnyjqrc9peeZnj9p2GaFE/https/i.imgur.com/09m5BSY.jpg) no-repeat center;
+background-size:100% 100%;
+}
+
+
+.discover-image img{
+  width:100%;
+}
+ .discover-story{
+  width:40%;
+  padding:5% 40%;
+}
+.discover-story h2{
+/*   padding:10%; */
+  color:#e68a00;
+  font-weight:bold;
+  font-size:2rem;
+}
+.discover-story h3{
+  font-size:3rem;
+}
+.discover-story p{
+   width:80%;
+  font-size:2.5rem;
+/*   color:black; */
+}
+.discover-btn{
+  background:orange;
+  padding:2%;
+  border:none;
+}
+
+ .cuisine-image{
+background: #f2f6f7;
+   height:100%;
+/*  background-image:url("https://i.imgur.com/lNfRP5n.png") no-repeat cover;
+  background-position:cover;  */
+}
+.heading{
+  text-align:center;
+}
+
+.heading h2{
+  color:#e68a00;
+  font-weight:bold;
+  font-size:2rem;
+   padding-top:5%;
+}
+.heading h3{
+ padding-top:-5% ;
+ padding-bottom:4%;
+ font-size:3rem;
+  color:black;
+}
+
+
+#breakfast{
+  color:#e68a00;
+  font-weight:bold;
+}
+
+.cuisine-image  .menu-navbar {
+  display:inline;
+  text-align:center;
+  padding-left:28%;
+  padding-bottom:20%;
+
+}
+.cuisine-image .menu-navbar a{
+  text-decoration:none;
+  color: black;
+  padding-right: 5%;
+  font-size:1.5rem;
+}
+#breakfast{
+  color:#e68a00;
+  font-wegiht:bold;
+}
+.cuisine-image .menuTime{
+   text-decoration:none;
+  padding-bottom: 1%;
+  border-bottom: 2px solid #dde8ec;
+}
+
+
+.cuisine-img{
+  clear:both;
+  display:inline;
+/*    margin-left:0%;  */
+
+}
+.cuisine-image .image-row1{
+
+   float:left;
+    display:inline;
+   width:100%;
+  height:100%;
+   top:100%;
+  margin-left:14%;
+   padding: 4% 0% 0 5%;
+/*  background-color: #f1f6f9; */
+}
+.first-pic{
+    filter: brightness(70%);
+}
+.image-pic1, .image-pic2, .image-pic3, .image-pic4{
+  display:inline;
+  float:left;
+  padding:0 0 0 2%;
+}
+.image-pic5, .image-pic6, .image-pic7, .image-pic8{
+  display:inline;
+  float:left;
+  padding:0 0 0 2%;
+}
+
+ .cuisine-image .image-row2{
+/*    position:absolute;*/
+  float:left;
+  display:inline;
+   width:100%;
+    height:100%;
+/*    top:300%; */
+   padding: 0 5%;
+    margin-left:14%;
+
+/*     background-color: #f1f6f9;  */
+}
+ .cuisine.clearfix section img{
+  border: 5px solid rgb(242,246,247);
+  width: 100%;
+  height: 300px;
+  margin: 0;
+}
+ .image-row2 img{
+width:100%;
+}
+
+.operate-hours{
+  clear:both;
+  position:relative;
+  float:left;
+  width:100%;
+  height:100%;
+  padding:5%;
+}
+.back-color{
+  position:absolute;
+  background: #f2f2f2;
+  left:10%;
+  top:40%;
+}
+
+.daily-hours{
+  display: block;
+  text-align: center;
+  padding: 5%;
+}
+.daily-hours h2{
+  color:#e68a00;
+  font-size:2rem;
+  font-weight:bold;
+  top:20%;
+}
+.daily-hours h3{
+  font-size:3rem;
+}
+.phone{
+  color:
+  font-weight:bold;
+}
+
+.phone a, .phone span{
+  text-decoration:none;
+  padding:1%;
+  display: block;
+}
+.phone a{
+  color: 	#e68a00;
+  font-weight:bold;
+  font-size:2rem;
+}
+.phoneicon {
+  float: left;
+  padding: 2% 48%;
+  text-align:center;
+  width: 5%;
+  height: 10%;
+}
+.hours-open{
+
+  display:inline;
+}
+.weekday-hours{
+  display: block;
+  margin-left:20%;
+  float:left;
+  width:20%;
+}
+.weekday-hours h4{
+  margin-left:4%;
+}
+.weekend-hours{
+  width:20%;
+  margin-right:12%;
+  display:block;
+  float: right;
+}
+.weekend-hours h4{
+ padding-left:5%;
+}
+.carousel-menu{
+ display:block;
+  float:left;
+  left:0%;
+  width:100%;
+  height:30%;
+}
+.left-arrow{
+ display:inline;
+  float:left;
+  width:5%;
+  padding:20% 5%;
+}
+.carousel-book{
+  display:inline;
+  float:left;
+  padding:5% 5% 5% 7%;
+  width:60%;
+  height:5%;
+}
+.right-arrow{
+  display:inline;
+  float:right;
+  width:5%;
+  padding:20% 3%;
+}
+
+
+.test-section{
+  clear:both;
+  position:relative;
+  float:left;
+  width:100%;
+  padding:5%;
+  text-align:center;
+  background-color: #f1f6f9;
+}
+
+.testimonials{
+  position:absolute;
+  width:80%;
+  float:left;
+  padding:0 38%;
+  display:block;
+  text-align:center;
+}
+.testimonials h3{
+  float:left;
+   margin:2% -1%;
+  font-size:1.5rem;
+  font-weight:bold;
+  color:#e68a00;
+}
+
+.testimonials h2{
+  float:left;
+   margin:5% -9%;
+  font-size:2.5rem;
+  font-weight:bold;
+
+}
+.customer{
+  display:block;
+  width:80%;
+  float:left;
+  text-align:center;
+  padding:5% 44%;
+}
+.customer-img{
+  display:block;
+  width:10%;
+  border-radius:50%;
+  margin:5% -5%;
+  float:left;
+}
+.customer > h5{
+  float:left;
+  margin:15% -8%;
+  font-size:2.5rem;
+}
+
+.customer h6{
+  float:left;
+  width:25%;
+  text-align:center;
+  margin:18% -14%;
+  font-size:1.5rem;
+  color:grey;
+}
+
+.iconstar{
+  display:block;
+  float:left;
+  width:15%;
+  margin:22% -8%;
+
+}
+
+.customer p{
+  float:left;
+  width:100%;
+  margin :28% -42%;
+  font-size:2rem;
+}
+
+
+.scroll-icon{
+  float:left;
+  width: 20%;
+  margin:32% -26%;
+}
+
+ 

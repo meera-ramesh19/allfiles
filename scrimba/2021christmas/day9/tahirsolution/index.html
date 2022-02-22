@@ -1,0 +1,420 @@
+//js
+
+
+// Stretch goals:
+// - Make sure that the house & decorations all stay on one line, even if there are a lot of decorations.
+// - Allow the user to select different decorations.
+
+// Task:
+// Write a function to add decorations (e.g. ☃️, 🎄, etc) next to the house when the switch is toggled. 
+
+const house = document.getElementById("house");
+const decorator = document.getElementById("decorator-switch");
+const selectDecorations = document.getElementById("select-decorations");
+const decorContainer = document.getElementById("decor-container");
+const decorLeftCheck = document.getElementById("decore-position-left");
+const decorRightCheck = document.getElementById("decore-position-right");
+const addDecorationBtn = document.getElementById("add-btn");
+const displayError = document.getElementById('error');
+
+
+let decorationEmojis = ['🏡'];
+
+
+function loadDefaults() {
+  decorContainer.classList.remove("show-container");
+  decorationEmojis = ['🏡'];
+  house.textContent = decorationEmojis[0];
+  console.log(decorationEmojis);
+}
+
+function deckTheHalls() {
+  if (decorator.checked) {
+    decorLeftCheck.checked = false;
+    decorRightCheck.checked = false;
+    decorContainer.classList.add("show-container");
+    let decorationContents = '';
+    decorationEmojis.forEach(element => {
+      decorationContents += element;
+      console.log(element);
+    });
+    house.textContent = decorationContents;
+  } else {
+    loadDefaults();
+    console.log('defaults');
+  }
+}
+
+function addDecoration() {
+  if (decorLeftCheck.checked || decorRightCheck.checked) {
+    displayError.classList.remove('show-error');
+    addDecorPosition()
+    let decorationContents = '';
+    decorationEmojis.forEach(element => {
+      decorationContents += element;
+      console.log(element);
+    });
+    house.textContent = decorationContents;
+  }
+  else {
+    showErrorMsg();
+  }
+}
+
+function addDecorPosition() {
+  if (decorLeftCheck.checked) {
+    decorationEmojis.unshift(selectDecorations.value);
+  }
+  if (decorRightCheck.checked) {
+    decorationEmojis.push(selectDecorations.value);
+  }
+}
+
+function showErrorMsg() {
+  displayError.classList.add('show-error');
+  displayError.classList.add('error-transition');
+  setTimeout(function () {
+    displayError.classList.remove('show-error');
+    displayError.classList.remove('error-transition');
+  }, 3000);
+  console.log('error');
+}
+
+
+addDecorationBtn.addEventListener("click", addDecoration);
+decorator.addEventListener("click", deckTheHalls);
+
+
+
+//html
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 09: 🤴 Turn on the Decorations</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="selection-container" id="decor-container">
+      <div class="seclect-box" id="seclect-box">
+        <div class="selection-label">
+          <label for="cars">Select Decoration:</label></div>
+          <select name="decorations" id="select-decorations">
+            <option value="🔔">🔔</option>
+            <option value="🎉">🎉</option>
+            <option value="🎅">🎅</option>
+            <option value="🎁">🎁</option>
+            <option value="🎄">🎄</option>
+            <option value="🧦">🧦</option>
+            <option value="🌟">🌟</option>
+            <option value="🕯">🕯</option>
+            <option value="❄️">❄️</option>
+            <option value="⛄">⛄</option>
+            <option value="🕯">🕯</option>
+          </select>
+      </div>
+      
+        <div class="check-left">
+          <div class="decorposition">To Left</div>
+          <input type="checkbox" id="decore-position-left" style="display:none"/>
+          <label for="decore-position-left" class="decorator"><span></span></label>
+        </div>
+        
+        <div class="check-right">
+          <div class="decorposition">To Right</div>
+          <input type="checkbox" id="decore-position-right" style="display:none"/>
+          <label for="decore-position-right" class="decorator"><span></span></label>
+        </div>
+        <button class="decorator-btn" id="add-btn">Add</button>
+    </div>
+
+    <div class="hidden-error" id="error">
+      Please check either left, right or both.
+    </div>
+
+    <p id="house"></p>
+    <input type="checkbox" id="decorator-switch" style="display:none"/>
+    <label for="decorator-switch" class="decorator"><span></span></label>
+    <div class="switch-decoration">Switch Decorations<br>ON/OFF</div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
+
+
+//css
+
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: #c7375f;
+  --bright-red: #d42d2f;
+  --dark-green: #344d2f;
+  --light-green: #77a047;
+  --gold: #fac57d;
+  --snow: #f0f4f7;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body,
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #d3cce3;
+  background: -webkit-linear-gradient(to right, #e9e4f0, #d3cce3);
+  background: linear-gradient(to right, #e9e4f0, #d3cce3);
+
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  height: 100vh;
+
+  background-image: url('images/christmas_bg2.jpg');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  background: var(--snow);
+  flex-direction: column;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 5rem;
+  width: 42rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  overflow: hidden;
+}
+
+p {
+  font-size: 45px;
+  margin: 4.5rem 2rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.decorator {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+}
+.decorator:before {
+  content: '';
+  position: relative;
+  top: 3px;
+  left: 3px;
+  width: 34px;
+  height: 14px;
+  display: block;
+  background: #9a9999;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+.decorator span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(154, 153, 153, 0.5);
+  transition: all 0.2s ease;
+}
+.decorator span:before {
+  content: '';
+  position: absolute;
+  display: block;
+  margin: -18px;
+  width: 56px;
+  height: 56px;
+  background: rgba(79, 46, 220, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 1;
+  pointer-events: none;
+}
+
+#decorator-switch:checked + .decorator:before,
+#decore-position-left:checked + .decorator:before,
+#decore-position-right:checked + .decorator:before {
+  background: #947ada;
+}
+#decorator-switch:checked + .decorator span,
+#decore-position-left:checked + .decorator span,
+#decore-position-right:checked + .decorator span {
+  background: #4f2edc;
+  transform: translateX(20px);
+  transition: all 0.2s cubic-bezier(0.8, 0.4, 0.3, 1.25), background 0.15s ease;
+  box-shadow: 0 3px 8px rgba(79, 46, 220, 0.2);
+}
+
+#decorator-switch:checked + .decorator span:before,
+#decore-position-left:checked + .decorator span:before,
+#decore-position-right:checked + .decorator span:before {
+  transform: scale(1);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.selection-container {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.show-container {
+  display: flex;
+}
+
+.seclect-box label {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.switch-decoration {
+  margin-top: 1.6rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: bold;
+}
+
+.seclect-box select {
+  margin-top: 0.5rem;
+  padding: 0.35rem 2rem;
+  font-size: 1.5rem;
+  margin-right: 2rem;
+}
+
+.check-left {
+  margin-right: 2rem;
+}
+
+.selection-label {
+  text-align: left;
+}
+
+.decorposition {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.decorator-btn {
+  margin-top: 1.5rem;
+  margin-left: 2.4rem;
+  display: inline-block;
+  outline: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 13px;
+  height: 30px;
+  background-color: #9147ff;
+  color: white;
+  padding: 0 2.4rem;
+}
+
+.decorator-btn:hover {
+  background-color: #732ef5;
+}
+
+.decorator-btn:active {
+  background-color: #3d02ac;
+}
+
+.hidden-error {
+  display: none;
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--wine-red);
+}
+
+.show-error {
+  display: block !important;
+}
+
+.error-transition {
+  animation: opacity-out 3s ease-in-out;
+}
+
+@keyframes opacity-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+//css

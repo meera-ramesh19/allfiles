@@ -1,0 +1,303 @@
+//js
+
+
+
+// Task:
+// Write a function to wire up the festivity loader to reflect how many days are remaining until Christmas!
+
+// Stretch goals:
+// - Animate the loader.
+// - Change the colors depending on the meter's value.
+
+
+const meter = document.getElementById("christmas");
+const meterUA = document.getElementById("christmas-ua");
+const flashMsgDisplay = document.getElementById('error');
+
+renderMeter();
+
+function renderMeter() {
+  const currentDate = new Date().setHours(0, 0, 0, 0);
+
+  // Initial Date from where the counting will begin
+  const initDate = new Date("Dec 1, 2021").setHours(0, 0, 0, 0);
+
+  const christmasDate = new Date("December 25, 2021").setHours(0, 0, 0, 0);
+  const christmasDateUA = new Date("January 7, 2022").setHours(0, 0, 0, 0);
+
+  const totalDaysFromInit = Math.floor((christmasDate - initDate)/ (1000 * 60 * 60 * 24));
+  const totalDaysFromInitUA = Math.floor((christmasDateUA - initDate)/ (1000 * 60 * 60 * 24));
+
+  console.log(totalDaysFromInit, totalDaysFromInitUA);
+
+  const countToChristmas = Math.floor((christmasDate - currentDate)/ (1000 * 60 * 60 * 24));
+  const countToChristmasUA = Math.floor((christmasDateUA - currentDate)/ (1000 * 60 * 60 * 24));
+  console.log(countToChristmas, countToChristmasUA);
+
+  // Total Days passed till now from Initial Date
+  const totalElapsedDays = Math.floor((currentDate - initDate)/ (1000 * 60 * 60 * 24));
+  console.log(totalElapsedDays);
+
+  if (currentDate < christmasDate) {
+    meter.setAttribute("value", totalElapsedDays);
+    meter.setAttribute("max", totalDaysFromInit);
+  } else if (currentDate === christmasDate) {
+    flashMsgDisplay.textContent = 'Many blessings and wishes to you.';
+    meter.classList.add('festivecolors');
+    meter.setAttribute("value", 24);
+    meter.setAttribute("max", 24);
+    showErrorMsg();
+  } else if (currentDate < christmasDateUA) {
+    flashMsgDisplay.textContent = 'Oops, you are late, but Ukrainian Christmas is right around the corner!';
+    meterUA.setAttribute("value", totalElapsedDays);
+    meterUA.setAttribute("max", totalDaysFromInitUA);
+    showErrorMsg();
+  } else if (currentDate === christmasDateUA) {
+    flashMsgDisplay.textContent = 'Many blessings and wishes to you.';
+    showErrorMsg();
+  } else {
+    showErrorMsg();
+  }
+
+  if (currentDate < christmasDateUA) {
+    meterUA.setAttribute("value", totalElapsedDays);
+    meterUA.setAttribute("max", totalDaysFromInitUA);
+  } else if (currentDate === christmasDateUA) {
+    flashMsgDisplay.textContent = 'Many blessings and wishes to you.';
+    meterUA.classList.add('festivecolors');
+    meterUA.setAttribute("value", 24);
+    meterUA.setAttribute("max", 24);
+    showErrorMsg();
+  } if (currentDate > christmasDateUA && currentDate < christmasDate) {
+    console.log('UA');
+    flashMsgDisplay.textContent = 'You\'ve Missed Ukrainian Christmas, but another is almost here!';
+    meter.setAttribute("value", totalElapsedDays);
+    meter.setAttribute("max", totalDaysFromInit);
+    showErrorMsg();
+  }
+
+}
+
+function showErrorMsg() {
+  flashMsgDisplay.classList.add('show-element');
+  flashMsgDisplay.classList.add('error-transition');
+  setTimeout(function () {
+    flashMsgDisplay.classList.remove('show-element');
+    flashMsgDisplay.classList.remove('error-transition');
+  }, 5000);
+  console.log('error');
+}
+
+
+// css  
+
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: #C7375F;
+  --bright-red: #D42D2F;
+  --dark-green: #344D2F;
+  --light-green: #77A047;
+  --gold: #FAC57D;
+  --snow: #F0F4F7;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body,
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  background: #D3CCE3;
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+
+  background-image: url('images/christmas_bg.jpg');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 100vh;
+}
+
+.container {
+    margin-top:3rem;
+    display: flex;
+    flex-direction: row;
+    background: var(--wine-red);
+    color: var(--snow);
+    padding: 3em 2.4em;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    width: 48rem;
+}
+
+.christmas-meter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  margin: 2rem;
+  width: 50%;
+}
+
+meter {
+  width: 100%;
+  height: 4rem;
+}
+
+.christmas-meter label {
+  font-size: 1.4rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: .75rem;
+}
+
+.hidden-error {
+  display: none;
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--wine-red);
+}
+
+.festiveday {
+  display: none;
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--dark-green);
+}
+
+.show-element {
+  display: block !important;
+}
+
+.error-transition {
+  animation: opacity-out 5s ease-in-out;
+}
+
+@keyframes opacity-out {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+meter::-webkit-meter-optimum-value {
+  background: repeating-linear-gradient(
+    135deg,
+    #036ffc,
+    #036ffc 20px,
+    #0f5bbe 20px,
+    #0f5bbe 40px
+  );
+}
+
+meter::-moz-meter-bar {
+  background: repeating-linear-gradient(
+    135deg,
+    #036ffc,
+    #036ffc 20px,
+    #0d55b3 20px,
+    #0d55b3 40px
+  );
+}
+
+
+meter.festivecolors::-moz-meter-bar {
+  box-shadow: 0 5px 5px -5px #999 inset;
+  background: repeating-linear-gradient(125deg, #ffd33d, #ffd33d 20px, #e9ba1f 20px, #e9ba1f 40px);
+}
+
+meter.festivecolors::-webkit-meter-optimum-value {
+  box-shadow: 0 5px 5px -5px #999 inset;
+  background: repeating-linear-gradient(125deg, #ffd33d, #ffd33d 20px, #e9ba1f 20px, #e9ba1f 40px);
+}
+
+
+//html 
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 10: 💂 Festivity Loader</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <h1>Festivities loading...</h1>
+  <div class="hidden-error" id="error">Ooops, you are late!!!'</div>
+  <div class="festiveday" id="festive-day">Ooops, you are late!!!'</div>
+  <div class="container">
+    <div class="christmas-meter">
+      <label for="christmas">Christmas</label>
+      <meter id="christmas" class="christmas"></meter> 
+    </div>
+    <div class="christmas-meter">
+      <label for="christmas-ua">Christmas (UA)</label>
+      <meter id="christmas-ua"></meter> 
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

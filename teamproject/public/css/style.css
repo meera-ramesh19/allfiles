@@ -1,0 +1,132 @@
+.editDiv {
+    display: none
+}
+
+.updateButton {
+    display: block
+}
+
+/* Google Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+/* CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #111D27 !important;
+}
+
+.isHidden {
+    display: none;
+}
+
+.container-fluid {
+    min-height: 100%;
+}
+
+nav {
+    background-color: #7A9E7E !important;
+    border-radius: 15px;
+}
+
+nav a:hover {
+    background-color: #E8F1F2;
+}
+.card-1 {
+    padding: 3em 1em;
+    width: 60%;
+    height: 430px;
+    left: 20%;
+    top: 70px;
+    background-color: #7A9E7E !important;
+    color: #000;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 15px !important;
+}
+
+.card-1>div:nth-child(2) {
+    padding: 1.3em 0;
+}
+
+.card-1 h1 {
+    font-weight: 600;
+}
+
+.sign-up-card {
+    width: 452px !important;
+    margin-top: 4em;
+    padding: 2em 4em;
+    border-radius: 15px !important;
+    background-color: #7A9E7E !important;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.5);
+}
+
+.form-control {
+    margin-bottom: 1.5em;
+}
+
+.sign-up-card span {
+    margin-top: 15px;
+}
+
+.login-card {
+    border: 2px solid black;
+    max-width: 50%;
+    height: 70%;
+    padding: 3em 0;
+    position: relative;
+    left: 28.8%;
+    top: 80px;
+    border-radius: 15px;
+    background-color: #7A9E7E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-card>div {
+    margin-bottom: 1.5em;
+    width: 70%;
+    text-align: center;
+}
+
+@media screen and (max-width: 860px) {
+    .login-card {
+        max-width: 70%;
+        left: 15%;
+    }
+    .login-card>div {
+        width: 85%;
+    }
+}
+
+.login-card form {
+    padding: 1.5em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-card form>input {
+    margin: 1em auto;
+    width: 100%;
+}
+
+
+/* Feed styles */
+
+.post-image {
+    height: 400px;
+    width: 600px;
+}

@@ -1,0 +1,407 @@
+js
+
+
+const greetingDisplay = document.getElementById("greetings-msg-display");
+const btnGenerate = document.getElementById("btn-generate");
+const btnReset = document.getElementById("btn-reset");
+
+const toNameInput = document.getElementById("to-name");
+const fromNameInput = document.getElementById("from-name");
+const cardMsg = document.getElementById("card-msg");
+
+const fromNameDisplay = document.getElementById("from-name-display");
+const toNameDisplay = document.getElementById("to-name-display");
+const regardsDisplay = document.getElementById("regards-display");
+
+btnGenerate.addEventListener("click", generateGreeting);
+btnReset.addEventListener("click", resetGreeting);
+
+const greetings = [
+    "Santa Claus is coming to town!",
+    "We wish you a Merry Christmas!",
+    "Happy holidays!",
+    "Ho, ho, ho! Merry Christmas!",
+    "Jingle all the way!",
+]
+
+function defaultGreetings () {
+  const randomMsg = greetings[Math.floor(Math.random() * greetings.length)];
+  greetingDisplay.innerHTML = randomMsg;
+  greetingDisplay.style.color = generateColors();
+}
+
+//Function to Return a Random Color
+function generateColors() {
+  const colors = [
+    "#E91E63",
+    "#8E24AA",
+    "#880E4F",
+    "#2196F3",
+    "#00796B",
+    "#6200EA",
+    "#0277BD",
+    "#FB8C00",
+    "#512DA8",
+    "#0D47A1",
+    "#E65100",
+    "#757575",
+    "#DD2C00",
+    "#455A64",
+    "#1B5E20",
+  ];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  return randomColor;
+}
+
+// Check if To input field has any value
+function checkToInput() {
+  let toNameOutput = '';
+  //Trim to remove whitespace
+  if(toNameInput.value.trim() == '') {
+    toNameOutput = "Hi there,";
+  } else {
+    toNameOutput = `Hi ${toNameInput.value},`;
+  }
+  toNameDisplay.innerText = toNameOutput;
+}
+
+
+// Check if From input field has any value
+function checkFromInput() {
+  let fromNameOutput = '';
+
+  //Trim to remove whitespace
+  if(fromNameInput.value.trim() == '') {
+    fromNameOutput = `Santa Claus`;
+  } else {
+    fromNameOutput = fromNameInput.value;
+  }
+  regardsDisplay.innerHTML = `Regards,`;
+  fromNameDisplay.innerText = fromNameOutput;
+}
+
+// Clear Input Fields
+function clearInputs() {
+  toNameInput.value = '';
+  fromNameInput.value = '';
+  cardMsg.value = '';
+}
+
+// Generate Greeting Message from given array or from input if provided
+function generateGreeting () {
+  renderBGImage();
+  checkToInput();
+  //Trim to remove whitespace
+  if(cardMsg.value.trim() == ''){
+    defaultGreetings();
+  } else {
+    greetingDisplay.innerText = cardMsg.value;
+    greetingDisplay.style.color = generateColors();
+  }
+
+  checkFromInput();
+  showHideElements();
+  showHideDisplayMsgs();
+  clearInputs();
+}
+
+function showHideElements() {
+  btnGenerate.classList.toggle("hide-element");
+  btnReset.classList.toggle("hide-element");
+  toNameInput.classList.toggle("hide-element");
+  fromNameInput.classList.toggle("hide-element");
+  cardMsg.classList.toggle("hide-element");
+}
+
+function showHideDisplayMsgs() {
+  greetingDisplay.classList.toggle("hide-element");
+  toNameDisplay.classList.toggle("hide-element");
+  fromNameDisplay.classList.toggle("hide-element");
+  regardsDisplay.classList.toggle("hide-element");
+}
+
+function resetGreeting() {
+  showHideElements();
+  showHideDisplayMsgs()
+}
+
+// Render a Random Background Image
+function renderBGImage() {
+  const clientID = "709538-8c543d4983ce23314eb672abd";
+  const url = `https://pixabay.com/api/?key=${clientID}&q=christmas&image_type=photo&orientation=horizontal`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((jsonData) => {
+      let randomImage = 0;
+      if (jsonData.totalHits <= 20) {
+        randomImage = Math.floor(Math.random() * jsonData.totalHits);
+     } else {
+      randomImage = Math.floor(Math.random() * 20);
+     }
+      document.body.style.backgroundImage = `url(${jsonData.hits[randomImage].largeImageURL})`;
+    })
+    .catch((error) => {
+      console.log(error);
+      document.body.style.backgroundImage = "url('christmas_bg3.jpg')";
+    })
+  }
+
+
+
+  //css
+
+
+
+  *,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: #c7375f;
+  --bright-red: #d42d2f;
+  --dark-green: #344d2f;
+  --light-green: #77a047;
+  --gold: #fac57d;
+  --snow: #f1f1f1;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #D3CCE3;
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+
+
+
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+
+  background-image: url('christmas_bg3.jpg');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card {
+  min-width: 46rem;
+  min-height: 48rem;
+  border-radius: 1.5rem;
+  background: var(--snow);
+  font-size: 3.5rem;
+  text-align: center;
+  padding: 0.8rem;
+  position: relative;
+  margin-bottom: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.greeting-container {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  line-height: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: 700;
+  transform: translate(-50%, -50%);
+}
+
+.greeting-container span,
+.greeting-container div {
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+.greeting-container p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4rem;
+  line-height: 6rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+
+button {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  background: #189b7c;
+  color: #fff;
+  border: none;
+  position: relative;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.4rem 4.5rem;
+  cursor: pointer;
+  transition: 600ms ease all;
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+
+  background: var(--gold);
+  color: var(--bright-red);
+}
+
+button:before,
+button:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 4px;
+  width: 0;
+  background: #1aab8a;
+  transition: 1500ms ease all;
+}
+button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+button:hover:before,
+button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
+.form-container {
+  margin-top: 3rem;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 45rem;
+}
+
+.form-inputs input,
+.form-inputs textarea {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #333333;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.39), 0 -1px 1px rgba(255, 255, 255, 0.95), 0 1px 0 rgba(255, 255, 255, 0.95);
+  outline: 0;
+}
+
+.form-inputs input,
+.form-inputs textarea {
+  padding: .75rem 1.2rem;
+  border-radius: 0.6rem;
+  outline: none;
+  width: 100%;
+  background-color: var(--snow);
+}
+
+.input-box {
+  flex-basis: 49%;
+  padding: 0.5rem 1rem;
+}
+
+.form-inputs textarea {
+  flex-basis: 100%;
+  flex-grow: 1;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: .75rem;
+  resize: none;
+}
+
+.hide-element {
+  display:none;
+}
+
+
+
+//html
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 05: ⭐️ Christmas Card Writer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Lato:wght@400;700&display=swap" rel="stylesheet">  
+
+  <link rel="stylesheet" href="index.css">
+  <script src="https://kit.fontawesome.com/48d6174c9c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="form-container">
+    <form action="" method="post" class="form-inputs">
+      <input type="text" class="input-box" placeholder="To Name" id="to-name" autocomplete="off">
+      <input type="text" class="input-box" placeholder="From Name" id="from-name" autocomplete="off">
+      <textarea name="" cols="30" rows="4" placeholder="Message" id="card-msg"></textarea>
+    </form>
+  </div>
+
+  <div class="card" id="card">
+    <div id="greeting-display" class="greeting-container">
+      <span id="to-name-display" class="hide-element"></span>
+      <p id="greetings-msg-display" class="hide-element"></p>
+      <div id="regards-display" class="hide-element"></div>
+      <span id="from-name-display" class="hide-element"></span>
+    </div>
+  </div>
+  <button id="btn-generate">Write card</button>
+  <button id="btn-reset" class="hide-element">Reset</button>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

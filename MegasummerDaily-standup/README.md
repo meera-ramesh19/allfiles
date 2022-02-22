@@ -1,0 +1,1 @@
+# MegasummerDaily-standup

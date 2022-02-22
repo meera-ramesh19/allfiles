@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://res.cloudinary.com/dpv8phzy0/raw/upload/v1601104269/mjbuttons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <title>Mintbean Learn-a-bit Challenge 01 - Header</title>
+    <style>
+      *,
+*::after,
+*::before {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+  font-size: 62.5%;
+}
+      /*BASIC STYLING*/
+      
+
+nav{
+  box-shadow:var(--dark-shadow);
+  max-width:var(--max-width);
+   /* margin:0 auto; */
+}
+
+.nav-menu a{
+  text-decoration: none;
+  color: black;
+}
+
+ .logo{
+  width:10rem;
+  height:100%;
+  margin:0 25rem 0 4rem;
+ 
+} 
+.nav-links{
+    /* margin-left:auto; */
+    padding: .1rem .5rem;
+  }
+   
+  .nav-links a:hover{
+     color:var(--turquoise);
+
+  }
+  #home .home, #photos, .photos, .pricing,#pricing, .reviews,#reviews, #contact .contact
+{
+
+}
+hvr-shutter-in-horizontal {
+    backface-visibility: hidden;
+    background: #2098d1 none repeat scroll 0 0;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    display: inline-block;
+    position: relative;
+    transform: translateZ(0px);
+    transition-duration: 0.3s;
+    transition-property: color;
+    vertical-align: middle;
+}
+.hvr-shutter-in-horizontal::before {
+    background: #e1e1e1 none repeat scroll 0 0;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scaleX(1);
+    transform-origin: 50% 50% 0;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+    z-index: -1;
+}
+.hvr-shutter-in-horizontal:hover, .hvr-shutter-in-horizontal:focus, .hvr-shutter-in-horizontal:active {
+    color: white;
+}
+.hvr-shutter-in-horizontal:hover::before, .hvr-shutter-in-horizontal:focus::before, .hvr-shutter-in-horizontal:active::before {
+    transform: scaleX(0);
+}
+.hvr-shutter-out-horizontal {
+    backface-visibility: hidden;
+    background: #e1e1e1 none repeat scroll 0 0;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    display: inline-block;
+    position: relative;
+    transform: translateZ(0px);
+    transition-duration: 0.3s;
+    transition-property: color;
+    vertical-align: middle;
+}
+.hvr-shutter-out-horizontal::before {
+    background: #2098d1 none repeat scroll 0 0;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scaleX(0);
+    transform-origin: 50% 50% 0;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+    z-index: -1;
+}
+.hvr-shutter-out-horizontal:hover, .hvr-shutter-out-horizontal:focus, .hvr-shutter-out-horizontal:active {
+    color: white;
+}
+.hvr-shutter-out-horizontal:hover::before, .hvr-shutter-out-horizontal:focus::before, .hvr-shutter-out-horizontal:active::before {
+    transform: scaleX(1);
+}
+  </style>
+  
+   </head>
+
+  <body>
+        
+        <!-- <nav>
+            <!-- <div class="nav-logo"></div>
+             <img src="images/learnabit-logo.svg" class="logo" alt="logo" />
+            </div>  --
+            
+            
+            <ul class="nav-menu">
+               <li class="nav-logo"><a href="#"><img src="index_images/learnabit-logo.svg" class="logo" alt="logo" />
+            </a></li>
+               <li class="nav-links" ><a  class="home" href="#">Home</a></li>
+               <li class="nav-links" ><a  class="photos" href="#">Photos</a></li>
+               <li class="nav-links"><a  class="pricing" href="#">Pricing</a></li>
+               <li class="nav-links"><a class="reviews" href="#">Reviews</a></li>
+               <li class="nav-links"><a class="contact" href="#">Contact</a></li>
+               <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+            </ul>
+        </nav> -->
+        <div>
+        <a class="btn btn-hvr hvr-shutter-in-horizontal" href="#">Shutter In Horizontal</a>
+        <a class="btn btn-hvr hvr-shutter-out-horizontal" href="#">Shutter Out Horizontal</a>
+      </div>
+      </body>
+    </html>

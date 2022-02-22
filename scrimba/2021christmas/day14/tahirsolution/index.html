@@ -1,0 +1,299 @@
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: rgb(199, 55, 95);
+  --bright-red: #d42d2f;
+  --dark-green: #344d2f;
+  --light-green: #77a047;
+  --gold: #fac57d;
+  --snow: #f0f4f7;
+  --light-grey: #cecece;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      right bottom,
+      from(var(--snow)),
+      to(var(--light-grey))
+    ),
+    url(images/bg_img.jpg);
+  background-image: linear-gradient(
+      to right bottom,
+      var(--snow),
+      var(--light-grey)
+    ),
+    url(images/bg_img.jpg);
+  background-size: cover;
+  background-blend-mode: multiply;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--snow);
+  text-shadow: 4px 4px 4px rgba(192, 4, 4, 0.89);
+}
+
+h3 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-top: 2.1rem;
+  color: #210a85;
+  text-shadow: 2px 2px 2px rgba(78, 98, 211, 0.76);
+}
+
+
+.error-transition {
+  animation: opacity-out 4s ease-in-out;
+}
+
+@keyframes opacity-out {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.elf-hangout-zone {
+  margin-top: 2.4rem;
+  /* Limit the number of elves to 6 per row. */
+  /* Make sure that the elves stay in the elf hangout zone, no matter how many there are. */
+  
+  background: rgba(110, 110, 110, 0.4);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 2.5rem 3rem;
+  min-width: 37rem;
+  max-width: 37rem;
+  min-height: 33rem;
+  max-height: 33rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 3rem;
+  overflow: scroll;
+}
+
+.elf-hangout-zone p {
+  margin-bottom: 3.6rem;
+  font-size: 1.6rem;
+  line-height: 2.8rem;
+  color:#242424;
+  max-height: 22rem;
+}
+
+.elf {
+  font-size: 3.8rem;
+}
+
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 34rem;
+  max-width: 34rem;
+}
+
+.buttons button {
+  min-width: 50%;
+}
+
+button {
+  padding: 1.2em 1.75rem;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: 600;
+  background-color: var(--dark-green);
+  color: var(--snow);
+  border-radius: 999px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  margin: 0 .75rem;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.03)
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+
+//js
+
+
+// Stretch goals:
+// - Write a function to give the elves some tools, or a cup of tea!
+// - Limit the total number of elves to 100.
+
+// Task:
+// - Write a function to duplicate the elf when the button is clicked.
+// - See index.css for optional styling challenges.
+
+const elf = document.getElementById("elf");
+const flashMsgDisplay = document.getElementById('error');
+
+const btnDuplicate = document.getElementById("btn-duplicate");
+const btnRandom = document.getElementById("btn-random");
+const btnReset = document.getElementById("btn-reset");
+
+const randomItems = ["☕", "🔮", "🥞", "🦌", "🍪", "🍴", "⛄", "🧇", "🎄", "🎁", "🔔", "🕯️", "🎶", "🥤", "🍫", "🍩", "🍇"];
+
+function duplicateElf() {
+    // Not 100% sure why, but a single emoji is counted as 2.
+    if (elf.textContent.length < 60) {
+        elf.textContent += "🧝";
+    } else {
+        showErrorMsg();
+    } 
+}
+
+function randomElf() {
+    if (elf.textContent.length < 60) {
+        elf.textContent += randomItems[Math.floor(Math.random() * randomItems.length)];
+    } else {
+        showErrorMsg();
+    } 
+}
+
+function resetElf() {
+    elf.textContent = "🧝";
+    btnDuplicate.classList.remove('hide');
+    btnRandom.classList.remove('hide');
+    btnReset.classList.add('hide');
+}
+
+function showErrorMsg() {
+    flashMsgDisplay.classList.toggle('hide');
+    flashMsgDisplay.classList.add('error-transition');
+    setTimeout(function () {
+      flashMsgDisplay.classList.add('hide');
+      flashMsgDisplay.classList.remove('error-transition');
+    }, 4000);
+
+    btnDuplicate.classList.add('hide');
+    btnRandom.classList.add('hide');
+
+    setTimeout(function () {
+        btnReset.classList.remove('hide');
+    }, 3300);
+  }
+
+
+  btnDuplicate.addEventListener("click", duplicateElf);
+  btnRandom.addEventListener("click", randomElf);
+  btnReset.addEventListener("click", resetElf);
+
+
+  //html
+
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 13: 🦃 Christmas Dinner Calculator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body class="noselect">
+    <h1>Lonely Elf</h1>
+    <h3 class="hide" id="error">Limit Reached, Please Reset!!!</h3>
+    
+    <div class="elf-hangout-zone ">
+      <div id="elf" class="elf">🧝</div>
+  </div>
+  
+  <div class="buttons">
+    <button id="btn-duplicate">Duplicate Elf</button>
+    <button id="btn-reset" class="hide">Reset</button>
+    <button id="btn-random">Random Gift</button>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

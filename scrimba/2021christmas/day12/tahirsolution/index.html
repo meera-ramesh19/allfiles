@@ -1,0 +1,258 @@
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: #c7375f;
+  --bright-red: #d42d2f;
+  --dark-green: #344d2f;
+  --light-green: #77a047;
+  --gold: #fac57d;
+  --snow: #f0f4f7;
+  --light-grey: #cecece;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--dark-green);
+
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      right bottom,
+      from(var(--snow)),
+      to(var(--light-grey))
+    ),
+    url(images/christmas-3026685_1920.jpg);
+  background-image: linear-gradient(to right bottom, var(--snow), var(--light-grey)),
+    url(images/christmas-3026685_1920.jpg);
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+h1 {
+  font-size: 3.6rem;
+}
+
+form *:not(label),
+.guest-list {
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    border-radius: 5px;
+    border: none;
+}
+
+.deletebtns {
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 16rem;
+    justify-content: space-around;
+    min-width: 30rem;
+    max-width: 45rem;
+    padding: .5rem;
+}
+
+
+form * {
+   padding: .8rem;
+   font-size: 1.8rem
+}
+
+label {
+    padding: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+}
+
+input { 
+    background: var(--snow);
+    margin-bottom: 1.2rem;
+}
+
+.guest-list {
+    color: var(--wine-red);
+    min-width: 30rem;
+    max-width: 45rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: var(--snow);
+    padding: 2rem 3.5rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+    max-height: 30rem;
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+}
+
+li {
+    padding: 0.5rem;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+}
+
+button {
+    background: var(--dark-green);
+    color: var(--snow)
+}
+
+button:hover,
+button:focus {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.deletebtns button {
+  margin-top: .8rem;
+  width: 48.8%;
+}
+
+.guest-list::-webkit-scrollbar {
+  width: 16px;
+}
+
+.guest-list::-webkit-scrollbar-track {
+  background-color: var(--wine-red);
+  border-radius: 100px;
+}
+
+.guest-list::-webkit-scrollbar-thumb {
+  background-color: var(--gold);
+  border-radius: 100px;
+}
+
+
+//html 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 12: 🐑 Christmas Guest List</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <h1>Christmas Guest List</h1>
+  <ul class="guest-list" id="guest-list">
+  </ul>
+  
+  <form autocomplete="off">
+      <label for="name">New guest:</label>
+      <input id="input" type="text" id="name" name="name">
+      <button id="btn" type="button">Add 'em</button>
+      <div class="deletebtns">
+        <button id="btn-delete" type="button">Kick Last</button>
+        <button id="btn-delete-evil" type="button">Kick Evil(s)</button>
+      </div>
+  </form>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
+
+
+//js
+
+// Tasks:
+// - Write the JS to render the Christmas day guest list in the guest-list element.
+// - Add the functionality to add new guests.
+
+// Stretch goals: 
+// - Add a button to remove the most recently added guests.
+// - What about if you want to remove the evil relative?
+
+const input = document.getElementById("input");
+let guestList = document.getElementById("guest-list");
+
+// Buttons
+const btn = document.getElementById("btn");
+const btnKickLastOne = document.getElementById("btn-delete");
+const btnKickEvil = document.getElementById("btn-delete-evil");
+
+let guests = ["Partner", "Evil Nice Relative 1", "Nice Relative 2", "Evil One", "another evil", "another one", "another evil is here", "strange Evil is here", "someone Nicer", "Ugly Evil Bad"];
+
+// Any element with following Word will be removed from the Array
+const filterString = "Evil";
+
+// Initial Render
+render();
+
+
+// Function to check filterString in Array and remove the particular element
+function checkEvil() {
+    for (let i = guests.length - 1; i >= 0; i--) {
+        const element = guests[i];
+        if (element.toLowerCase().indexOf(filterString.toLowerCase()) !== -1) {
+            guests.splice(i, 1);
+        }
+    }
+    render();
+    console.log(guests);
+}
+
+// Add guests to the array
+function addGuests() {
+    let newGuest = input.value;
+    if (newGuest) {
+        guests.push(newGuest);
+        input.value = "";
+        let li = document.createElement("li");
+        li.textContent = newGuest;
+        guestList.appendChild(li);
+
+    }
+}
+
+// Show the array as an unordered list
+function render() {
+    guestList.innerHTML = '';
+    guests.forEach(guest => {
+        let li = document.createElement("li");
+        li.textContent = guest;
+        guestList.appendChild(li);
+    });
+}
+
+// Remove last guest from the list
+function kickLastOne() {
+    guests.pop();
+    render();
+}
+
+
+// Event Listners
+btn.addEventListener("click", addGuests);
+btnKickEvil.addEventListener("click", checkEvil);
+btnKickLastOne.addEventListener("click", kickLastOne);
+

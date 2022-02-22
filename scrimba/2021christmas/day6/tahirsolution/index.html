@@ -1,0 +1,203 @@
+//js
+
+
+const greeting = document.getElementById("greeting")
+const christmassifierBtn = document.getElementById("christmassifierBtn")
+const myAudio = new Audio('jinglebells.mp3');
+
+christmassifierBtn.addEventListener("click", christmassifyName)
+
+function christmassifyName() {
+  // Task:
+  // - Add christmassify class to greeting.
+  //- Check whether christmassifierBtn has christmassify on it. If so, change text to "De-christmassify", if not, change text to "Christmassify"
+
+  // Stretch goals:
+  // - Play Christmas music when Christmas class is added.
+  // - Remove the Christmas class after a given time.
+  greeting.classList.toggle('christmassified');
+  if (christmassifierBtn.textContent == 'Christmassify') {
+    myAudio.currentTime = 0;
+    myAudio.pause();
+    myAudio.play();
+    christmassifierBtn.innerHTML = 'De-christmassify'
+  } else {
+    myAudio.pause();
+    myAudio.currentTime = 0;
+    christmassifierBtn.innerHTML = 'Christmassify'
+  }
+}
+
+// Render a Random Background Image
+function renderBGImage() {
+  const clientID = "709538-8c543d4983ce23314eb672abd";
+  const url = `https://pixabay.com/api/?key=${clientID}&q=christmas&image_type=photo&orientation=horizontal`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((jsonData) => {
+      let randomImage = 0;
+      if (jsonData.totalHits <= 20) {
+        randomImage = Math.floor(Math.random() * jsonData.totalHits);
+      } else {
+        randomImage = Math.floor(Math.random() * 20);
+      }
+      document.body.style.backgroundImage = `url(${jsonData.hits[randomImage].largeImageURL})`;
+    })
+    .catch((error) => {
+      console.log(error);
+      document.body.style.backgroundImage = "url('christmas_bg3.jpg')";
+    })
+}
+
+setInterval(renderBGImage, 6000);
+
+
+//css
+
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: #C7375F;
+  --bright-red: #D42D2F;
+  --dark-green: #344D2F;
+  --light-green: #77A047;
+  --gold: #FAC57D;
+  --snow: #F0F4F7;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #D3CCE3;
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+
+
+
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 59%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  height: 100vh;
+
+  background-image: url('christmas_bg3.jpg');
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+    background: var(--snow);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius:1rem;
+    padding: 4.5rem;
+    min-width: 45rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+p {
+    font-size: 5rem;
+}
+
+p span {
+    opacity: 0;
+}
+
+button {
+  margin-top: 5rem;
+    padding: 1.6rem 4rem;
+    border: none;
+    font-size: 2.4rem;
+    background-color: var(--bright-red);
+    color: var(--snow);
+    border-radius: 999px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--wine-red);
+}
+
+.christmassified {
+    font-family: 'Mountains of Christmas', cursive;
+    color: #D42D2F;
+}
+
+.christmassified span {
+    opacity: 1;
+}
+
+
+//html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 06: ✨ Text Christmassifier</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="container">
+    <p id="greeting"><span>🎅 </span>Merry Christmas!<span> ☃️</span></p>
+    <button id="christmassifierBtn">Christmassify</button>
+</div>
+
+
+  <script src="index.js"></script>
+</body>
+
+</html>
+

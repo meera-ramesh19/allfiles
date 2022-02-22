@@ -1,0 +1,335 @@
+//js 
+
+
+// Task:
+// - Wire up the buttons to switch through the images in the imgs array. 
+// - Make sure that the gallery works no matter how many images are added.
+// - Decide/implement what to do when you reach either end of the array - do nothing and disable buttons, loop back round to the other end, or something else?
+// - Remember to also update the alt tags.
+
+// Stretch goals:
+// - Add transitions for a smooth effect.
+// - Allow the user to zoom in and out of the images. 
+
+const previousBtn = document.getElementById("previous-btn");
+const nextBtn = document.getElementById("next-btn");
+const img = document.getElementById("img");
+
+// Modal
+const modalContainer = document.getElementById("modalcontainer");
+const modalImg = document.getElementById("modal-img");
+const captionText = document.getElementById("caption");
+
+const imgs = [
+    {src: "images/village.jpg",
+    alt: "christmas village at night with snow and christmas tree"},
+    {src: "images/present.jpg",
+    alt: "white and gold wrapped present on white table with snowflake decorations"},
+    {src: "images/doggies.jpg",
+    alt: "small black dog and small beige dog looking out the window at snow next to Christmas wreath"}];
+
+let imgNum = 0
+let sliderPlaying = true;
+
+// Change slider images automatically every five seconds
+let slideInterval = setInterval(nextImg,5000);
+
+// Set Initial Image
+setFirstImg();
+
+function setFirstImg() {
+    img.src = imgs[imgNum].src;
+}
+
+function previousImg() {
+  imgNum--;
+    console.log(imgNum)
+    if (imgNum <= -1) {
+        imgNum = imgs.length - 1;
+        setSliderImg ()
+    } else {
+        setSliderImg ()
+    }
+}
+
+function nextImg() {
+  imgNum++;
+    if (imgNum >= imgs.length) {
+        imgNum = 0;
+        setSliderImg();
+    } else {  
+        setSliderImg();
+    }
+}
+
+function setSliderImg () {
+    img.src = imgs[imgNum].src;
+    img.alt = imgs[imgNum].alt;
+    img.classList.add("imgtransition");
+    img.addEventListener("animationend", () => {
+        img.classList.remove("imgtransition") 
+    });
+}
+
+function displayModal() {
+    sliderPlaying = false;
+	clearInterval(slideInterval);
+    modalContainer.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = imgs[imgNum].alt;
+}
+
+function hideModal() {
+	playing = true;
+	slideInterval = setInterval(nextImg,2000);
+    modalContainer.style.display = "none";
+}
+
+previousBtn.addEventListener('click', previousImg);
+nextBtn.addEventListener('click', nextImg);
+
+img.addEventListener('click', displayModal);
+
+modalImg.addEventListener('click', hideModal);
+modalContainer.addEventListener('click', hideModal);
+
+
+
+
+
+
+
+
+
+// css 
+
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --wine-red: #c7375f;
+  --bright-red: #d42d2f;
+  --dark-green: #344d2f;
+  --light-green: #77a047;
+  --gold: #fac57d;
+  --snow: #f0f4f7;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+
+  background: #D3CCE3;
+  background: -webkit-linear-gradient(to right, #E9E4F0, #D3CCE3);
+  background: linear-gradient(to right, #E9E4F0, #D3CCE3);
+
+}
+
+h1 {
+  margin-bottom: 3rem;
+}
+
+.gallery {
+  display: inline-block;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  height:35rem;
+  width:55rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.gallery-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.imgtransition {
+  animation: imganimate 500ms ease-in-out;
+}
+
+
+@keyframes imganimate {
+  0% {
+      opacity: 0;
+  }
+
+  65% {
+    opacity: .4;
+  }
+
+  100% {     
+      opacity: 1;
+  }
+}
+
+#img {
+  cursor: pointer;
+  transition: 0.3s;
+}
+#img:hover {opacity: 0.8;}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 12rem;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0, 0, 0, 0.836);
+}
+
+.modalimg {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 65rem;
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 65rem;
+  text-align: center;
+  color: rgb(218, 218, 218);
+  padding: 1.2rem 0;
+}
+
+.caption-txt {
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 3rem;
+}
+
+.modalimg, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+.arrow {
+  position: absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.35);
+  border: none;
+  padding: .5rem 1rem;
+  font-size: 3rem;
+  z-index:100;
+  color: #fff;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.65);
+  transition: .5s ease;
+  color:var(--gold)
+}
+
+.arrow-left {
+  left: 0;
+}
+
+.arrow-right {
+  right: 0;
+}
+
+
+.modal-img {
+  display: none;
+}
+
+
+//html
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 11: 🧚 Christmas Carousel</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <h1>Christmas Gallery</h1>
+  <div class="gallery">
+    <div class="gallery-container">
+      <img id="img" src="" alt="" />
+
+      <button class="arrow arrow-left" id="previous-btn">
+        <span class="material-icons-outlined">keyboard_arrow_left</span>
+      </button>
+
+      <button class="arrow arrow-right" id="next-btn">
+        <span class="material-icons-outlined">keyboard_arrow_right</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div id="modalcontainer" class="modal">
+    <img class="modalimg" id="modal-img">
+    <div id="caption" class="caption-txt"></div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
+
