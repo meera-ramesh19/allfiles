@@ -1,0 +1,2 @@
+language="nodejs"
+run="echo '\nFILE OUTPUT:\n' && node index.js && echo '\nTEST OUTPUT:' && jest"
