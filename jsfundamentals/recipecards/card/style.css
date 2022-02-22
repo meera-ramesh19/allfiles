@@ -1,0 +1,167 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic&subset=latin,latin-ext,cyrillic,cyrillic-ext,greek-ext,greek,vietnamese)
+
+body
+  background-color: #edeeef
+
+.all__recipe
+  margin: auto
+  display: flex
+  height: 350px
+  justify-content: center
+  @media screen and (max-width: 1100px)
+    display: block
+
+hr
+  color: #cfcfd1
+  margin-left: 5%
+  width: 300px
+
+#recipe__presentation
+  overflow: hidden
+  width: 30%
+  background: url("https://static.kidspot.com.au/recipe_asset/665/3906.jpg-20150309012234~q75,dx720y432u1r1gg,c--.jpg")
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+  max-height: 400px
+  @media screen and (max-width: 1100px)
+    width: 550px
+  
+
+.circle__recipe
+  background-color: #e2c904
+  width: 80px
+  height: 80px
+  opacity: 0.8
+  border-radius: 50%
+  display: flex
+  text-align: center
+  align-items: center
+  justify-content: center
+  margin-top: 10px
+  margin-left: 10px
+  flex-direction: column
+  h2
+    font-family: "Roboto", sans-serif
+    font-weight: 500
+    font-size: 20px
+    margin: 0
+  p
+    font-family: "Roboto", sans-serif
+    font-weight: 500
+    font-size: 13px
+    margin: 0
+
+.description
+  margin-bottom: 0
+  background-color: rgba(28, 28, 28, 0.23)
+  h1
+    font-family: "Roboto", sans-serif
+    font-weight: 500
+    font-size: 25px
+    padding-top: 10px
+    padding-left: 10px
+    color: #eaeae5
+  p
+    font-family: "Roboto", sans-serif
+    font-weight: 300
+    color: #eaeae5
+    padding-left: 10px
+    margin-top: 0
+    word-wrap: break-word
+
+@media screen and (max-width: 1100px)
+  .description h1
+    font-size: 17px
+    padding-top: 5px
+
+.content
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+  background-color: #fff
+  width: 550px
+
+.tabs
+  text-align: center
+  @media screen and(max-width: 1100px)
+    margin-top: 0
+    padding-top: 10px
+  li
+    list-style: none
+    display: inline
+    margin-right: 20px
+  a
+    text-decoration: none
+    font-family: "Roboto"
+    color: #383838
+    transition: 0.5s
+    &:hover
+      color: #f918a7
+  li .active
+    border-bottom: 2px solid #f918a7
+    color: #f918a7
+
+.tabcontent
+  height: 85%
+  animation: fadeEffect 1s
+  p
+    font-family: "Roboto", sans-serif
+    font-weight: 300
+    margin-left: 5%
+    padding-right: 10px
+    font-size: 14px
+    text-align: justify
+  h2
+    margin-left: 5%
+    margin-bottom: 0
+    font-family: "Roboto"
+    color: #636363
+  ul
+    font-family: "Roboto", sans-serif
+    font-weight: 300
+    list-style-type: none
+  ol
+    font-family: "Roboto", sans-serif
+    font-weight: 300
+    list-style-type: decimal
+  a
+    text-decoration: none
+    margin-left: 5%
+    color: #1369bf
+    font-size: 20px
+    font-family: "Roboto", sans-serif
+
+#author img
+  float: right
+  border-radius: 50%
+  width: 100px
+  height: 100px
+  margin-right: 3%
+  padding-left: 7px
+
+#method ol
+  overflow-y: scroll
+  height: 75%
+  &::-webkit-scrollbar-track
+    background-color: #F5F5F5
+  &::-webkit-scrollbar
+    width: 5px
+    background-color: #F5F5F5
+  &::-webkit-scrollbar-thumb
+    background-color: #949596
+    background-color-border-radius: 2px
+
+.credits
+  font-size: 20px
+  font-family: "Roboto", sans-serif
+  position: absolute
+  right: 10px
+  bottom: 0
+  color: #686868
+
+@keyframes fadeEffect
+  from
+    opacity: 0
+
+  to
+    opacity: 1

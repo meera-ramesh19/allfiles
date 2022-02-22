@@ -1,0 +1,106 @@
+body {
+    margin: 100px 350px;
+  }
+  
+  .card {
+    border: 2px solid #2c2c2c;
+    display: inline-block;
+    margin: 20px 20px;
+    width: 300px;
+    fontleft: 50%;
+    top: 50%;
+    font-family: "Helvetica";
+  }
+  
+  .card .card-title {
+    margin-top: 0;
+    border-bottom: 4px dotted green;
+    padding: 10px;
+  }
+  
+  .card .card-content {
+    padding: 10px;
+  }
+  #murray .card-title {
+    font-family: impact;
+  }
+  #cage p {
+    font-family: italic;
+  }
+  
+  .card p {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .card .card-footer {
+    margin-left: 10px;
+    padding-bottom: 10px;
+    font-size: 25px;
+  }
+  .links {
+    text-decoration: none;
+    color: black;
+    border-color: #3498db;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+    padding: 5px;
+  }
+  
+  .links:hover,
+  .links:focus {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  }
+  img:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes shake {
+    0% {
+      transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+      transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+      transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+      transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+      transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+      transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+      transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+      transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+      transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+      transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+      transform: translate(1px, -2px) rotate(-1deg);
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    #cage {
+      display: block;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    #cage {
+      display: inline-block;
+    }
+  }
+  

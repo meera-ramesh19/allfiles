@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<title>Angry parent</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>ANGRY PARENT SIMULATOR</h1>
+
+<form id="myForm">
+  <section id="first">
+    <label for="fstName"> First Name:</label>
+    <input type="text"  name=" "value="" id="firstName" placeholder="FirstName">
+  </section>
+
+  <section id="second">
+  <label for="secName"> Second Name:</label>
+  <input type="text" name=" " value="" id="secondName" placeholder="SecondName">
+  </section>
+
+  <section id="third">
+  <label for="midName"> Middle Name:</label>
+  <input type="text" name="" value="" id="middleName" placeholder="MiddleName">
+  </section>
+
+     <section id="fourth">
+  <label for="lastsName"> Last Name: </label>
+   <input type="text" name="" value="" id="lastName" placeholder="LastName">
+  </section>
+<!--
+    <p>  Child's Age:<p>  -->
+  <section id="angerLevel">
+
+   <section id="range">
+      <label class="radio-text">Child's Age:</label>
+      <input type="radio" id="age1" name="choice" value="6" checked>
+     <label for="age1"class="radio-inline">0 - 6</label>
+    <input type="radio" id="age2" name="choice" value="12">
+    <label for="age2" class="radio-inline">7 - 12</label>
+    <input type="radio" id="age3" name="choice" value="18">
+     <label for="age3" class="radio-inline">13 - 17</label>
+
+   </section>
+  </section>
+</form>
+<section id="fifth">
+<button id="btn-submit" type="button" name="button">Submit</button>
+ <button  onclick=reset() id="btn-reset" type="button"
+         name="button">Reset </button>
+<!--    this is to reset the whole form-->
+<!-- <input type="button" onclick="myFunction()" value="Reset form">
+<!-- this is when you focus on the input --field to clear the text-->
+<!-- <input type="text" onfocus="this.value=''" value="Blabla">  -->
+</section>
+<section id ="sixth">
+  <h2 id="results" class="blink"></h2>
+</section>
+<script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>

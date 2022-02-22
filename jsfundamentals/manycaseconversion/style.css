@@ -1,0 +1,55 @@
+label,h1{
+  display:inline-flex;
+  flex-flow: row nowrap;
+  justify-content:space-between;
+  margin:0 auto;
+   padding:2% 0;
+   width:20%;
+}
+
+#original, #lowercase, #uppercase, #titlecase, #sentencecase{
+  flex-flow:row wrap;
+  display:inline-flex;
+  width:60%;
+  color:black;
+  padding: 5% 0 0 0%;
+}
+#submitbutton{
+  align-items:center;
+  padding:0 0 0 21%;
+
+}
+#stringtextarea{
+  display:flex;
+  flex-flow: column;
+  font-family: "chaparral-pro";
+}
+#inputarea, #lowercasearea, #uppercasearea, #titlecasearea, #sentencecasearea{
+  display:flex;
+  flex-direction:row wrap;
+  padding:2% 15% 2% 15%;
+   text-align: center;
+  align-items:center;
+  justify-content:space-around;
+}
+#submit{
+  width:10%;
+  height:auto;
+  padding:1% 1%;
+}
+textarea {
+  color: white
+-webkit-appearance: none;
+  appearance: none;
+  background: rgba(0,0,0,.15);
+  border-color: rgba(0,0,0,.3);
+  border-radius: .2em;
+  box-shadow: transparent 0 .15em .3em;
+  transition: border-color .2s ease-in-out,
+              box-shadow .2s ease-in-out;
+}
+textarea:hover,
+textarea:focus {
+  border-color: rgba(0,150,200,1);
+  box-shadow: rgba(0,150,200,.7) 0 0 .5em;
+}

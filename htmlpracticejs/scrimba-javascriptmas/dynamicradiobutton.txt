@@ -1,0 +1,186 @@
+
+// let radio_home = document.getElementById("container");
+
+      ghockin@twilio.com
+sagnew@twilio.com
+      
+twil.io/webinars blog to check all the webinars
+    //    let heading=document.createElement("h1");
+    //    heading.id="welcome-text";
+    //    heading.style.color="#344D2F";
+    //    heading.style.fontFamily="cursive";
+    //    heading.style.lineHeight="1"
+    //    heading.innerText="Themes";
+       
+    //    let div = document.createElement("div");
+    //    div.appendChild(heading)
+    //    for (let i = 0; i < themes[themes.length-1]; i++) {
+    //        let label = document.createElement("label");
+    //        let radio = document.createElement("input");
+    //        radio.type = "radio";
+    //     // radio.name="holidays"
+    //     //radio.value = themes[i];
+    //        radio.name = themes[i].name;
+    //        radio.value = themes[i].value;
+    //        radio.style.fontSize="30px";
+    //        radio.style.fontFamily="Dancing Script, Roboto"
+    //        if (i===0) {radio.checked="true"};
+    //        label.appendChild(radio);
+    //       // label.appendChild(document.createTextNode(themes[i]));
+    //        label.appendChild(document.createTextNode(themes[i].text));
+           
+    //        div.appendChild(label);
+           
+    //        //if we are on the last itteration there is no need to create another <br>
+    //        if(i+1<themes.length){
+    //            div.appendChild(document.createElement("br"));
+    //            div.appendChild(document.createElement("br"));
+    //        }
+           
+    //     } 
+        
+    //     div.appendChild(document.createElement("br"));
+    //     div.appendChild(document.createElement("br"));
+    //     let button = document.createElement("button");
+    //        button.id="submit";
+    //        button.type="button";
+    //        button.innerHTML="Submit"
+    //        button.style.background="#344D2F";
+    //        button.style.borderRadius="20px";
+    //        button.style.padding="1rem";
+    //        button.style.width="5rem;" 
+    //        div.appendChild(button);
+
+    //        div.style.background="white";
+    //        div.style.width="500px";
+    //        div.style.height="400px";
+    //        div.style.textAlign="center";
+    //        div.style.paddingTop="8rem";
+    //      radio_home.appendChild(div);
+
+    //      let submitbtn = document.getElementById('submit');
+      
+    //      submitbtn.addEventListener('click', () => {
+    //          let holidays = document.getElementsByName('holidays');
+    //          holidays.forEach((holiday) => {
+    //              if (holiday.checked) {
+    //                  checkedBtn=holiday.value;
+    //                  if(checkedBtn==='Thanksgiving'){
+    //                     thanksgivingTheme()
+    //                 }else if(checkedBtn==='Christmas'){
+    //                     christmasTheme()
+    //                 }else{
+    //                     newyearTheme()
+    //                 }
+    //                 //   alert(`You selected: ${checkedBtn}`);
+    //              }
+    //          });
+    //       });
+        
+
+        } 
+
+
+
+   //   themes.forEach((themeNames, i) => {
+    
+    //  let inputValue = document.createElement('input');
+    //  inputValue.type = "radio";
+    //  inputValue.name = themeNames;
+    //  let labelValue = document.createElement('label');
+    //  labelValue.innerHTML =themeNames ;
+    //  inputValue.themeNames = i;
+    //  document.body.appendChild(labelValue);
+    //  document.body.appendChild(inputValue);
+
+
+         //   without arrays create radiobuttons dynamically 
+     //document.getElementById('id').onclick = function() {
+
+     
+    //   var radiobox1 = document.createElement('input');
+    //     radiobox1.type = 'radio';
+    //     radiobox1.id = 'christmas';
+    //     radiobox1.value = 'christmas';
+    //     radiobox1.name="radioBtns"
+     
+    //     var label1 = document.createElement('label')
+    //     label1.htmlFor = 'radioBtns';
+     
+    //     var description1 = document.createTextNode('Christmas');
+    //     label1.appendChild(description1);
+    //     var newline = document.createElement('br');
+
+    //     var radiobox2 = document.createElement('input');
+    //     radiobox2.type = 'radio';
+    //     radiobox2.id = 'thanksgiving';
+    //     radiobox2.value = 'thanksgiving';
+    //     radiobox2.name="radioBtns"
+       
+     
+    //     var label2 = document.createElement('label')
+    //     label2.htmlFor = 'radioBtns';
+     
+    //     var description2= document.createTextNode('ThanksGiving');
+    //     label1.appendChild(description2);
+    //     var newline = document.createElement('br');
+        
+     
+    //     var container = document.getElementById('container');
+    //     container.appendChild(radiobox1);
+    //     container.appendChild(label1);
+    //     container.appendChild(newline);
+    //     container.appendChild(radiobox2);
+    //     container.appendChild(label2);
+    //     container.appendChild(newline);
+    // // }
+//   });
+
+
+
+
+
+how you think about and write your code -programming paradigm
+
+
+9,3,4,5,6-2
+
+
+
+The thing that is to be written is that I am dumb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+.square{
+    width:200px;
+    height:200px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:row;
+    flex-wrap: wrap;
+    background-color: lavenderblush;
+    margin:100px auto;
+}
+.dot{
+    margin:20px;
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    background:black;
+}

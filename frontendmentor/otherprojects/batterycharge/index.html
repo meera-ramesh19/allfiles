@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+  #battery {
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  position:absolute;
+  font-size:100px;
+}
+</style>
+  </head>
+  <body>
+    <div id="battery" class="fa"></div>.
+    <script >
+      function chargebattery() {
+         var battery;
+         battery = document.getElementById("battery");
+         battery.innerHTML = "&#xf244;";
+         battery.style.color="red";
+        setTimeout(function () {
+            battery.innerHTML = "&#xf243;";
+            battery.style.color="green";
+            battery.style.text="charging"
+          }, 1000);
+        setTimeout(function () {
+           battery.innerHTML = "&#xf242;";
+           battery.style.color="green";
+        }, 2000);
+        setTimeout(function () {
+           battery.innerHTML = "&#xf241;";
+           battery.style.color="green";
+        }, 3000);
+         setTimeout(function () {
+          battery.innerHTML = "&#xf240;";
+          battery.style.color="green";
+          battery.style.text="charged"
+          }, 4000);
+      }
+
+       setInterval(chargebattery, 5000);
+     chargebattery();
+
+    </script>
+  </body>
+</html>

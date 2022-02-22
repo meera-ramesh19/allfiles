@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+#myInput {
+  
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  
+}
+#myUL li 
+{
+    width:100px;
+    height:100x;
+    float:left;margin-left: 10px;
+}
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+
+#f1
+{
+    background-color: red;
+}
+#f2
+{
+    background-color: green;
+}
+
+#f3
+{
+    background-color: red;
+}
+#f4
+{
+    background-color: blue;
+}
+#f5
+{
+    background-color: cyan;
+}
+#myUL li a
+{
+visibility: hidden;
+}
+</style>
+</head>
+<body>
+
+<h2>My Color Search Box</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<ul id="myUL">
+  <li id="f1"><a href="#">Red</a></li>
+  <li id="f2"><a href="#">Green</a></li>
+<li id="f3"><a href="#">Red</a></li>
+  <li id="f4"><a href="#">Blue</a></li>
+  <li id="f5"><a href="#">Cyan</a></li>
+
+  
+</ul>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>

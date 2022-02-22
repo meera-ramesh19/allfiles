@@ -1,0 +1,12 @@
+span, p{
+  color:blue;
+  font-size:1.5rem;
+}
+
+#submit, #reset{
+  background:lavender;
+  padding:0.5%;
+}
+#guess{
+ padding:0.5%;
+}

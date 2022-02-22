@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Incident Report</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="OSM_mainLogo.png" alt="onestaff logo" id="logo">
+        <section class="title">
+            <h1>Employee Incident Report</h1>
+            <h2>Injury/Illness</h2>
+        </section>
+    </header>
+
+    <p class="instructions"><b>Instructions:</b> Employees shall use this form to report work-related injuries,
+        illnesses which could have
+        caused an injury or illness – no matter how minor. <b>Timing:</b> Employee completes the form during their
+        work-shift (or within 24-hours of incident).</p>
+
+    <form name="incident" action="https://formsubmit.co/<email@email.com>" method="POST">
+        
+        <input type="hidden" name="_next" value="https://friendly-swanson-005d62.netlify.app/thankyou.html">
+        <fieldset class="report-type">
+            <p>I am reporting a work related:
+                <input type="radio" value="injury" class="radio" name="report" required>
+                <label for="injury">Injury</label>
+                <input type="radio" value="illness" class="radio" name="report" required>
+                <label for="injury">Illness</label>
+            </p>
+        </fieldset>
+        <fieldset class="location">
+            <p><label for="name">Your Name</label>
+                <input type="text" placeholder="firstname lastname" name="name" required>
+            </p>
+            <p><label for="title">Your Title</label>
+                <input type="text" placeholder="ex. registered nurse" name="title" required>
+            </p>
+            <p><label for="supervisor">Supervisor at Facility Name</label>
+                <input type="text" placeholder="firstname lastname" name="supervisor" required>
+            </p>
+            <p><label for="report">Who did you report it to?</label>
+                <input type="text" placeholder="firstname lastname" name="reported-to" required>
+            </p>
+
+            <p><label for="incident-time">Please select the date and time of the incident:</label>
+
+                <input type="datetime-local" id="incident-time" name="incident-time" value="2020-01-01T00:00"
+                    min="2020-01-01T00:00" max="2023-12-31T11:59">
+            </p>
+
+            <p><label for="shift-time">Please select the time you started your shift: </label>
+                <input id="shift-time" type="time" name="start-time" value="12:00">
+            </p>
+            <p><label for="witness">Names of witnesses (if any)</label>
+                <input type="text" placeholder="firstname lastname" name="witness">
+            </p>
+            <p>Was anyone assisting you at the time?
+
+                <input type="radio" value="yes" class="radio" name="assistant" required>
+                <label for="yes">yes</label>
+
+                <input type="radio" value="no" class="radio" name="assistant">
+                <label for="no">no</label>
+            </p>
+            
+            <p class="end"><label for="assistant-name">Who?</label>
+                <input type="text" placeholder="firstname lastname" name="assistant-name">
+            </p>
+
+        </fieldset>
+        <fieldset class="injury">
+            <p><label for="where-happened">Where, exactly did it happen? (e.g., Room Number)</label>
+                <textarea cols="30" rows="8" placeholder="example Room 100" name="where-happened" required></textarea>
+            </p>
+            <p><label for="what-doing">What were you doing at the time? </label>
+                <textarea cols="30" rows="8" placeholder="" name="what-happened" required></textarea>
+            </p>
+            <p><label for="describe-incident">Describe step by step what led to the incident.</label>
+                <textarea cols="30" rows="8" placeholder="" name="describe-incident" required></textarea>
+            </p>
+            <p><label for="what-injured">What part(s) of your body were injured? </label>
+                <textarea cols="30" rows="8" placeholder="example back and right arm" name="injured-body-part"
+                    required></textarea>
+            </p>
+        </fieldset>
+        <fieldset class="treatment">
+            <p>Did you get medical treatment?
+
+                <input type="radio" value="yes" class="radio" name="treatment" required>
+                <label for="yes">yes</label>
+
+                <input type="radio" value="no" class="radio" name="treatment">
+                <label for="no">no</label>
+            </p>
+            <p><label for="medical-seen">If yes, whom did you see? </label>
+                <input type="text" placeholder="example Dr. John Brown" name="medical-seen">
+            </p>
+
+            <p><label for="phone">Doctor phone # </label>
+                <input type="tel" id="phone" name="phone" placeholder="555-555-5555">
+            </p>
+            <p><label for="treatment-facility-name">Name of treatment facility:</label>
+                <input type="text" placeholder="" name="treatment-facility">
+            </p>
+            <p class="end"><label for="treatment-facility-address">Address of treatment facility:</label>
+                <input type="text" placeholder="" name="address">
+            </p>
+            
+        </fieldset>
+        <fieldset class="previous">
+            <p>Has this part of your body been injured before?
+
+                <input type="radio" value="yes" class="radio" name="previous-injury" required>
+                <label for="yes">yes</label>
+
+                <input type="radio" value="no" class="radio" name="previous-injury">
+                <label for="no">no</label>
+            </p>
+            <p><label for="previous-injury">If yes, when & what happened?</label>
+                <input type="text" placeholder="" name="describe-previous-injury">
+            </p>
+        </fieldset>
+        <fieldset class="anatomy">
+
+
+            <p class="picker"><label for="injured-area">Please select part of body affected (select all that
+                    apply):</label>
+                <container><select name="body-part" id="injury" required>
+
+                <option value="head">head</option>
+                    <option value="neck/shoulders">neck/shoulders</option>
+                    <option value="torso">torso</option>
+                    <option value="back">back</option>
+                    <option value="right arm">right arm</option>
+                    <option value="left arm">left arm</option>
+                    <option value="right leg">right leg</option>
+                    <option value="left leg">left leg</option>
+                    <option value="right foot">right foot</option>
+                    <option value="left foot">left foot</option>
+                </select>
+                <button class="button" type="button" id="add-injury">add</button></container>
+            </p>
+                <ul id="anatomy-list" name="body-part">
+                </ul>
+            <p><img src="injury.png" alt="anatomy selector with labels" id="anatomy"></p>
+
+        </fieldset>
+        <fieldset>
+            <p class="signature">
+                <label for="signature">Employee Signature</label>
+                <input type="text" placeholder="employee signature" name="signature" required>
+
+                <label for="today-date">date:</label>
+
+                <input type="date" id="today-date" name="today-date" value="2021-09-15" min="2021-09-15"
+                    max="2022-12-31">
+                <button type="submit" value="submit" id="submit">send</button>
+            </p>
+
+        </fieldset>
+
+
+
+    </form>
+
+    <script src="JS/main.js"></script>
+</body>
+
+</html>

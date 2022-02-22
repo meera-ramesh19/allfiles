@@ -1,0 +1,35 @@
+
+body {
+          font-family: 'Roboto', sans-serif;
+          font-size: 30px;
+          text-align: center;
+          background-color: seagreen;
+        }
+
+h1{
+  margin-top: 300px;
+  font-family : 'helvetica', sans-serif;
+  font-weight : 600px ;
+  text-align : center;
+  color : #e6e600;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+
+.button{
+  background-color: #4d4dff;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.button:hover {opacity: 1}

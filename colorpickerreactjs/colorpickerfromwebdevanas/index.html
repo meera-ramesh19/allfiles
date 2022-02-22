@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Filter</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="game-container">
+
+        <input class="search-input" type="text" id="myInput" placeholder="Search Color" onkeyup="searchColor()">
+
+        <div id="all-colors" class="colors">
+            <div class="color color1">
+                <h3>Red</h3>
+            </div>
+            <div class="color color2">
+                <h3>Blue</h3>
+            </div>
+            <div class="color color3">
+                <h3>Purple</h3>
+            </div>
+            <div class="color color4">
+                <h3>Yellow</h3>
+            </div>
+            <div class="color color5">
+                <h3>Black</h3>
+            </div>
+            <div class="color color6">
+                <h3>Green</h3>
+            </div>
+            <div class="color color7">
+                <h3>Gray</h3>
+            </div>
+            <div class="color color8">
+                <h3>Brown</h3>
+            </div>
+            <div class="color color9">
+                <h3>Coral</h3>
+            </div>
+            <div class="color color10">
+                <h3>Crimson</h3>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./app.js"></script>
+</html>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    padding: 8px;
+    width: 300px;
+    margin-bottom: 5rem;
+    font-size: 22px;
+
+}
+
+.colors {
+    display: flex;
+    align-items: center;
+}
+
+.color {
+    height: 100px;
+    width: 100px;
+    background-color: royalblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    color: white;
+    font-weight: bold;
+}
+
+.color1{
+    background: red;
+}
+
+.color2{
+    background: blue;
+}
+.color3{
+    background: purple;
+}
+
+.color4{
+    background: yellow;
+}
+
+.color5{
+    background: black;
+}
+
+.color6{
+    background: green;
+}
+
+.color7{
+    background: gray;
+}
+
+.color8{
+    background: brown;
+}
+
+.color9{
+    background: coral;
+}
+
+.color10{
+    background: crimson;
+}
+
+
+
+const searchColor = () => {
+    let filterValue = document.getElementById('myInput').value.toUpperCase();
+
+    let colors = document.getElementById('all-colors')
+    let color = colors.getElementsByTagName('div')
+
+    for (var i = 0; i < color.length; i++) {
+        let colorName = color[i].getElementsByTagName('h3')[0]
+
+        if (colorName) {
+            let textValue = colorName.textContent || colorName.innerHTML;
+
+            if (textValue.toUpperCase().indexOf(filterValue) > -1){
+                color[i].style.display = ""
+            } else {
+                color[i].style.display = "none"
+            }
+        }
+    }
+}

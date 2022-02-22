@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BBC World</title>
+  <style>
+
+  *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color: white;
+    margin: 0;
+    padding:0;
+    font-family:  Arial, Helvetica;
+  }
+  /*header{
+  display:flex;
+  flex-direction:row;
+  text-align:center;
+  justify-content:center;
+  padding 10px 5px 10px 5px;
+  width:100%;
+  background:black;
+  } */
+  .menu-navbar{
+    overflow: hidden;
+    background-color: black;
+    height:20%;
+    display:inline-block;
+    width:100%;
+
+  }
+  .menu-navbar a{
+    float: left;
+    font-size:16px;
+    color : white;
+    line-height:20px;
+    text-decoration: none;
+    padding-top:0px;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    width:100%;
+    background:black;
+  }
+
+
+
+  .nav-links{
+    list-style-type:  none;
+    display: inline;
+    float: left;
+    font-size:15px;
+    background-color: black;
+    color:white;
+    text-align:center
+    text-decoration: none;
+    padding-top: 20px;
+    height: auto;
+    margin-left:50px;
+
+  }
+
+  .nav-links > img{
+    display:inline;
+    float:left;
+    width:70px;
+    height:40%;
+    margin-top:-10px;
+    margin-left:50px;
+
+  }
+
+  /* .menu a:hover, more:hover .dropbtn{
+  background-color: black;
+  } */
+  .line{
+    color:red;
+  }
+  .para{font-size:16px;
+
+  }
+  .nav-search{
+
+    display: inline;
+    float: left;
+    padding-left:35px;
+    width:350px;
+    margin-top:20px;
+  }
+  input[type=button]{
+    float:left;
+    widtth:30px;
+    margin-top:15px;
+  }
+   .more {
+    padding-left:35px;
+    display:inline;
+    float:left;
+    margin-top:20px;
+  }
+
+  .main-content
+  {
+    margin-top: 50px;
+  }
+
+  .message  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:5px;
+    margin-left:40px;
+    margin-right:20px;
+    margin-bottom: 40px;
+  }
+  #search_button{
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    text-indent: -999px;
+    display: block;
+    line-height: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 16px 16px;
+
+  }
+
+
+
+  /* #headline{
+
+    /* background-image: url(https://ichef.bbc.co.uk/wwhp/144/cpsprodpb/5C13/production/_115217532_023e6bfc-f137-4270-bdf1-64bcb50e4f35.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 10px;
+    padding : 10px; */
+    /* width: 400px;
+    height: auto;
+    margin-left: 20px;
+    margin-right:20px; */
+    /* border: 1px solid black;
+    margin-bottom: 1em;
+    padding : 10px;*/
+  }
+  .headline{
+    /* top: 50%;
+    text-align: center;
+    transform: translate(0, -50%);
+    padding: 1rem;  */
+    position:absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .main-headers{
+    display: grid;
+    grid-column: 1;
+    margin-left:20px;
+    margin-right:20px;
+  }
+
+  .stories {
+    display:grid;
+    grid-column: 2;
+    margin-left:20px;
+    margin-right:20px;
+  }
+  .first-container {
+    position:relative;
+    display:grid;
+    grid-auto-rows:50px;
+    margin-left: 20px;
+    margin-right:20px
+  }
+  /* .first-container >  .main_image{*/
+
+
+  .second-container{
+    position:relative;
+    display:grid;
+    /* grid-template-columns: repeat(2,1fr); */
+    grid-template-columns: 50% 50%;
+    justify-items: last baseline;
+    margin-left: 5px;
+    margin-right:5px;
+  }
+
+/* .story-one{
+  position: absolute;
+ bottom: 20px;
+ left: 20px;
+ color: white;
+ padding-left: 20px;
+ padding-right: 20px;
+}  */
+.main_image{
+    /* display:grid;
+    grid-auto-rows:50px; */
+    width:670px;
+    height:370px;
+  /*  margin-left: 20px;
+    margin-right: 20px; */
+  /* padding-bottom:20px; */
+     top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      text-indent: 200%;
+      white-space: nowrap;
+      visibility: visible;
+      background: transparent;
+      /* background: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+  } */
+  }
+.media_img{
+  width:300px;
+  height:150px;
+  margin-left: 5px;
+  margin-right: 20px;
+}
+  .media__link{
+      text-decoration: none;
+    }
+  .media_image{
+    margin-top:60px;
+    width:450px;
+    height:200px;
+    margin-left:5px;
+    margin-right:20px;
+  }
+  #news-header{
+    margin-top: 35px;
+    margin-left:25px;
+    /* margin-bottom:20px; */
+  }
+  .news-articles{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    height:auto;
+    margin-left: 20px;
+    margin-right;
+
+  }
+  .media__link {
+    display: block;
+    color: black;
+}
+
+/*
+.navbar {
+  overflow: hidden;
+  /* background-color: #333; */
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  /* background-color: inherit; */
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: white;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: black;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+} */
+
+</style>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+
+  <header>
+    <nav  >
+      <!-- class="menu" -->
+
+
+      <ul class="menu-navbar">
+        <!-- class="menu-navbar" -->
+        <!-- <section class="navbar"> -->
+
+
+        <li class="nav-links">
+          <img id='BBC-logo'src='bbclogo.png'  alt='BBC logo'/>
+        </li>
+        <li class="nav-links">
+          <!-- "nav-links" -->
+          .
+          <!-- <a href="https://account.bbc.com/signin?context=homepage&ptrt=https%3A%2F%2Fwww.bbc.com%2F&userOrigin=HOMEPAGE_GNL&realm=&isCasso=false&action=sign-in&redirectUri=https%3A%2F%2Fsession.bbc.com%2Fsession%2Fcallback&service=IdSignInService&nonce=BK">Sign in </a> -->
+          <!-- <button class="login"> -->
+          <a href="https://account.bbc.com/signin?context=homepage&ptrt=https%3A%2F%2Fwww.bbc.com%2F&userOrigin=HOMEPAGE_GNL&isCasso=false&action=sign-in&redirectUri=http"><i class="fa fa-user-circle" aria-hidden='true'> Sign in</i>
+          <!-- </button>  -->
+        </li>
+
+        <li class="nav-links"><a href="https://www.bbc.com/" target=>Home</a></li>
+        <li class="nav-links"><a href="https://www.bbc.com/news">News</a></li>
+        <li class="nav-links"><a href="https://www.bbc.com/news">Sport</a></li>
+        <li class="nav-links"><a href="https://www.bbc.com/reel">Reel</a></li>
+        <li class="nav-links"><a href="https://www.bbc.com/worklife">Worklife</a></li>
+        <li class="nav-links"><a href="https://www.bbc.com/travel">Travel</a></li>
+        <!-- https://stackoverflow.com/questions/42567364/css-html-how-to-add-a-dropdown-menu-to-existing-navbar -->
+        <li class="nav-links"><a href="https://www.bbc.com/future">Future</a></li>
+        <li class="nav-links"><a href="https://www.bbc.com/culture">Culture</a></li>
+        <li class="more">
+          <!-- <section class="subnav">
+            <button class="subnavbtn">More</button>-->
+           <a href=#>More</a>
+          <!--  <ul  class="subnav-content">
+            <li><p>MORE</p></li>
+            <li><a href="https://www.bbc.com/music">Music</a></li>
+            <li><a href="https://www.bbc.co.uk/schedules/p00fzl9m">TV</a></li>
+            <li><a href="https://www.bbc.com/weather">Weather</a></li>
+            <li><a href="https://www.bbc.co.uk/sounds">Sounds</a></li>
+            </ul> -->
+          <!-- </section> -->
+      </li>
+      <li class='nav-search'>
+        <form >
+          <label for="search_text">Search</label>
+          <input type="text" id="search_text" name="search_text" placeholder="Search..">
+          <!-- <i class="fa fa-user-circle-o"></i> -->
+          <button id="search_button">Button </button>
+          <!-- <button id="search_button">search BBC</button>  -->
+          <!-- <input type="button" name="search_button" id="search_button" />  -->
+          </li?
+        </section>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="main-content">
+      <section class='message'>
+        <h1>Welcome to BBC.com</h1>
+        <h3 id='date'>Tuesday, 3 November </h3>
+
+        <!-- <span id="datetime"></span> -->
+      </section>
+      <section class="main-headers">
+         <section class="first-container">
+          <article class="headline">
+          <!-- <code> --  >
+          <!-- <a href="#"> -->
+            <img class="main_image" src="https://ichef.bbci.co.uk/news/800/cpsprodpb/BFB9/production/_115218094_election_night_index_3_reuters.jpg" alt="Election workers open ballots at the Palm Beach County Elections Office in West Palm Beach, Florida" >
+                 <!-- </a> -->
+             <!-- <img class="main_image" src="https://ichef.bbc.co.uk/wwhp/144/cpsprodpb/5C13/production/_115217532_023e6bfc-f137-4270-bdf1-64bcb50e4f35.jpg"  -->
+          <!-- <section class="headone" > -->
+            <h3 class="media__title"><a class="media__link" href="https://www.bbc.com/news/live/election-us-2020-54786937" > Early results expected soon as first US polls close </a></h3>
+            <p class="media__summary">  Voting continues across much of the US - watch the BBC's election results TV special and get text updates here.  </p>
+          <!-- </section> -->
+            <a class="line "href="https://www.bbc/news/election/us2020/results">US ELECTION 2020</a>
+            <!-- </code> -->
+          </article>
+          <!-- </section> -->
+        </section>
+        <section class="stories">
+          <section class="second-container">
+             <!-- <li> -->
+              <article class="group-articles">
+                <!-- <section class="story-one"> -->
+                <img class="media_img" src="https://ichef.bbc.co.uk/wwhp/144/cpsprodpb/16A8B/production/_115211829_biden_trump_header_2_getty.jpg" alt="Trump and Biden" />
+                <h3 class="media_title">  <a class="media__link" href="https://www.bbc.com/news/election-us-2020-54795426">  Your questions answered on US vote</a></h3>
+              <!-- </section> -->
+                <a class="line" href="https://www.bbc.com/news/election/us2020results" >US Election 2020</a>
+              </article>
+
+              <!-- </section> -->
+              <!-- <section class="usselection"> -->
+              <article class="group-articles">
+                <img class="media_img"src="https://ichef.bbci.co.uk/news/800/cpsprodpb/7195/production/_115177092_gettyimages-1229368107.jpg" alt="Man wiping down voting  machine in California" />
+                <h3 class="media__title">  <a class="media__link" href="https://www.bbc.com/news/election-us-2020-54096399">Why we might have to wait for the US election result </a>  </h3>
+                <a href="https://www.bbc.com/news/election/us2020"  class="line">US Election 2020</a>
+              </article>
+          </section>
+
+            <!-- <section class="stories"> -->
+          <section class="second-container">
+              <article class="group-articles">
+                <!-- <section class="">
+
+                </section> -->
+                <img class="media_img" src="https://ichef.bbc.co.uk/wwhp/144/cpsprodpb/11596/production/_111926017_a072c65f-18b8-4c14-b07e-2fd0948206b0.jpg" alt="Jack Ma at a conference in Hangzhou in 2019" />
+                <h3 class="media__title">  <a class="media__link" href="https://www.bbc.com/news/business-54798278">  World's biggest stock market debut suspended </a>  </h3>
+                <a href="https://www.bbc.com/news/business-54798278" class="line"> Business</a>
+              </article>
+              <!-- </section>
+               <section class="containers"> -->
+              <article class="group-articles">
+                <img class="media_img" src="https://ichef.bbc.co.uk/wwhp/144/cpsprodpb/DFA3/production/_115215275_gettyimages-1229439873-594x594-1.jpg" alt="Turkeys ambassador in Vienna Ozan Ceyhun (C) meets with Recep Tayyip Gultekin (R) and Mikail Ozen (L), two ethnic Turks in Vienna who risked their own lives by facing a hail of bullets to help injured civilians and a police officer, in Vienna, Austria on November 03, 2020" />
+                <h3 class="media__title"><a class="media__link" href="https://www.bbc.com/news/world-europe-54779882">'Heroes' praised for helping Vienna attack victims </a></h3>
+
+                <a class="line" href="https://www.bbc.com/news/world/europe">EUROPE</a>
+              </article>
+            </section>
+          </section>
+        </section>
+
+
+
+        <h2 id="news-header">News</h2>
+        <section class="news-articles">
+          <section>
+            <!-- <ul>
+              <li> -->
+                <article>
+                  <!-- "data:image/gif;base64,R0lGODlhEAAJAIAAAP///wAAACH5BAEAAAAALAAAAAAQAAkAAAIKhI+py+0Po5yUFQA7" -->
+                  <img class="media_image" src= "https://ichef.bbci.co.uk/news/1024/branded_news/4E40/production/_115223002_mediaitem115223001.jpg"
+                  alt="Voters wait in a line at a polling location in Scottsdale, Arizona" />
+                    <!-- <img src="https://ichef.bbc.co.uk/wwhp/{width}/cpsprodpb/17F85/production/_115218189_hi064172406.jpg" - />-->
+                  <h3 class="media__title" <a class="news-link" href="/news/election-us-2020-54791113">  Polling stations start closing in US election  </a></h3>
+                  <p class="media__summary">The highest turnout in a century is expected as Americans choose between Donald Trump and Joe Biden. </p>
+                  <a class="media__tag tag tag--news" href="/news/election/us2020">US Election 2020</a>
+                </article>
+                <a href="https://www.bbc.com/news/election-us-2020-54791113"> Polling stations start closing in US election</a>
+              <!-- </li> -->
+              <!-- "data:image/gif;base64,R0lGODlhEAAJAIAAAP///wAAACH5BAEAAAAALAAAAAAQAAkAAAIKhI+py+0Po5yUFQA7"/> -->
+            </section>
+
+            <section>
+              <!-- <li> -->
+                <article>
+                  <!-- <img class="media_image"  src="data:image/gif;base64,R0lGODlhEAAJAIAAAP///wAAACH5BAEAAAAALAAAAAAQAAkAAAIKhI+py+0Po5yUFQA7 "/> -->
+                  <img class="media_image"  src="https://ichef.bbci.co.uk/news/1024/branded_news/EBDD/production/_115218306_queue2_976getty.jpg"
+                   alt="Voters wait in a line of atleast 200 people at a polling location in Scottsdale, Arizona" />
+                  <h3 class="media__title"><a class="media__link" href="/news/election-us-2020-54802115">Mystery robocalls urge US voters to 'stay home'</a></h3>
+                  <p class="media__summary">  Millions have reportedly received automated calls telling them not to go out on election day </p>
+                  <a class="media__tag tag tag--news" href="https://www.bbc.com/news/election/us2020" >US Election 2020</a>
+                </article>
+                <a href="https://www.bbc.com/news/election-us-2020-54802115">Mystery robocalls urge US voters to 'stay home'</a>
+              <!-- </li> -->
+              <!-- " https://ichef.bbc.co.uk/wwhp/{width}/cpsprodpb/2437/production/_115217290_mediaitem115217286.jpg"   -->
+            </section>
+
+
+            <section>
+              <!-- <li> -->
+                <article>
+                  <!-- <img class="media_image" src= "data:image/gif;base64,R0lGODlhEAAJAIAAAP///wAAACH5BAEAAAAALAAAAAAQAAkAAAIKhI+py+0Po5yUFQA7"  /> -->
+                 <img class="media_image" src="https://ichef.bbci.co.uk/news/1024/branded_news/5C45/production/_115212632_wien.jpg"
+                  alt="Police officers walk at the site of wreath laying ceremony e in Vienna, Austria November 3, 2020">
+                  <h3 class="media__title">  <a class="media__link" href="/news/world-europe-54798679">Arrests after 'freed jihadist' kills four in Vienna</a></h3>
+                  <p class="media__summary"> Fourteen people are held but authorities now believe the dead gunman may have acted alone. </p>
+                  <a  class="media__tag tag tag--news" href="https://www.bbc.com/news/world/europe" >Europe</a>
+                </article>
+                <a href=href="https://www.bbc.com/news/world-europe-54798679">Arrests after 'freed jihadist' kills four in Vienna  </a>
+              <!-- </li> -->
+              <!-- "https://ichef.bbc.co.uk/wwhp/{width}/cpsprodpb/5C45/production/_115212632_wien.jpg" -->
+            </section>
+          </ul>
+        </section>
+
+      </body>
+      </html>

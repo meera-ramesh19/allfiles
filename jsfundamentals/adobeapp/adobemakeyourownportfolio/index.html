@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<head>
+  <title>Anna Dowlin</title>
+  <script src="https://kit.fontawesome.com/46b13243e4.js" crossorigin="anonymous"></script>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    body {
+      text-align: center;
+       background-color: #A9C9FF;
+       background-image: linear-gradient(57deg, #A9C9FF 0%, #FFBBEC 100%);
+      color:black;
+      font-family: helvetica;
+    }
+    p {
+      font-size: 22px;
+    }
+    input {
+      border: 1px solid black;
+      padding: 10px;
+      font-size: 18px;
+      
+    }
+    input[type="submit"] {
+      background: red;
+      color: white;
+    }
+    .profilePic{
+      padding:20px;
+      border-radius:50%;
+      margin:0 auto;
+    }
+    .column,.about-content, .icons{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width:90%;
+    }
+    .field{
+      padding:15px 30px ;
+      
+    }
+    input,textarea{
+       border-radius:10px;
+       margin-left:40px;
+    }
+    .button-area{
+      padding:40px 10px;
+      
+    }
+    button{
+      padding:10px;
+      border-radius:10px;
+      background: #BFAFF0;
+    }
+    .right,.left{
+      display:block;
+      width:45%;
+    }
+    .navbar {
+  position: fixed;
+  width: 100%;
+  background-color:#A8BAFF;
+ padding: 20px 0;
+  font-family: "Ubuntu", sans-serif;
+  
+}
+.navbar .max-width {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .menu li {
+  list-style: none;
+  display: inline-block;
+ 
+}
+.navbar .menu li a {
+  display: block;
+ color:#0C090A;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration:none;
+  
+}
+.navbar .menu li a:hover {
+  color:#704214;
+}
+.resume ,.intouch{
+  margin:60px 0;
+}
+.resume a, .intouch a{
+  color:black;
+  text-decoration:none;
+  border:2px solid black;
+  padding:10px;
+  border-radius:10px;
+   background: #BFAFF0;
+}
+.home {
+  display: flex;
+  height: 100vh;
+  font-family: "Ubuntu", sans-serif;
+  /*max-width:90%;*/
+  
+}
+.home-content {
+  
+width:100%;
+  display: block;
+  
+}
+.row {
+  margin:200px 500px 0 500px;
+  text-align:center;
+}
+.text{
+  font-size: 20px;
+  line-height: 30px;
+  text-align:center;
+  
+}
+
+ .home-content a {
+  display: inline-block;
+  background:#BFAFF0;
+  color: #000;
+  font-size: 15px;
+  padding: 6px 16px;
+  margin-top: 40px;
+  font-weight: 400;
+  border-radius: 6px;
+  /*border: 2px solid #28bd73;*/
+  
+}
+.icons a{
+  margin:20px 20px 0 20px;
+  
+}
+.contact{
+  padding-top:80px;
+}
+.fab{
+  padding:20px;
+  color:black;
+  }
+  .title{
+    text-transform:uppercase;
+    padding:50px 0;
+  }
+  
+  .soon{
+    text-align:center;
+    padding:50px 0;
+  }
+
+.projects{
+  padding:60px;
+}
+  </style>
+</head>
+<body>
+   <nav class="navbar">
+      <div class="max-width">
+        <div class="logo"><a href="#"><span></span></a></div>
+        <ul class="menu">
+          <li><a href="#home" class="menu-btn">Home</a></li>
+          <li><a href="#about" class="menu-btn">About</a></li>
+          <li><a href="#projects" class="menu-btn">Projects</a></li>
+          <li><a href="#contact" class="menu-btn">Contact</a></li>
+        </ul>
+       
+      </div>
+    </nav>
+    <section class="home" id="home">
+    <div class="max-width">
+      <div class="row">
+        <div class="home-content">
+          <div class="text">Hi, I'm Meera Ramesh  a NYC-based Software Engineer</div>
+        
+          <div class="icons">
+            <a href"#!">
+              <i class="fab fa-github fa-lg"></i>
+            </a>
+            <a href="#!">
+              <i class="fab fa-linkedin fa=lg"></i>
+            </a>
+          </div>
+          <div class="intouch">
+          <a href="#">GET IN TOUCH</a>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+   <section class="about" id="about">
+    <div class="max-width">
+      <h2 class="title">About me</h2>
+      <div class="about-content">
+        <div class="left">
+         <img class="profilePic" src="https://i.imgur.com/fYljkHn.jpg" width=250 height=250 />
+        </div>
+        <div class=" right">
+         
+          <p>I am Meera Ramesh. I am transitioning into web development from a volunteer executive assistant. I pursued my passion for webdevelopment during pandemic. I am in my journey of web development learning HTML, CSS, Javascript.</p>
+          
+          <div class="resume">
+          <a  href="#">Download CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="projects" id="projects">
+    <div class="max-width">
+      <h2 class="title">My projects</h2>
+
+      <div class="projects-content">
+        
+       <p class="soon">Coming Soon</p>
+       </div>
+    </div>
+  </section>
+  
+  <section class="contact" id="contact">
+    <div class="max-width">
+      <h2 class="title">Contact</h2>
+  
+
+        <div class="column">
+          <div class="text">Connect with me
+          <p>
+            Need a website to showcase
+            your products?   </p>
+            <p>Please feel free to contact me.
+          </p></div>
+          <div class="forms">
+          <form class="contact-form" action="#" method="POST">
+          
+              <div class="field">
+                <input type="text" class="fullname" placeholder="Name">
+              </div>
+          
+            <div class="field">
+                <input type="email" class="email-input" placeholder="Email">
+              </div>
+          
+            <div class="field">
+              <textarea class="message" cols="30" rows="3" placeholder=" Your Message.."></textarea>
+            </div>
+            <div class="button-area">
+              <button class="send-msg" type="submit" name="send">Send message</button>
+            </div>
+            </div>
+          </form>
+        </div>
+    </div>
+  </section>
+  <!--<input type="email" placeholder="Your email">-->
+  <!--<input type="submit">-->
+</body>
+

@@ -1,0 +1,42 @@
+<html>
+    <head>
+       
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Rubik+Beastly&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body class="colors">
+       
+        <div class="wrapper">
+            
+            <p id="greeting">🎃 Merry Christmas! 👻</span></p>
+
+            <div class="container hidden" id="container">
+                <p id="text">Select a theme</p>
+               <div class="radio-buttons">
+
+                <div class="label-input">
+                  <input type="radio" id="christmas" name="theme" value="christmas"  onchange="changeTheme(this)">
+                  <label for="christmas">Santa 🎅</label>
+                </div>
+                <div class="label-input">
+                   <input type="radio" id="snow" name="theme" value="snow" onchange="changeTheme(this)">
+                   <label for="snow">❄️ Snow ❄</label>
+                </div>
+                <div class="label-input">
+                  <input type="radio" id="tree" name="theme" value="tree" onchange="changeTheme(this)">
+                   <label for="tree">Tree 🎄</label>
+                </div>
+               </div>
+            </div>
+            <button id="btn">fix</button>
+        </div>
+       
+        
+        <script src="index.js"></script>
+    </body>
+</html>

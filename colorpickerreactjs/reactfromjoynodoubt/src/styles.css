@@ -1,0 +1,76 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    /* background-image: linear-gradient(
+      to right top,
+      #d16ba5,
+      #c777b9,
+      #ba83ca,
+      #aa8fd8,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8,
+      #52cffe,
+      #41dfff,
+      #46eefa,
+      #5ffbf1
+    ); */
+  }
+  
+  /* body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(to right top, #dc8eba, #dd93c3, #dd98cd, #dd9dd6, #dca3df, #cfaced, #c1b6f7, #b2bfff, #98ccff, #8ad7fb, #8edfef, #9fe5e1);
+    background-image: linear-gradient(
+      to right top,
+      #d16ba5,
+      #c777b9,
+      #ba83ca,
+      #aa8fd8,
+      #9a9ae1,
+      #8aa7ec,
+      #79b3f4,
+      #69bff8,
+      #52cffe,
+      #41dfff,
+      #46eefa,
+      #5ffbf1
+    );
+  } */
+  
+  .container {
+    /* inline-size: 800px; */
+    /* width: 800px; */
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+    padding: 30px;
+  }
+  
+  .box {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 400px;
+    line-height: 26px;
+    margin-bottom: 10px;
+  }
+  
+  input {
+    height: 20px;
+    flex: 0 0 200px;
+    margin-left: 10px;
+  }
+  

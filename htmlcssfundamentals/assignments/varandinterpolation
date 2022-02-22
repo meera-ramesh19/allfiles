@@ -1,0 +1,58 @@
+let name1='Meera Ramesh'
+let location1='Queens'
+let hobby1='Baking'
+let year1=2021
+let previously1='executive assistant'
+
+let name3='Jossy Pascasio'
+let location3='Bronx'
+let hobby3='taking care of my plants'
+let year3=2021
+let previously3='dying slowly inside'
+
+let name2='Candace Garvin'
+let location2='New Jersey'
+let hobby2='Reading'
+let year2=2021
+let previously2='lost but now im found!'
+
+console.log('Hello Good People!');
+console.log(
+  `My name is ${name1} and I live in ${location1}. When I'm not learning to code, I really enjoy ${hobby1}. The last time I was in a classroom was in the year ${year1}. Before joining Pursuit, I was ${previously1}.`
+);
+console.log(
+  `And my name is ${name2} and I live in ${location2}. When I'm not learning to code, I really enjoy ${hobby2}. The last time I was in a classroom was in the year ${year2}. Before joining Pursuit, I was ${previously2}.`
+);
+console.log(
+  `Finally, my name is ${name3} and I live in ${location3}. When I'm not learning to code, I really enjoy ${hobby3}. The last time I was in a classroom was in the year ${year3}. Before joining Pursuit, I was ${previously3}.`
+);
+
+if (year1 > year2 && year1 > year3) {
+  console.log(`${name1} was in a classroom most recently!`);
+}
+
+if (year2 > year1 && year2 > year3) {
+  console.log(`${name1} was in a classroom most recently!`);
+}
+
+if (year3 > year1 && year3 > year1) {
+  console.log(`${name1} was in a classroom most recently!`);
+}
+
+if(year1===year2 && year1>year3 && year2>year3)
+{
+    console.log(`${name1} was in a classroom most recently!`);
+}
+
+if(year2===year3 && year2>year1 && year3>year1)
+{
+    console.log(`${name1} was in a classroom most recently!`);
+}
+if(year1===year3 && year1>year2 && year3>year2)
+{
+    console.log(`${name1} was in a classroom most recently!`);
+}
+
+if(year2===year1 && year2===year3){
+   console.log(`${name1} was in a classroom most recently!`);
+}

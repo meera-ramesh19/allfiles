@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Empowerment Square</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css" />
+</head>
+
+<body>
+
+ <!-- onload="document.\myForm.userid.focus()"> -->
+
+  <div class="container">
+    <h1 class="brand"><img src="emplogo.png" />&nbsp;Empowerment Square</h1>
+    <div class="wrapper">
+      <div class="company-info">
+        <h3>Empowerment Square Mentee Application</h3>
+        <!-- <ul> -->
+        <!-- <li><i class="fa fa-road"></i> 44 Something st</li>
+          <li><i class="fa fa-phone"></i> (555) 555-5555</li>
+          <li><i class="fa fa-envelope"></i> test@acme.test</li>
+        </ul>-->
+        <div id="min-width">
+          <p class="elevate">
+            Elevate to Empower Model
+          </p>
+          <p id="englishMotto">
+            Trauma informed Self-Care Training is at the core of all our programs.
+          </p>
+          <div class="empImg">
+            <img src="empImage.png" />
+          </div>
+          <div class="model">
+            <span class="steps">
+              <span class="stepMessage">
+                Education to Secure Independent,Long-term Housing</span>
+            </span>
+            <span class="stepNum">Step 5</span>
+          </div>
+          <div class="model">
+            <span class="steps">
+              <span class="stepMessage"> Industry-Led Skill Training & Job Placement </span>
+            </span>
+            <span class="stepNum">Step 4</span>
+          </div>
+          <div class="model">
+            <span class="steps">
+              <span class="stepMessage">High-Level Computer Proficiency Program</span>
+            </span>
+            <span class="stepNum">Step 3</span>
+          </div>
+          <div class="model">
+            <span class="steps">
+              <span class="stepMessage">Financial Management Education Program</span>
+            </span>
+            <span class="stepNum">Step 2
+              <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGV_mMDOmmag86sUgRiq2nvFZ6Q96SM_ai5e5Xn-L3Hw2ntQ/viewform">Click to Apply</a> -->
+            </span>
+          </div>
+          <div class="model">
+            <span class="steps">
+              <span class="stepMessage">English Mentorship Program</span>
+            </span>
+            <span class="stepNum">Step 1
+              <!-- <a href="#"></a> -->
+            </span>
+          </div>
+          </br></br></br>
+          <p class="testiHead">TESTIMONIALS</p>
+
+          <div class="testSection">
+
+            <p class="mentee">Sandy Hernandez</p>
+            <div class="testimonials">
+              <p>
+                Empowerment Square has been a blessing to my life,I had
+                the opportunity meet amaziang people, to learn from everyone, and
+                the most important to have hope that in this world there are still
+                good people full of good energy,values and manners.</br>
+                Being part of the program help me to reconfirm that 'discpline
+                makes masters', the dynamic is completely accurate in terms of
+                improving our English skills, and leadership in Ansa's hands has
+                encouraged me to follow my dreams and to never give up.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="contact">
+        <p>For the best experience use bigger screens.
+          To read about our terms and conditions goto
+          <a href="https://empowermentsquare.org/programs">EmpowermentSquare</a>.
+        </p>
+        <div class="save">
+          <div class="alert"></div>
+          <h3>Email Us</h3>
+          <button type="submit" id="save">SAVE</button>
+        </div>
+        <div class="alerts">Your message has been sent</div>
+
+        <!-- <form name="myForm" class="contactForm" id="save-later-form" method="post" action="/my-handling-form-page" onsubmit="return formValidate(this);"> -->
+    <form id="signup" class="form" method="post" action="/my-handling-form-page">
+          <fieldset>
+            <legend>Email</legend>
+            <div class="form-group">
+              <label for="email" id="email-label">Email:
+                 <abbr title="required" size="20" aria-label="required"></abbr>
+               </label>
+              <input class="heighttext" type="email" id="email" name="user_email" autofocus autocorrect="off" tabindex="1" autocapitalize="off" placeholder="Enter your email" required>
+               <small></small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Personal Information</legend>
+            <!-- <p>Required fields are followed by
+              <abbr title="required"></abbr></p> -->
+
+            <div class="form-group">
+              <label for="firstname" id="first-label">First Name:
+                <abbr title="required" aria-label="required"></abbr>
+              </label>
+              <input class="heighttext" type="text" id="firstname" name="firstname" size=30 tabindex="2" placeholder="Enter your first name" />
+             <small></small>
+            </div>
+            <div class="form-group">
+              <label for="lastname" id="last-label">Last Name:
+                <abbr title="required" aria-label="required"></abbr>
+              </label>
+              <input class="heighttext" type="text" id="lastname" name="lastname" size=30 tabindex="3"placeholder="Enter your last name" required>
+                 <small></small>
+            </div>
+
+
+            <div class="form-group">
+              <label for="tel" id="phone-label">Phone
+                <abbr title="required" aria-label="required"></abbr>
+              </label>
+              <!-- <small>Format: 123-456-7585</small> -->
+              <input class="heighttext" type="tel" id="tel" name="tel" value="" tabindex="4" placeholder="Enter in format: XXX-XXX-XXXX" min="10" max="99" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" inputmode="numeric">
+               <small></small>
+            </div>
+            <!-- </fieldset>
+
+<fieldset> -->
+            <legend></legend>
+            <div class="form-group">
+              <label for="language" id="language">What is your first language? <abbr title="required" aria-label="required"></abbr></label>
+              <input class="heighttext" type="text" id="language"name="language" tabindex="5" required>
+                <small></small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Personal Information II</legend>
+
+
+
+            <div class="form-group">
+
+                        <label for="ethnicity" style="font-weight:400">Select Race/Ethnicity?</label>
+                        <abbr title="required" aria-label="required"></abbr></p>
+                        <div>
+                          <div>
+
+                            <select id="ethnicity" name="ethnicity" tabindex="7" style="height:50px;" required>
+                              <option value=" Select an option" selected="selected">Select an option</option>
+                              <option value="twoormore" selected>Two or more races</option>
+                              <option value="white">White</option>
+                              <option value="hispanic">Hispanic or Latino</option>
+                              <option value="aa">African American</option>
+                              <option value="asian">Asian</option>
+                              <option value="hawiian"> Native Hawaiian or Pacific Islander</option>
+                              <option value="americanindian">Native Hawaiian or Pacific Islander</option>
+
+                            </select>
+                            <small></small>
+                          </div>
+
+                        </br>
+
+            <div class="form-group">
+              <p>What is your age group?</p>
+               <!-- - </div>  -->
+              <legend></legend>
+              <!-- <div> -->
+                <label for="rbutton1" class="radio-inline">
+                  <input class="heighttext" type="radio" name="age" value="18-24" id="rbutton1"  tabindex="6" checked>
+                  18-24</label>
+                <!-- </div>
+         <div> -->
+                <label for="rbutton2" class="radio-inline">
+                  <input class="heighttext" type="radio" name="age"  value="25-34" id="rbutton2" >
+                  <!-- </div>-->
+                  25-34</label>
+          <!-- <div> -->
+                <label for="rbutton3" class="radio-inline">
+                  <input class="heighttext" type="radio" name="age" id="rbutton3" value="35-44">
+                  35-44</label>
+                <!-- </div>
+             <div> -->
+                <label for="rbutton4" class="radio-inline">
+                  <input class="heighttext" type="radio" name="age" id="rbutton4" value="45-54">
+                  45-54</label>
+                <!-- </div>
+                   <div> -->
+                <label for="rbutton5" class="radio-inline">
+                  <input class="heighttext" type="radio" name="age" id="rbutton5" value="55-64" />
+                  55-64</label>
+                <!-- </div>
+           <div> -->
+                <label for="rbutton6" class="radio-inline">
+                  <input class="heighttext" type="radio" name="age" id="rbutton6" value="65-74">
+                  65-74</label>
+                <!-- </div>
+           <div> -->
+                <label for="rbutton7" class="radio-inline">
+                  <input class="heighttext" type="radio" name="age" id="rbutton7" value="75+">
+                  75+</label>
+                <!-- </div> -->
+
+              <small></small>
+              </div>
+
+                <!-- </fieldset>
+
+<fieldset> -->
+                <legend></legend>
+                <div class="form-group">
+                  <p>Your preferred way of communication</p>
+                  <div>
+                      <label for="rbutton8" class="radio-inline">
+                      <input class="heighttext" type="radio" tabindex="8" name="communicate" value="email" id="rbutton8" checked>
+                      Email</label>
+                  </div>
+                  <div>
+                    <label for="rbutton9" class="radio-inline">
+                      <input class="heighttext" type="radio" name="communicate" id="rbutton9" value="phone">
+                      Phone</label>
+                  </div>
+                  <div>
+                    <label for="rbutton10" class="radio-inline">
+                      <input class="heighttext" type="radio" name="communicate" id="rbutton10" value="both">
+                      Both</label>
+                  </div>
+                  <div>
+                    <label for="rbutton11" class="radio-inline">
+                      <input class="heighttext" type="radio" name="communicate" id="rbutton11" value="other">
+                      Other</label>
+                  </div>
+                  <small></small>
+                </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Program Info</legend>
+            <div class="form-group">
+              <p>How did you hear about the program?</p>
+              <div>
+
+              <div>
+              <label for="rbutton12" class="radio-inline">
+                <input class="heighttext" type="radio" tabindex="9" name="hear" value="caseworker" id="rbutton12" checked>
+                My caseworker or Manager</label>
+
+              <label for="rbutton13" class="radio-inline">
+                <input class="heighttext" type="radio" name="hear" value="email" id="rbutton13">
+                Email</label>
+              <!-- </div><div> -->
+              <label for="rbutton14" class="radio-inline">
+                <input class="heighttext" type="radio" name="hear" id="rbutton14" value="friend">
+                A friend</label>
+              <!-- </div><div> -->
+              <label for="rbutton15" class="radio-inline">
+                <input class="heighttext" type="radio" name="hear" id="rbutton15" value="website">
+                <a class="link" href="https://www.empowermentsquare.org">Website(www.empowermentsquare.org)</a></label>
+              <!-- </div><div> -->
+              <label for="rbutton16" class="radio-inline">
+                <input class="heighttext" type="radio" name="hear" id="rbutton16" value="online">
+                Online</label>
+              <!-- </div>  <div> -->
+              <label for="rbutton17" class="radio-inline">
+                <input class="heighttext" type="radio" name="hear" id="rbutton17" value="other">
+                Other</label>
+              <!-- </div> -->
+              <small></small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <!-- <legend></legend> -->
+            <div class="form-group">
+              <p>Are you currently a resident at a safe house or shelter in NYC?</p>
+            </div>
+            <div>
+
+              <label for="rbutton18" class="radio-inline">
+                <input class="heighttext" type="radio" tabindex="10" name="resident" value="yes" id="rbutton18" checked>
+                Yes</label><span></span>
+              <!-- </div>
+       <div> -->
+              <label for="rbutton19" class="radio-inline">
+                <input class="heighttext" type="radio" name="resident" id="rbutton19" value="no">
+                No</label><span></span>
+              <!-- </div> <div> -->
+              <label for="rbutton20" class="radio-inline">
+                <input class="heighttext" type="radio" name="resident" id="rbutton20" value="apartment">
+                Shared apartment</label><span></span>
+              <!-- </div> <div> -->
+              <label for="rbutton21" class="radio-inline">
+                <input class="heighttext" type="radio" name="resident" id="rbutton21" value="family">
+                With family</label><span></span>
+              <!-- </div>  <div> -->
+              <label for="rbutton22" class="radio-inline">
+                <input class="heighttext" type="radio" name="resident" id="rbutton22" value="friend">
+                With a friend</label>
+              <!-- </div> -->
+              <small></small>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Questions</legend>
+            <div>
+            <!-- <div class="quest"> -->
+            <p> </p>
+            <div class="form-group">
+              <!-- <div> -->
+              <label for="inspire" id=""></label>
+              <p>Your Inspiration to join our program(A challenge/Goal)?</p>
+              <!-- </div> -->
+              <input class="heighttext" type="text" tabindex="11" name="inspire" required>
+              <small></small>
+            </div>
+            <!-- </fieldset>
+    <fieldset> -->
+            <p> </p>
+            <legend> </legend>
+            <div class="form-group">
+              <!-- <div> -->
+              <label for="achieve" id="">What do you want to achieve by the end of this program?</label>
+              <!-- </div> -->
+              <input class="heighttext" type="text" id="achieve" tabindex="12" name="achieve" placeholder="" required>
+              <small></small>
+            </div>
+            <!-- </fieldset>
+
+      <fieldset> -->
+            <p> </p>
+            <legend> </legend>
+            <div class="form-group">
+              <!-- <div> -->
+              <label for="questions" id="">Do you have questions for us? If so, feel free to ask here</label>
+              <!-- </div> -->
+              <input class="heighttext" type="text" id="questions" name="questions" placeholder="" />
+               <small></small>
+            </div>
+            <!-- </div> -->
+          </fieldset>
+
+          <div class="form-group">
+            <p class="full">
+              <button type="submit" value="signup">Submit</button>
+            </p>
+            <button type="reset" onclick="Reset()">Reset</button>
+          </div>
+          <!-- </fieldset> -->
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" href="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" oninput="inputchange(this)"/>
+        <p id="p"></p>
+    <br>
+    <ul id="list"></ul>
+    </div>
+    
+    <style>
+  *{
+    margin: 0;
+    padding: 0;
+     }
+  .container{
+         margin: 30px;
+        }
+#list{
+    margin-left: -100px;
+    list-style: none;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+}
+#list li{
+    width: 150px;
+    height: 100px; 
+}
+.red{background: red;}
+.green{background: green;}
+.blue{ background: blue;}
+.yellow{ background: yellow;}
+.Black{background: black;}
+.Brown{background:brown;}
+.BlueViolet{background:8A2BE2 ;}
+    </style>
+    <script>
+        const arr=['red','blue','green','yellow','Black','Brown','BlueViolet']
+      const list=  document.getElementById('list')
+      var li;
+        arr.map((data)=>{
+          (data?li +=`<li class=${data}></li>`:null)     
+        })
+        list.innerHTML=li
+const inputchange=(e)=>{
+    document.getElementById('p').innerHTML=e.value
+    searchvalue=e.value.toUpperCase();
+    var td=document.querySelectorAll("ul li")
+       for(var i=0;i<td.length;i++){
+        var tdvalue=td[i] 
+            if ((tdvalue.classList[0]).toUpperCase().indexOf(searchvalue) > -1) 
+            {
+                
+                td[i].style.display ="";
+            } 
+            else { td[i].style.display = "none";}  
+       }
+          }   
+    </script>
+</body>
+</html> 
+

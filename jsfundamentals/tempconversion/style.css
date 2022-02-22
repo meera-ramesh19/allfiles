@@ -1,0 +1,93 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+html{
+  font-size:62.5%;
+
+}
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+body{
+  background-image:url("https://i.imgur.com/8dj4JCZ.jpg")
+};
+background-repeat:no-repeat
+background-position:cover;
+background-attachment:fixed;
+
+}
+ input ,button,h3{
+    display: block;
+    vertical-align: baseline;
+}
+
+
+/* label {
+    color: #2D2D2D;
+    font-size: 15px;
+} */
+
+div, input {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+h1{
+  margin:0 auto;
+  padding:2% 30% 0 32%;
+  font-size:3rem;
+  text-align:center;
+}
+ input{
+  margin-left: 42%;
+   width: 20%;
+  padding:1%;
+}
+div {
+  width:100%;
+  padding-left:43.5%;
+}
+button{
+  display:inline;
+  text-align:center;
+  width: 15%;
+  font-size:1.5rem;
+  padding:1%;
+  font-weight:bold;
+  background-color:black;
+  color:white;
+
+}
+section {
+    margin:0 auto;
+    padding:3% 5%;
+}
+div+div{
+  padding:2%;
+  display:inline;
+}
+ h3{
+  font-size:2rem;
+   height:50px;
+  width:20%;
+  margin:0 42%;
+   padding:1%;
+  text-align: center;
+  color:white;
+  display:block;
+  background-color:black;
+}
+h4{
+  margin:0 65%;
+}

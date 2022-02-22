@@ -1,0 +1,133 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+/* nav bar */
+nav,main,aside{
+  width: 15%;
+  float: left;
+  color: black;
+}
+/* Join extra crunch h2 */
+h2{
+  color: orange;
+  font-size: 1.3rem;
+  margin: 1%;
+  padding: 3%;
+}
+h2+a{
+  font-size: 1.5rem;
+  margin: 10%;
+}
+ul,a,li{
+  list-style: none;
+  text-decoration: none;
+  color: gray;
+  margin: 1%;
+  padding: 3%;
+  font-size: 1rem;
+}
+/* main sizing */
+main{
+  width:45%;
+  margin: 2%;
+}
+/* h3 tag The Lates */
+h3{
+  clear: both;
+  float: left;
+  display:block;
+  margin: 0 0 2% 12%;
+}
+/* Bottom section "WonderWoman" */
+h3 + section{
+  width: 90%;
+  padding: 0 0 0 2%;
+  border-top: 1px solid gray;
+  float: right;
+  clear: both;
+}
+h3 + section > section, section > p{
+  width: 30%;
+  margin: 0 1% 0 0;
+  display: block;
+  float: left;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+time{
+  display: block;
+  font-size: 1rem;
+  font-weight: normal;
+  color: gray;
+}
+section p, h1 + p{
+  color: gray;
+  margin: 2% 0 4% 2%;
+
+  font-size: 1.4rem;
+}
+h4{
+  margin: 3% 0 0 0;
+}
+span{
+  font-weight: normal;
+  font-size: 1rem;
+}
+/* all images sizes */
+section img{
+  height: 100%;
+  width: 30%;
+  padding: 1%;
+  display: block;
+  float: right;
+}
+main img{
+  width: 100%;
+}
+nav > img{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: -35px;
+}
+/* aside sizing */
+aside li + li{
+    border-top: 1px solid gray;
+    color: black;
+    font-weight: bold;
+}
+aside{
+  width: 35%;
+
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

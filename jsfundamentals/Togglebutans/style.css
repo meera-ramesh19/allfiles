@@ -1,0 +1,21 @@
+/* method 2 */
+
+.orange {
+background: orange;
+}
+
+/* mymethod */
+.lower{
+  text-transform:uppercase;
+}
+.upper{
+  text-transform:capitalize;
+}
+.capitalize
+{text-transform:lower;}
+
+#button{
+  width:12%;
+  padding:1%;
+
+}

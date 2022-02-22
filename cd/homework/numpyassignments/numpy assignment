@@ -1,0 +1,320 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# NUMPY FUNCTIONS FOR APPENDING ARRAYS BY INSERTING,DELETING,
+# CHANGING SHAPE AND CONVERTING ARRAY TO A DIFFERENT TYPE
+
+my_array = np.array([ [ 1, 2, 3, 4 ], [ 5, 6, 7, 8 ] ])
+my_2d_array = my_array
+new_array = np.append(my_array, [ 7, 8, 9, 10 ])
+new_2darray = np.append(my_2d_array, [ [ 7 ], [ 8 ] ], axis = 1)
+
+# you switch around the shape of the array
+print(my_2d_array)
+
+# print the inserted element in my_array
+np.insert(my_array, 1, 5)
+print("Array after inserting: \n", my_array)
+
+# print the deleted element in my array
+np.delete(my_array, [ 1 ])
+print("Array after deleting an element:  \n", my_array)
+
+# Select elements at (1,0), (0,1), (1,2) and (0,0)
+print("Elements at(1,0), (0,1), (1,2) and (0,0) of my_2d_array :\n",
+      my_2d_array[ [ 1, 0, 1, 0 ], [ 0, 1, 2, 0 ] ])
+
+# Select a subset of the rows and columns
+print("Subset of my_2d_array : \n",
+      my_2d_array[ [ 1, 0, 1, 0 ] ][ :, [ 0, 1, 2, 0 ] ])
+
+# ARRAY INDEXING
+index_array = np.array([ [ 1, 2, 3, 4 ], [ 5, 6, 7, 8 ], [ 9, 10, 11, 12 ] ])
+index2_array = np.arange(0, 12)
+copied_array = index_array.copy()
+
+print("The original array :\n", index_array)
+print(" the copied array :\n", copied_array)
+
+sliced_array = index_array[ 0:2, 0:2 ]  # sliced of 2d array
+print("First 2 rows and cols array :\n", sliced_array)
+
+slice_array = index_array[ ::-1 ]  # reversed index_array
+print("reversed array : \n", slice_array)
+
+index_array[ :2, 1: ] = 15
+print("first 2 rows and from col 1 : \n", index_array)
+
+print("Elements from 2 to 8:\n", index2_array[ 2:8 ])  # slice only first 8 elements of an array
+
+index2_array[ 0:10 ] = 20  # assign the first 10 elements to a value
+print("first 10 elements array : \n", index2_array)
+
+arrange_array = index2_array[ 0:6 ]
+print("New sliced arrange array: \n", arrange_array)
+
+arrange_array[ : ] = 30  # assign all the elements to 30
+print("Changed arrange array : \n", arrange_array)
+print("Index array:\n ", index2_array)
+
+# FANCY INDEXING
+alt_array = index_array[ :2, ::2 ]
+print("Slices first 2 rows and alternate 0 and 2 cols: \n", alt_array)
+
+# select items at row 1 same as denoting index_array[1,:,:]
+print("Slices items from row 1: \n", index_array[ 1, ... ])
+
+indices_array = index_array[ [ 0, 1, 1, 0 ], [ 0, 2, 1, 0 ] ]
+print("elements at indices(0,0),(1,2),(1,1),(0,0) :\n", indices_array)
+
+subset_array = index_array[ [ 1, 0, 1, 0 ] ][ :, [ 0, 1, 2, 0 ] ]
+print("Subset of the index_array :\n", subset_array)
+
+# CONDITIONAL AND BOOLEAN OPERATIONS
+
+# for each element  in x
+arr1 = np.array([ 24, 36, 48, 60 ])
+# for each element in y
+arr2 = np.array([ 10, 15, 20, 25 ])
+# for each  boolean value val
+bool_array = np.array([ True, True, False, False ])
+# use loops indirectly to perform this
+
+if_else_loop = [ x if val else y for x, val, y in zip(arr1, bool_array, arr2) ]
+print("evaluate condition with for and if :\n", if_else_loop)
+
+# np.where(#condition,#value for yes, #value for No)
+numpy_func_loop = np.where(bool_array, arr1, arr2)
+print("evaluate loop conditon using numpy function ", numpy_func_loop)
+
+# First up is boolean indexing. Here, instead of selecting elements, rows or columns based on index number, you select
+# those values from your array that fulfill a certain condition.
+
+# Specify a condition
+bigger_than_3 = (copied_array >= 3)
+
+# Use the condition to index our 3d array
+print(copied_array[ bigger_than_3 ])
+
+cond_array = np.where(0, arr1 > 20, 1)
+print(cond_array)
+
+# Standard functions of numpy
+
+# sum x
+print("sum of arr1 :\n", arr1.sum())
+
+n = np.array([ [ 1, 2 ], [ 3, 4 ] ])
+
+# column sum
+print("Sum of n array at column 0:\n", n.sum(0))
+print("Mean of arr1: \n", arr1.mean())
+print("Standard deviation of :\ n", arr1.std())
+print("Variance of std of arr1:", arr1.var())
+
+# logical operations - and / or operations
+
+bool_val = np.array([ False, True, False, True ])
+
+print(bool_val.any())  # or operator
+print(bool_val.all())  # and operator
+
+# sorting in numpy arrays
+
+unsorted_array = np.array([ 1, 2, 8, 10, -4, -18, 7, 3 ])
+sort_arr = unsorted_array.sort()
+print("Sorted array is :\n", sort_arr)
+
+arr2 = np.array([ 'integer', 'string', 'boolean', 'array', 'integer', 'boolean',
+                  'string', 'string', ])
+print(np.unique(arr2))
+
+print(np.in1d([ 'integer', 'string', 'tuples' ], arr2))
+
+condit = index_array > 0
+condit_array = index_array[ condit ]
+print("Conditional array :\n ", condit_array)
+
+# select elements from index_array less than 5
+print("Elements les than 5:\n ", index_array[ index_array < 5])
+
+# SAVING AND LOADING FUNCTIONS:
+arr = np.arange(10)
+print(arr)
+
+np.save('saved_array', arr)  # New file is created - saved_array.npy
+news_array = np.load('saved_array.npy')
+print(news_array)  # Save Multiple arrays
+array_1 = np.arange(25)
+array_2 = np.arange(30)
+
+np.savez('saved_archive.npz', x = array_1, y = array_2)
+
+load_archive = np.load('saved_archive.npz')
+
+print('load_archive[x] is', load_archive[ 'x' ])
+
+print('load_archive[y] is', load_archive[ 'y' ])  # save to txtfile
+
+np.savetxt('notepadfile.txt', array_1, delimiter = ',')  # loading of txt files
+load_txt_file = np.loadtxt('notepadfile.txt', delimiter = ',')
+print("load_txt_file is", load_txt_file)
+"""
+fname1='data.txt'
+fname2='data2.txt'
+x,y,z= np.loadtxt(fname1, dtype= float, skiprows = 1, unpack = True)
+my_array2 = np.genfromtxt(fname1, skipheader = 1, filling_values = -999)
+"""
+# NUMPY BROADCASTING
+
+# Initialize `x`
+x = np.ones((3, 4))
+# Check shape of `x`
+print("shape of x: \n", x.shape)
+
+# Adding compatible and equal arrays using broadcasting
+# Initialize `y`
+y = np.random.random((3, 4))
+# Check shape of `y`
+print("shape of y:\n", y.shape)
+# Add `x` and `y`
+print("Adding compatible arrays using broadcasting:  \n", x + y)
+
+# Subtracting 2 arrays, when one array is 1D as  they are considered compatible
+# Initialize `y`
+y = np.arange(4)
+# Check shape of `y`
+print(y.shape)
+# Subtract `x` and `y`
+print("Subtraction when one is 1D array using brodcasting : \n",
+      x - y)
+
+# Addition of arrays is possible when the size of element of one array is 1
+# Initialize `x` and `y`
+x = np.ones((3, 4))
+y = np.random.random((5, 1, 4))
+# Add `x` and `y`
+# x has dimension 3x4 and y has size 1, so x has size 3 and x behaves as if it were copied along the dimension and the result is (5,3,4)
+print(x + y)
+
+# CHANGING ARRAY SHAPE AND SIZE WHEN BROADCASTING CAN'T BE DONE
+# returns evenly spaced numbers over a specified interval.
+# num is the number of samples to generate.
+
+print("Change array space using linspace  :\n", np.linspace(0, 10, num = 4))
+
+# FLATTEN AND RAVEL IS USED TO CHANGE nD TO 1-D ARRAY
+
+# returns a copy of the array collapsed into one dimensional
+
+my_stacked_array = np.array([ [ 5, 6, 7, 8 ],
+                              [ 10, 11, 12, 13 ],
+                              [ 15, 16, 17, 18 ] ])
+# Flatten returns copy of otiginal array, original doesn't change after modified,
+# slower and occupies memory and is a method
+print("Flatten array: \n", my_stacked_array.flatten())
+
+# Ravel returns reference of the array, original changes when modified,
+# library level function which is faser and does not occupy memory
+print("Using ravel array : \n ", my_stacked_array.ravel())
+
+# Making a random array
+ran_array = np.array([ 1, 2, 3, 4, 5, 6 ])
+
+# Required values 12, existing values 6
+ran_array.resize(2, 3)
+print("Resized 1-D array : \n", ran_array)
+
+# Making a random array
+x = np.array([ [ 1, 2, 3, 4, 5, 6 ],
+               [ 10, 20, 30, 40, 50, 60 ] ])
+
+# Resize the array permanently
+x.resize(2, 3)
+
+print("Resized array : \n", x)
+
+# reshape with new dimensions and if new array is larger than the original
+# , the new array filled with copies of the original array.
+
+print("Copies of original array as the new array is large: \n",
+      x.resize(6, 4))
+
+# new array filled with zeros
+print("Array filled with zeros: \n", x.resize())
+
+# RESHAPING THE ARRAY WITHOUT CHANGING THE DATA
+# Reshape, but don’t change data
+print("Reshape without changing data:  \n", x.reshape(3, -2))
+
+# convert an array to a different type
+print("Convert the array into different type: ", my_array.astype(int))
+
+# TRANSPOSING ARRAY
+
+# Transpose `x`
+print("Array using transpose : \n", np.transpose(x))
+
+# Or use `T` to transpose `my_2d_array`
+print("Array using .T option to transpose :\n ", x.T)
+
+# Use lookfor() to do a keyword search on docstrings.
+# Look up info on `mean` with `np.lookfor()`
+
+# print(np.lookfor("mean"))
+# Get info on data types with `np.info()`
+# print(np.info(np.x.dtype))
+
+# Initialize your array
+my_3d_array = np.array([ [ [ 1, 2, 3, 4 ],
+                           [ 5, 6, 7, 8 ] ],
+                         [ [ 1, 2, 3, 4 ],
+                           [ 9, 10, 11, 12 ] ] ], dtype = np.int64)
+
+# Pass the array to `np.histogram()`
+# histogram computes the occurrences of the array that fall within each
+# bin which determines the area that each bar of your histogram takes up
+
+print(np.histogram(my_3d_array))
+
+# Specify the number of bins
+print(np.histogram(my_3d_array, bins = range(0, 13)))
+
+# construct the histogram with aflattened 3d array and  range of bins
+plt.hist(my_3d_array.ravel(), bins = range(0, 13))
+
+# Add a title to the plot
+
+plt.title("Frequency of my 3-D array elements")
+plt.show()
+points = np.arange(-5, 5, 0.01)
+
+# make  a meshgrid
+xs, ys = np.meshgrid(points, points)
+z = np.sqrt(xs ** 2 + ys ** 2)
+
+# display the image on the axes
+plt.imshow(z, cmap = plt.cm.gray)
+
+# draw a color bar
+plt.colorbar()
+plt.show()
+
+axes_values = np.arange(-100, 100, 10)
+dx, dy = np.meshgrid(axes_values, axes_values)
+
+print("dx: ", dx)
+print("dy", dy)
+
+function1 = 2 * dx + 3 * dy
+function2 = np.cos(dx) + np.cos(dy)
+
+print("2dx+3dy : ", function1)
+print("cos(dx)+cos(dy) :", function2)
+
+# replace function2 by function1 to get graph of function1
+# plotting the function on graph
+plt.imshow(function2)
+plt.title("function cos plot")
+plt.colorbar()
+plt.savefig('myfig2.png')

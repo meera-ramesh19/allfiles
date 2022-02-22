@@ -1,0 +1,61 @@
+// import "./styles.css";
+import React from "react";
+
+export default function App() {
+  const colors = [
+    "red",
+    "green",
+    "red",
+    "blue",
+    "purple",
+    "orange",
+    "brown",
+    "purple",
+    "cyan"
+  ];
+  const [inputColor, setInputColor] = React.useState("");
+
+  function handleChangeColor(event) {
+    setInputColor(event.target.value);
+  }
+  const filterData = (inputColor) => {
+    console.log(inputColor);
+    return colors.filter((eachColor) => {
+      if (eachColor.includes(inputColor)) {
+        console.log("includes");
+        if (inputColor) {
+          if (eachColor[0] === inputColor[0]) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          return true;
+        }
+      } else {
+        return false;
+      }
+    });
+  };
+  return (
+    <div className="App">
+      <input onChange={(event) => handleChangeColor(event)} />
+      <br />
+      <br />
+
+   
+      {filterData(inputColor.toLowerCase()).map((color) => (
+        <div
+
+          style={{
+            display: "inline-block",
+            backgroundColor: color,
+            width: "50px",
+            height: "200px",
+            outline:'1px solid black'
+          }}
+        ></div>
+      ))}
+    </div>
+  );
+}

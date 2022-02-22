@@ -1,0 +1,110 @@
+:root {
+    --wine-red: #C7375F;
+    --bright-red: #D42D2F;
+    --dark-green: #344D2F;
+    --light-green: #77A047;
+    --gold: #FAC57D;
+    --snow: #F0F4F7;
+  }
+  
+  html, body {
+      margin: 0;
+      padding: 0;
+  }
+  
+  body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: var(--snow);
+      background-color: var(--bright-red);
+  }
+  
+  /* .checklist {
+      color: var(--dark-green);
+      display: flex;
+      justify-content: center;
+      align-items:  center;
+      flex-direction: column;
+      min-width: 200px;
+      min-height: 200px;
+      max-width: 5ch;
+      max-height:auto;
+      background: var(--snow);
+      padding: 1rem;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+      margin-bottom:1rem;
+  } */
+  
+  /* .checklist-item {
+      margin: 0.5em;
+      width: 100%;
+      text-align: left;
+      font-weight: bold;
+  } */
+  
+  input[type=checkbox]:checked + label.strikethrough{
+    text-decoration: line-through;
+    font-weight: normal;
+  }
+
+img{
+    justify-content: center;
+    align-items:center;
+}
+  #delete{
+    border-style: none;
+    background-color: none;
+    margin-bottom:2rem;
+}
+  /* .addlist {
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    flex-direction: column;
+    min-width: 250px;
+    min-height: 100px;
+    max-width: 5ch;
+    background: var(--light-green);
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;  
+} */
+
+  
+  /* .addlist-item{
+      display:flex;
+      flex-direction:column;
+     justify-content: center;
+     align-items: center;
+    
+  }
+   */
+  #addBtn{
+      width:100px;
+      height:auto;
+      text-align: center;
+      margin:0 auto;
+      background:var(--dark-green);
+      color:var(--gold);
+      padding:0.5rem;
+      border-radius: 10px;
+      border:2px solid black;
+  }
+  #array-items{
+       padding:1rem;
+       margin-bottom:0.5rem;
+       border-radius: 10px;
+  }
+
+  #submit{
+    padding:1rem;
+  }
+
+  .hide-element{
+    display:none;
+  }

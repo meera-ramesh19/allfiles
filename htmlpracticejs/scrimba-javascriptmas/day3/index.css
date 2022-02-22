@@ -1,0 +1,119 @@
+:root {
+    --wine-red: #C7375F;
+    --bright-red: #D42D2F;
+    --dark-green: #344D2F;
+    --light-green: #77A047;
+    --gold: #FAC57D;
+    --snow: #F0F4F7;
+  }
+  
+  html, body {
+      margin: 0;
+      padding: 0;
+  }
+  
+  body,
+  .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center
+  }
+  
+  body {
+      background-color: var(--light-green);
+      height: 100vh;
+  }
+  
+  .wrapper {
+      background: var(--snow);
+      flex-direction: column;
+      border-radius: 10px;
+      padding: 1rem;
+      min-width: 550px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+      font-size: 45px;
+      font-family: 'Rubik Beastly', cursive;
+      color: var(--bright-red)
+  }
+
+  .fa-snowflake {
+	color: #fff;
+	position: absolute;
+	top: -20px;
+	animation: fall linear forwards;
+}
+
+@keyframes fall {
+	to {
+		transform: translateY(105vh);
+	}
+}
+
+  button {
+      padding: 1em 2em;
+      border: none;
+      font-size: 20px;
+      background-color: var(--bright-red);
+      color: var(--snow);
+      border-radius: 999px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+  
+  button:hover {
+      cursor: pointer;
+      background-color: var(--wine-red);
+  }
+  
+  input[type="radio"]{
+    display:none;
+   
+}
+#text{
+    text-align: center;
+}
+ .radio-buttons{
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+   
+ } 
+ .label-input{
+    border:2px solid black;
+    text-align:center;
+    margin:1rem;
+    padding: 0.5rem 1rem ;
+    border-radius: 10%;
+    /* font-family:cursive; */
+    color:black;
+} 
+#container{
+    display:inline;
+    font-family:cursive;
+    font-size:1.5rem;
+    
+}
+
+.hidden{
+    visibility:hidden;
+}
+
+.christmas{
+    background: url('redchristmas.jpg') fixed center no-repeat;
+    background-size:cover;
+}
+
+
+.snow{
+    background: url('aesthetic3.jpg') fixed center no-repeat;
+    background-size:cover;
+}
+
+.tree{
+    background: url('tree.jpg') fixed center no-repeat;
+    background-size:cover;
+}
+
+#greeting{
+ text-align:center;
+}

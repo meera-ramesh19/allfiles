@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Array Color</title>
+</head>
+<body>
+    <h1>Search Color Array Challenge</h1><br>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Colors..">
+     <p id="text"></p>
+
+            <ul id="myUL">
+            <li ><a href="#" id="red"></a></li>
+            <li><a id="green" href="#"></a></li>
+            <li><a id="purple" href="#purple"></a></li>
+            <li><a id="blue" href="#blue"></a></li>
+            <li><a id="yellow" href="#yellow"></a></li>
+            <li><a id="brown" href="#brown"></a></li>
+            <li><a id="purple" href="#purple"></a></li>
+            <li><a id="orange" href="#orange"></a></li>
+            </ul>
+
+
+    <script>
+        function myFunction() {
+          // Declare variables
+          var input, filter, ul, li, a, i;
+          input = document.getElementById('myInput');
+          document.getElementById('text').innerHTML = input.value;
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myUL");
+          li = ul.getElementsByTagName('li');
+
+          // Loop through all list items, and hide those who don't match the search query
+          let colors = ['red','green', 'purple', 'blue', 'yellow', 'brown', 'purple', 'orange'];
+
+          for (color = 0; color <= li.length; color++) {
+            // a = li[color].getElementsByTagName("a")[0];
+            if (colors[color].toUpperCase().indexOf(filter) > -1) {
+              li[color].style.display = "";
+            } else {
+              li[color].style.display = "none";
+            }
+          }
+        }
+        </script>
+</body>
+
+</html>

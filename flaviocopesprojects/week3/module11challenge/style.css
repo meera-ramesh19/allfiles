@@ -1,0 +1,143 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+
+}
+
+html,
+body {
+  font-size: 62.5%,
+   box-sizing:border-box;
+  text-align:center;
+    font-family: system-ui;
+}
+.container{
+  display:flex;
+  max-width: 50%;
+   padding-top: 5%;
+    margin: auto;
+   justify-content:center;
+}
+.wrapper{
+  padding:10%;
+ box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.2);
+  outline: none;
+
+  justify-content:center;
+}
+nav ol {
+  list-style-type: none;
+  padding-left: 0;
+
+}
+nav li {
+  display: inline;
+
+}
+li a{
+  text-decoration:none;
+}
+nav li::after {
+  content: " | ";
+}
+
+nav li:last-child::after {
+  content: "";
+}
+#hero{
+  padding:15%;
+  max-width:500px;
+  background:linear-gradient(#e66465, #9198e5);
+}
+
+#title{
+  font-size:4rem;
+  text-align:center;
+}
+form {
+  padding:3% 0% 3%;
+  background: #ffbf80;
+  margin: 0 auto;
+  text-align: center;
+  width: 500px;
+}
+
+label {
+  padding: 2%;
+  display: block;
+  text-transform: uppercase;
+}
+input,
+textarea {
+  padding: 3%;
+  width: 50%;
+  height: auto;
+}
+
+button {
+  background: lightslategray;
+  width: 10%;
+  padding: 5%;
+  border-radius: 10%;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+p {
+  padding: 3%;
+}
+
+textarea:focus {
+  /*   border-color: rgba(126, 239, 104, 0.8); */
+  /*   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
+    0 0 8px rgba(126, 239, 104, 0.6); */
+  outline: 0 none;
+  bakground: rgba(220, 160, 140, 0.1);
+}
+h2{
+  padding:5%;
+}
+table,td,th {
+  border: 3px solid gray;
+  border-collapse: collapse;
+   padding: 20px 50px 10px 50px;
+}
+#main{
+  padding:5%;
+}
+thead{
+  background:gray;
+}
+tbody tr:nth-child(even){
+  background: #f2e6ff;
+}
+tbody tr:nth-child(odd){
+  background:
+ #e6ffe6;
+}
+tbody tr:nth-child(1){
+  background:
+white;
+}
+td a{
+  text-decoration:none;
+}
+footer{
+  padding:3% 0%;
+}
+#footer {
+  padding:4% 0% 2%;
+  width:500px;
+  background:black;
+  color:white;
+}
+
+.fab{
+  font-size:1.5rem;
+  color:green;
+
+}

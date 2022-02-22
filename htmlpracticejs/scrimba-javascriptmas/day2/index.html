@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body class="christmas" id="body" onload="newYearEve()">
+        <div class="container" id="container">
+            <p id="greeting">🎅 Merry Christmas!</p>
+            <div class="radio-container">
+                <input type="radio" id="christmas" name="theme" value="christmas" checked>
+                <label for="christmas">Christmas 🎅</label>
+            </div>
+            <div class="radio-container">
+                <input type="radio" id="snow" name="theme" value="snow">
+                <label for="snow">Snow ☃️</label>
+                 <!-- <iframe src="https://giphy.com/embed/o9OwkG1z0veIU" width="480" height="251" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
+                 <!-- <p><a href="https://giphy.com/gifs/snow-pretty-lovely-o9OwkG1z0veIU"></a></p> -->
+
+                 <!-- <div class="snowflakes hidden" aria-hidden="true">
+  <div class="snowflake hidden">
+  ❅
+  </div>
+  <div class="snowflake hidden">
+  ❆
+  </div>
+  <div class="snowflake hidden">
+  ❅
+  </div>
+  <div class="snowflake hidden">
+  ❆
+  </div>
+  <div class="snowflake hidden">
+  ❅
+  </div>
+  <div class="snowflake hidden">
+  ❆
+  </div>
+  <div class="snowflake hidden">
+    ❅
+  </div>
+  <div class="snowflake hidden">
+    ❆
+  </div>
+  <div class="snowflake hidden">
+    ❅
+  </div>
+  <div class="snowflake hidden">
+    ❆
+  </div>
+  <div class="snowflake hidden">
+    ❅
+  </div>
+  <div class="snowflake hidden">
+    ❆
+  </div>
+</div>  -->
+            </div>
+           
+
+            <div class="radio-container">
+                <input type="radio" id="thanksgiving" name="theme" value="thanksgiving">
+                <label for="thanksgiving"> 🍂 Thanksgiving 🦃</label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" id="halloween" name="theme" value="halloween">
+              <label for="halloween"> 🎃 Halloween 👻</label>
+          </div>
+            <div class="radio-container">
+                <input type="radio" id="easter" name="theme" value="easter">
+                <label for="easter"> ⛪ Easter 🐰</label>
+            </div> 
+            <div class="radio-container">
+              <input type="radio" id="newyear" name="theme" value="newyear">
+              <label for="newyear">🎊 Newyear 🎉</label>
+          </div> 
+            <div class="customize">
+              <div class="text">
+                <label>TextColor</label>
+                <input type="color" id="text-color">
+              </div>
+              <div class="background">
+                <label>BackgroundColor</label>
+                <input type="color" id="background-color">
+              </div>
+             </div>
+            <div class="submit-btn">
+               <button id="submit">Submit</button>
+             </div>
+        </div>
+      
+        
+        <script src="index.js"></script>
+    </body>
+</html>

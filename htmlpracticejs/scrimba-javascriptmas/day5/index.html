@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+     
+        <div class="names">
+        <div class="sender-name">
+            <input type="text" id="from-sender" placeholder="from">
+        </div>
+        <div class="recipient-name">
+          <input type="text" id="to-recipient" placeholder="to">
+        </div>
+        
+       </div>
+       <div class="custom" >
+        <input type="text" id="your-message" size="45" placeholder="your message"  />
+        </div>
+        <div class="card" id="card"> 
+         <div class="card-container" id="card-container">
+           <p id="display-sender"class="display-sender hidden"></p>
+          
+            <p id="greeting-display" class="greeting-display hidden"></p>
+            <br>  <br>  <br>
+            <div id="regards" class="regards hidden"></div>
+
+            <p id="display-recipient" class="display-recipient hidden"></p>
+            
+        </div>  
+        </div>
+       
+        <!-- <div class="custom hidden" id="custom"> -->
+           <!-- <div class="custom-message" id="custom-message">  -->
+               <!-- <label for="mess">CustomMessage</label> -->
+              <!-- <input type="text" id="message" class="message hidden" name="mess" /> -->
+              <!-- </div> -->
+           <!-- </div>  -->
+        
+        <button id="btn" >Write card</button>
+        <button id="reset" class="reset hidden">Generate New Card</button>
+        <script src="index.js"></script>
+    </body>
+</html>

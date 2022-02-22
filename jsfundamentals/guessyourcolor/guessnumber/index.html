@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="This is where your description goes">
+    	<meta name="keywords" content="one, two, three">
+
+		<title>nUMBER gUESSING gAME</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+<body>
+
+
+    <h1> NUMBER GUESSING GAME</h1>
+  <span>Guess a Number between 1-100</span><br>
+  <span> You have only 10 guesses to get it right</span>
+<!--     <form id="myform" name="myform"> -->
+        <fieldset>
+<!--           <div class="inputArea"> -->
+           <div class="micemove">
+            <legend>GuessNumbers</legend>
+            <label for="guess">Your Guess number    </label>
+            <input type="number" id="guess"  value="" placeholder=" Number from 1-100"/>
+            <button  id="submit">submit</button><br/>
+<!--           <button type="button" id="reset">NewGame</button><br /> -->
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend> Output </legend>
+          <p id="prev">Previous Guesses</p>
+          <div class="guessList">
+          <textarea id="previousGuess" name="previousGuess" rows="5" style="width:100%"></textarea>
+             <ol id="historyList">
+          </ol>
+          </div>
+          <p id="cur">Guess Remainaing</p>
+          <textarea id="guessRem" name="dispGuessRem" rows="2" style="width:100%"></textarea>
+            <p>High/Low/Number Guessed</p>
+            <textarea id="guessMessage" name="output" rows="2" style="width: 100%;"></textarea>
+
+
+          </div>
+        </fieldset>
+
+<!--     </form> -->
+
+
+
+    <script src="number-guessing-game.js">
+    </script>
+
+</body>
+
+</html>

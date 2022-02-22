@@ -1,0 +1,52 @@
+html{
+   font-size:62.5%;
+}
+
+body{
+  font-size:2rem;
+  line-height:2rem;
+}
+/*
+div{
+  display:block;
+}
+span{
+  display:inline;
+  padding-left:40%;
+  padding-top:50%;
+}
+button{
+  width:10%
+}
+input{
+  width:10%;
+} */
+
+label, input ,button,h2{
+    display: inline-block;
+    vertical-align: baseline;
+    width: 200px;
+}
+h2{
+  font-size:15px;
+}
+label {
+    color: #2D2D2D;
+    font-size: 15px;
+}
+
+div, input {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+h1{
+  margin:0 auto;
+  padding:5% 30% 0 32%;
+
+}
+div {
+    width: 500px;
+    margin:0 auto;
+    padding-top:4%;
+}

@@ -1,0 +1,90 @@
+:root {
+    --wine-red: #c7375f;
+    --bright-red: #d42d2f;
+    --dark-green: #344d2f;
+    --light-green: #77a047;
+    --gold: #fac57d;
+    --snow: #f0f4f7;
+  }
+  
+  html,
+  body {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: var(--dark-green);
+    background-color: var(--bright-red);
+  }
+  /* .wrapper{
+    display:flex;
+  } */
+  /* .container {
+    margin:0 2rem;
+    display: flex;
+    flex-direction: column;
+    background: var(--wine-red);
+    color: var(--snow);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  } */
+  .christmas{
+    display:block;
+  }
+  .countdown-display {
+    font-size: 100px;
+    margin: 0;
+  }
+  
+  .new-years {
+    background: black;
+  }
+  
+  .new-years-h1 {
+    color: darkslategray;
+  }
+  
+  .containers {
+    max-width: 60vw;
+    width:100%;
+    /* max-height: 130vh; */
+    height:auto;
+    margin: 0 auto;
+    padding: 1rem;
+    background: var(--dark-green);
+    color: white;
+  }
+  
+  li {
+    list-style: none;
+    display: inline-block;
+    margin:auto 2rem;
+    width:4rem;
+    height:auto;
+    background:black;
+    padding:1rem;
+  }
+  li span {
+    display: block;
+    text-align:center;
+    margin:1rem 3rem;
+   
+  }
+  
+  #days,#hours,#minutes,
+  #seconds{
+    margin:1rem auto;
+  }
+  #start {
+    padding: 1rem;
+  }
+  

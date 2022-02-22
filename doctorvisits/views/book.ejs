@@ -1,0 +1,49 @@
+<%- include('partials/header') -%>
+
+    <main class="container">
+        <div class="row justify-content-center">
+            <section class="col-6 mt-5">
+                <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                        <div class="alert alert-danger">
+                            <%= el.msg %>
+                        </div>
+                        <% }) %>
+                            <% } %>
+                                <% if (locals.messages.info) { %>
+                                    <% messages.info.forEach( el => { %>
+                                        <div class="alert alert-danger">
+                                            <%= el.msg %>
+                                        </div>
+                                        <% }) %>
+                                            <% } %>
+                                                <p>Book an appointment for the next doctor visit, right here on our website!</p>
+                                                <form method="post" action="/book">
+                                                    <div>
+                                                        <label>Your name:</label>
+                                                        <br />
+                                                        <input type="text" name="name" value="" />
+                                                    </div>
+
+                                                    <div>
+                                                        <label>Your mobile number:</label>
+                                                        <br />
+                                                        <input type="tel" name="number" value="{{number}}" />
+                                                    </div>
+                                                    <div>
+                                                        <label>Date and Time:</label>
+                                                        <br />
+                                                        <input type="date" name="date" value="{{date}}" />
+                                                        <input type="time" name="time" value="{{time}}" />
+                                                    </div>
+                                                    <div>
+                                                        <button type="submit">Book Now!</button>
+                                                    </div>
+                                                </form>
+
+
+            </section>
+        </div>
+    </main>
+
+    <%- include('partials/footer') -%>

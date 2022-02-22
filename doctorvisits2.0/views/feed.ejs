@@ -1,0 +1,49 @@
+<%- include('partials/header') -%>
+    <%- include('partials/navbar') -%>
+
+        <div class="container" id="feedContainer">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <% patients.reverse().forEach( el => { %>
+                    <div class="col-sm-12 mb-5">
+                        <div class="card mx-auto">
+                            <a href="/patientsPage/<%= el._id %>">
+                                <h5 class=" card-title">
+                                    <%= el.postTitle %>
+                                </h5>
+
+                                <p class="card-title">
+                                    <%= el.patName %>
+                                        <p>
+                                            <p class="card-title">
+                                                <%= el.docName %>
+                                                    <p>
+                                                        <p class="card-title">
+                                                            <%= moment(el.docVisitDate).format( 'DD MMM YYYY') %>
+                                                                <p>
+                            </a>
+                            <div class="card-body">
+                                <!-- Like Button -->
+                                <button class="btn btn-primary fa fa-star" type="submit"></button>
+                                <!-- Comment Button -->
+                                <!-- <button class="btn btn-primary fa fa-comment" type="submit"></button> -->
+                                <!-- Share Button -->
+                                <!-- <button class="btn btn-primary fas fa-paper-plane" type="submit"></button> -->
+                                <!-- Save or Bookmark Button -->
+                                <!-- <button class="btn btn-primary fas fa-bookmark float-end" type="submit"></button> -->
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <!-- <div class="container justify-content-center">
+                <div class="text-center">
+                    <a class="btn btn-primary" href="/patients">Create a Post</a>
+                    <a class="btn btn-primary" href="/feed">Return to Feed</a>
+                </div>
+            </div> -->
+
+        </div>
+
+
+        <%- include('partials/footer') -%>
