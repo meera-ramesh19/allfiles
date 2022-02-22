@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>About Page</title>
+    <%- include('../partials/head'); %>
+</head>
+
+<body class="container">
+
+    <header>
+
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="jumbotron">
+                    <!-- <h1>TASKS APP</h1> -->
+                    <p> A CRUD NODEJS APPLICATION</p>
+                    <!-- form to create task -->
+
+                    <section class="containers">
+
+                        <!-- form to create task -->
+                        <form action="/create-task" method="POST">
+
+                            <section class="table">
+                                <thead>
+                                    <tr class="table-active">
+                                        <th>Add Task</th>
+                                        <th>category</th>
+                                        <th>date</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+
+                                <input>
+                                <tr>
+                                    <td> <input type="text" name="description" placeholder="What do you need to do?" required></input>
+                                    </td>
+                                    <td> <select name="category" required>
+
+                        <option>PERSONAL</option>
+                        <option>WORK</option>
+                        <option>SCHOOL</option>
+                        <option>CLEANING</option>
+                        <option>OTHER</option>
+
+                    </select></td>
+                                    <input> <input type="date" name="date" required></input>
+                                    <tr>
+                                        <tr type="submit" class="btn btn-success" id="add" value="ADD TASK"></tr>
+                                    </tr>
+                                    </input>
+
+                                    </table>
+
+                                    </input>
+                            </section>
+                            <div>
+                                <h1 align="center">TASKS LIST</h1>
+
+                                <form action="/delete-task" method="GET">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Select</th>
+                                                <th>Task</th>
+                                                <th>Category</th>
+                                                <th>due date</th>
+                                            </tr>
+                                        </thead>
+                                        <% for(let i of task) { %>
+
+                                            <tr>
+                                                <td> <input type="checkbox" name="<%= i._id %>"></td>
+                                                <td>
+                                                    <p id="task-description">
+                                                        <%= i.description %>
+                                                </td>
+                                                <td>
+                                                    <p id="task-category"></p>:
+                                                    <%= i.category %>
+                                                </td>
+                                                <td>
+                                                    <p id="due-date">:
+                                                        <%= i.date %>
+                                                    </p>
+                                                </td>
+                                            </tr>
+
+                                            <% } %>
+
+
+
+
+                                    </table>
+                                    <!-- <div align="center"> 
+                                    <input type="submit" class="btn btn-danger" value="DELETE TASK">
+                                    </div>-->
+
+
+                            </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

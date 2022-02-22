@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <!-- <h1> TODO List</h1> -->
+    <div class="container">
+        <h2>Simple TODO List</h2>
+        <div class="todo">
+
+            <form action="/addTask" method="POST" class="todo-header">
+
+                <input type="text" name="content" placeholder="add new task">
+                <input type="date">
+                <button type="AddTask"><span class="fas fa-plus"></span></button>
+            </form>
+            <!-- <h2>Added Task</h2>
+                <div class="add">
+
+                    <% for( var i = 0; i < task.length; i++){ %>
+                        <li><input type="checkbox" name="check" value="<%= task[i] %>" />
+                            <%= task[i] %>
+                        </li>
+                        <% } %>
+                </div>
+
+                <button formaction="/removetask" type="submit">Remove</button>
+             -->
+
+            <!-- <h2> Completed task </h2>
+            <% for(var i = 0; i < complete.length; i++){ %>
+                <li><input type="checkbox" checked>
+                    <%= complete[i] %>
+                </li>
+                <% } %> -->
+            <ul class="todo-list">
+                <% todoTasks.forEach(details => {%>
+                    <li class="todo-list-item">
+                        <div class="todo-list-item-name">
+                            <%= details.content %>
+                        </div>
+                        <a href="" class="edit">
+                            <span class="fas fa-edit"></span>
+                        </a>
+                        <a href="" class="done">
+                            <span class="fas fa-check"></span>
+                        </a>
+                        <a href="" class="remove">
+                            <span class="fas fa-times "></span>
+                        </a>
+                    </li>
+                    <% })%>
+            </ul>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

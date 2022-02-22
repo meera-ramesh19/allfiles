@@ -1,0 +1,105 @@
+<!-- <ul>
+                <% tasks.forEach(function(task) { %>
+                    <li>
+                        <strong><%= task.todo %></strong> representing
+                      <label>
+        <%= task.category %>,deadline
+                            <%= task.birth_date %>
+                    </li>
+                    <% }); %>
+            </ul> -->
+            <input type="checkbox"/yes / no
+</label>
+
+
+          <div class = "card-wrapper mr-5">
+            <div class = "card-top" style={{"background-color": colors[index%5].primaryColor}}></div>
+            <div class = "task-holder">
+                <span class = "card-header" style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px"}}>{taskObj.Name}</span>
+                <p className = "mt-3">{taskObj.Description}</p>
+
+                <div style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
+                    <i class = "far fa-edit mr-3" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
+                    <i class="fas fa-trash-alt" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
+                </div>
+        </div>
+        <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
+        </div>
+
+        
+  <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+ type="textjavascript" src="./js/main.js"
+https://github.com/yatharth1706/React-todo-list/blob/master/src/components/Card.js
+
+ const colors = [
+        {
+            primaryColor : "#5D93E1",
+            secondaryColor : "#ECF3FC"
+        },
+        {
+            primaryColor : "#F9D288",
+            secondaryColor : "#FEFAF1"
+        },
+        {
+            primaryColor : "#5DC250",
+            secondaryColor : "#F2FAF1"
+        },
+        {
+            primaryColor : "#F48687",
+            secondaryColor : "#FDF1F1"
+        },
+        {
+            primaryColor : "#B964F7",
+            secondaryColor : "#F3F0FD"
+        }
+    ]
+
+
+ <div class = "card-wrapper mr-5">
+            <div class = "card-top" style={{"background-color": colors[index%5].primaryColor}}></div>
+            <div class = "task-holder">
+                <span class = "card-header" style={{"background-color": colors[index%5].secondaryColor, "border-radius": "10px"}}>{taskObj.Name}</span>
+                <p className = "mt-3">{taskObj.Description}</p>
+
+                <div class="font-icons" style={{"position": "absolute", "right" : "20px", "bottom" : "20px"}}>
+                    <i class = "far fa-edit mr-3" style={{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {() => setModal(true)}></i>
+                    <i class="fas fa-trash-alt" style = {{"color" : colors[index%5].primaryColor, "cursor" : "pointer"}} onClick = {handleDelete}></i>
+                </div>
+        </div>
+        <EditTask modal = {modal} toggle = {toggle} updateTask = {updateTask} taskObj = {taskObj}/>
+        </div>
+
+
+        .card-top{
+          background-color: colors[index%5].primaryColor;
+
+        }
+
+        .card-header{
+background-color: colors[index%5].secondaryColor;
+ border-radius: 10px
+        }
+
+        .font-icons{
+          position: absolute;
+           right : 20px;
+           bottom : 20px
+        }
+        .far fa-edit, .fas fa-trash-alt{
+          cursor:pointer;
+ background-color: colors[index%5].primaryColor;
+        }

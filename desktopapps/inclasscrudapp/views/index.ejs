@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TOdo</title>
+    <meta name="author" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link href="css/style.css" rel="stylesheet">-->
+</head>
+
+<body>
+
+    <p>Hello, world!</p>
+    <h1>
+        Todos
+    </h1>
+    <ul>
+        <% for (let i=0;i < zebra.length;i++){%>
+
+            <li>
+                <span><%= zebra[i].todo %></span>
+                <span>Delete</span>
+            </li>
+
+            <%}%>
+
+    </ul>
+
+    <form action="/createTodo" method="POST">
+        <input type="text" placeholder="todo...." name="todoItem">
+
+        <input type="submit" name="submit">
+
+    </form>
+    <script src="js/main.js ">
+    </script>
+</body>
+
+</html>
