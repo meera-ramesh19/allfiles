@@ -1,0 +1,151 @@
+/** @format */
+
+.party {
+  background-image: url("https://image.freepik.com/free-vector/friends-partying-drinking-different-beverages_53876-66174.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 140vh;
+}
+.party-p {
+  background-color: #434cbf;
+  font-size: 30px;
+}
+#party-girl {
+  position: relative;
+  animation-name: partyGirlAnimation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+  animation-timing-function: linear;
+  animation-direction: reverse;
+}
+#party-balons-one {
+  position: relative;
+  animation-name: balonesOneAnimation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+  animation-timing-function: linear;
+  animation-direction: reverse;
+}
+#party-balons-two {
+  position: relative;
+  animation-name: balonesTwoAnimation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+  animation-timing-function: linear;
+  animation-direction: reverse;
+}
+#certificate {
+  margin: 20px;
+  width: 200px;
+  height: 150px;
+  border: 4px solid blue;
+  animation-name: balonesTwoAnimation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+  animation-timing-function: linear;
+  animation-direction: reverse;
+}
+.party-header {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 20px;
+  color: yellow;
+}
+
+@keyframes partyGirlAnimation {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    left: 100px;
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  75% {
+    right: 100px;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes balonesOneAnimation {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    bottom: 100px;
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  75% {
+    top: 100px;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes balonesTwoAnimation {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    top: 100px;
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  75% {
+    bottom: 100px;
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@media (max-width: 768px) {
+  .party {
+    height: 60vh;
+  }
+  .party-p {
+    font-size: 10px;
+  }
+  #party-balons-one {
+    width: 150px;
+    position: relative;
+    bottom: 50px;
+    animation: none;
+    right: 50px;
+  }
+  #party-balons-two {
+    width: 150px;
+    position: relative;
+    bottom: 200px;
+    left: 100px;
+    animation: none;
+  }
+  #party-girl {
+    width: 200px;
+    height: 300px;
+    position: relative;
+    bottom: 50px;
+    animation: none;
+    right: 130px;
+  }
+  #certificate {
+    width: 100px;
+    height: 50px;
+  }
+}
